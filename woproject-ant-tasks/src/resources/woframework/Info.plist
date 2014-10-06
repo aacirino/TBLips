@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSExecutable</key>
+	<string>@NAME@</string>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>@NAME@</string>
+	<key>CFBundleGetInfoString</key>
+	<string></string>
+	<key>CFBundleIconFile</key>
+	<string></string>
+	<key>CFBundleIdentifier</key>
+	<string>@CFBUNDLE_IDENTIFIER@</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>WOF</string>
+	<key>CFBundlePackageType</key>
+	<string>FMWK</string>
+	<key>CFBundleShortVersionString</key>
+	<string>@CFBUNDLE_SHORTVERSION@</string>
+	<key>CFBundleSignature</key>
+	<string>webo</string>
+	<key>CFBundleVersion</key>
+	<string>@CFBUNDLE_VERSION@</string>
+	<key>Has_WOComponents</key>
+	@HAS_COMPONENTS@
+	<key>Java</key>
+	<dict>
+		<key>JVMVersion</key>
+		<string>@JAVA_VERSION@</string>
+	</dict>
+	<key>NSJavaClientRoot</key>
+	<string>WebServerResources/Java</string>
+	<key>NSJavaNeeded</key>
+	<true/>
+	<key>NSJavaPath</key>
+	@JAR_ARRAY@
+	<key>NSJavaPathClient</key>
+	<string>@JAR_NAME@</string>
+	<key>NSJavaRoot</key>
+	<string>Resources/Java</string>
+	@PRINCIPAL_CLASS@
+	@CUSTOM_CONTENT@
+</dict>
+</plist>

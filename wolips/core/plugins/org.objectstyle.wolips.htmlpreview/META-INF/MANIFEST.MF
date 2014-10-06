@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: WOLips Html Preview Plug-in
+Bundle-SymbolicName: org.objectstyle.wolips.htmlpreview;singleton:=true
+Bundle-Version: 1.0.6
+Bundle-Activator: org.objectstyle.wolips.htmlpreview.HtmlPreviewPlugin
+Bundle-Vendor: objectstyle.org
+Require-Bundle: org.objectstyle.wolips.components,
+ org.objectstyle.wolips.baseforuiplugins,
+ org.objectstyle.wolips.wodclipse.core,
+ org.objectstyle.wolips.tkhtmleditor,
+ org.objectstyle.wolips.locate,
+ org.eclipse.jdt.core,
+ org.objectstyle.wolips,
+ org.objectstyle.wolips.bindings,
+ org.objectstyle.wolips.variables;bundle-version="1.0.6"
+Bundle-ActivationPolicy: lazy
+Export-Package: org.objectstyle.wolips.htmlpreview.editor,
+ org.objectstyle.wolips.htmlpreview
+Bundle-RequiredExecutionEnvironment: J2SE-1.5

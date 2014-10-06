@@ -1,0 +1,123 @@
+<project name="maven-wolifecycle-ant-tasks" xmlns:artifact="antlib:org.apache.maven.artifact.ant">
+
+	<target name="initTaskDefs">
+
+		<taskdef name="woapplication" classname="org.objectstyle.woproject.ant.WOApplication">
+		</taskdef>
+		<taskdef name="woframework" classname="org.objectstyle.woproject.ant.WOFramework">
+		</taskdef>
+
+	</target>
+
+	<target name="test-pom" depends="initTaskDefs">
+
+		<echo>Artifact ID: ${artifactId}</echo>
+		<echo>Artifact Version: ${version}</echo>
+		<echo>Artifact Final Name: ${finalName}</echo>
+
+	</target>
+
+	<!-- ================================================================== -->
+	<!-- W O A P P L I C A T I O N P R O P E R T I E S                      -->
+	<!-- ================================================================== -->
+	<target name="woapplicationproperties" depends="test-pom">
+		<property file="build.properties" />
+		<property file="target/wobuild.properties" />
+
+		<property file="target/classpath.properties" />
+
+		<condition property="dependencies.lib.check.failed">
+			<not>
+				<isset property="dependencies.lib" />
+			</not>
+		</condition>
+		<fail message="The dependencies.lib property is not set" if="dependencies.lib.check.failed" />
+	</target>
+
+	<target name="build-woapplication" depends="woapplicationproperties">
+		 <!-- <delete>
+		    <fileset dir="target/${finalName}.woa" includes="**/*.jar">
+				<patternset>
+					<excludesfile name="target/classpath.txt" />
+				</patternset>
+		    </fileset>
+		  </delete> -->
+
+
+		<woapplication name="${finalName}"
+			frameworksBaseURL="/WebObjects/${finalName}.woa/Contents/Frameworks"
+			startupScriptName="${artifactId}"
+			stdFrameworks="false" destDir="target"
+			customInfoPListContent="${customInfoPListContent}"
+			principalClass="${principalClass}"
+			cfBundleVersion="${version}"
+			cfBundleShortVersion="${version}">
+			<classes dir="target/classes">
+			</classes>
+			<lib dir="${dependencies.lib}">
+				<patternset>
+					<includesfile name="target/classpath.txt" />
+				</patternset>
+			</lib>
+		</woapplication>
+
+		<tar tarfile="target/${finalName}.woapplication.tar" longfile="gnu">
+			<tarfileset dir="target/${finalName}.woa/"
+				prefix="${finalName}.woa/"
+						preserveLeadingSlashes="true">
+				<!-- exclude name="**/Contents/WebServerResources/**"/>
+				<exclude name="**/Contents/Frameworks/**"/ -->
+			</tarfileset>
+		</tar>
+
+		<gzip src="target/${finalName}.woapplication.tar"
+			  zipfile="target/${finalName}.woapplication.tar.gz"/>
+		<delete file="target/${finalName}.woapplication.tar"/>
+
+		<!-- force WebServerResourcesDir -->
+
+		<mkdir dir="target/${finalName}.woa/Contents/WebServerResources"/>
+
+		<tar tarfile="target/${finalName}.wowebserverresources.tar" longfile="gnu">
+			<tarfileset dir="target/${finalName}.woa/"
+				prefix="${finalName}.woa/"
+						preserveLeadingSlashes="true">
+				<include name="**/WebServerResources/**"/>
+			</tarfileset>
+		</tar>
+
+		<gzip src="target/${finalName}.wowebserverresources.tar"
+			  zipfile="target/${finalName}.wowebserverresources.tar.gz"/>
+		<delete file="target/${finalName}.wowebserverresources.tar"/>
+	</target>
+
+	<!-- ================================================================== -->
+	<!-- W O F R A M E W O R K P R O P E R T I E S                          -->
+	<!-- ================================================================== -->
+	<target name="woframeworkproperties" depends="test-pom">
+		<property file="build.properties" />
+		<property file="${user.home}${file.separator}Library${file.separator}wobuild.properties" />
+		<condition property="wobuild.properties.check.failed">
+			<not>
+				<and>
+					<isset property="wo.wosystemroot" />
+					<isset property="wo.wolocalroot" />
+				</and>
+			</not>
+		</condition>
+	</target>
+
+	<target name="build-woframework" depends="woframeworkproperties">
+		<woframework name="${artifactId}" destDir="target" customInfoPListContent="${customInfoPListContent}" principalClass="${principalClass}" eoAdaptorClassName="${eoAdaptorClassName}" cfBundleVersion="${version}" cfBundleShortVersion="${version}">
+			<classes dir="target/classes">
+			</classes>
+		</woframework>
+		<zip zipfile="target/${finalName}.jar" roundup="false">
+			<fileset dir="target/${artifactId}.framework">
+				<exclude name="**/Java/**"/>
+			</fileset>
+			<fileset dir="target/classes">
+			</fileset>
+		</zip>
+	</target>
+</project>
