@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
    <description url="http://www.objectstyle.org/woproject/index.html">
-      WOLips feature list
+      TBLips feature list
    </description>
    <feature url="features/org.objectstyle.wolips.feature_1.0.6.jar" id="org.objectstyle.wolips.feature" version="1.0.6">
       <category name="Required"/>
@@ -18,14 +18,14 @@
    <feature url="features/org.objectstyle.wolips.jrebel.feature_1.0.6.jar" id="org.objectstyle.wolips.jrebel.feature" version="1.0.6">
       <category name="Optional"/>
    </feature>
-   <category-def name="Required" label="WOLips">
+   <category-def name="Required" label="TBLips">
       <description>
-         Required plugins to use the WOLips tool chain.
+         Required plugins to use the TBLips tool chain.
       </description>
    </category-def>
-   <category-def name="Optional" label="WOLips (Optional)">
+   <category-def name="Optional" label="TBLips (Optional)">
       <description>
-         Optional plugins that can extend the capabilities of the WOLips tool chain.
+         Optional plugins that can extend the capabilities of the TBLips tool chain.
       </description>
    </category-def>
 </site>
