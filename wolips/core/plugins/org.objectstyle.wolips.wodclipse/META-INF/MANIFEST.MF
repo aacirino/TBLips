@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: WOLips WODClipse Plug-in
+Bundle-Name: TBLips WODClipse Plug-in
 Bundle-SymbolicName: org.objectstyle.wolips.wodclipse; singleton:=true
 Bundle-Version: 1.0.6
 Bundle-Activator: org.objectstyle.wolips.wodclipse.WodclipsePlugin
-Bundle-Vendor: objectstyle.org
+Bundle-Vendor: treasureboat.org
 Require-Bundle: org.eclipse.ui.editors,
  org.eclipse.jdt.core,
  org.eclipse.jdt.ui,

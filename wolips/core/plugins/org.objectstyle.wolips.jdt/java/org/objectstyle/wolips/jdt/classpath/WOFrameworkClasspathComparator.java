@@ -56,7 +56,7 @@ public class WOFrameworkClasspathComparator implements Comparator<IClasspathEntr
 		_wonderFrameworks.add("PostgresqlPlugIn");
 		_wonderFrameworks.add("SVGObjects");
 		_wonderFrameworks.add("Validity");
-		_wonderFrameworks.add("WOLips");
+		_wonderFrameworks.add("TBLips");
 		_wonderFrameworks.add("WOOgnl");
 		_wonderFrameworks.add("WOPayPal");
 		_wonderFrameworks.add("WRReporting");

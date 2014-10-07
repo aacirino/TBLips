@@ -351,10 +351,10 @@ public class ProjectTemplate implements Comparable<ProjectTemplate> {
 				templateBaseFolders.add(projectTemplatesFolder.getLocation().toFile());
 			}
 		}
-		templateBaseFolders.add(new File("/Library/Application Support/WOLips/" + baseFolderName));
-		templateBaseFolders.add(new File(System.getProperty("user.home"), "Documents and Settings/Application Data/WOLips/" + baseFolderName));
-		templateBaseFolders.add(new File(System.getProperty("user.home"), "Documents and Settings/AppData/Local/WOLips/" + baseFolderName));
-		templateBaseFolders.add(new File(System.getProperty("user.home"), "Library/Application Support/WOLips/" + baseFolderName));
+		templateBaseFolders.add(new File("/Library/Application Support/TBLips/" + baseFolderName));
+		templateBaseFolders.add(new File(System.getProperty("user.home"), "Documents and Settings/Application Data/TBLips/" + baseFolderName));
+		templateBaseFolders.add(new File(System.getProperty("user.home"), "Documents and Settings/AppData/Local/TBLips/" + baseFolderName));
+		templateBaseFolders.add(new File(System.getProperty("user.home"), "Library/Application Support/TBLips/" + baseFolderName));
 		return templateBaseFolders;
 	}
 

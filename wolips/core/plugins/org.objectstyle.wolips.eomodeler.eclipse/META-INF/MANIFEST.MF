@@ -4,7 +4,7 @@ Bundle-Name: EOModeler Eclipse Plug-in
 Bundle-SymbolicName: org.objectstyle.wolips.eomodeler.eclipse;singleton:=true
 Bundle-Version: 1.0.6
 Bundle-Activator: org.objectstyle.wolips.eomodeler.eclipse.Activator
-Bundle-Vendor: objectstyle.org
+Bundle-Vendor: treasureboat.org
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.core.resources,

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <!-- ======================================================== -->
-<!--        Main WOLips plugins Ant build file                -->
+<!--        Main TBLips plugins Ant build file                -->
 <!-- Serves as a facade for different helper build files.     -->
 <!-- ======================================================== -->
 <project name="org.objectstyle.wolips.launching" default="" basedir=".">

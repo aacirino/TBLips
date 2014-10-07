@@ -62,7 +62,7 @@ import org.eclipse.ltk.core.refactoring.participants.RenameParticipant;
 import org.objectstyle.wolips.core.resources.types.project.ProjectAdapter;
 
 /**
- * Changes the name of a WOLips project's Principal Class when it gets renamed.
+ * Changes the name of a TBLips project's Principal Class when it gets renamed.
  * 
  * @author mschrag
  */

@@ -63,7 +63,7 @@
       <filter
             targetId="org.objectstyle.wolips.jdt.ui.WOPackageExplorer"
             id="org.objectstyle.wolips.ui.javaelementfilters.makefiles"
-            name="PB makefiles (WOLips)"
+            name="PB makefiles (TBLips)"
             enabled="true"
             description="Hide the makefiles required by PBWO"
             pattern="Makefil*">
@@ -71,7 +71,7 @@
       <filter
             targetId="org.objectstyle.wolips.jdt.ui.WOPackageExplorer"
             id="org.objectstyle.wolips.ui.javaelementfilters.pbdorproject"
-            name="PB.project (WOLips)"
+            name="PB.project (TBLips)"
             enabled="true"
             description="Hide the PBWO project file."
             pattern="PB.project">
@@ -79,7 +79,7 @@
       <filter
             targetId="org.objectstyle.wolips.jdt.ui.WOPackageExplorer"
             id="org.objectstyle.wolips.ui.javaelementfilters.dotapi"
-            name="WOComponent api (WOLips)"
+            name="WOComponent api (TBLips)"
             enabled="false"
             description="Hide all *.api files"
             pattern="*.api">
@@ -87,7 +87,7 @@
       <filter
             targetId="org.objectstyle.wolips.jdt.ui.WOPackageExplorer"
             id="org.objectstyle.wolips.ui.javaelementfilters.dotwoo"
-            name="woo (WOLips)"
+            name="woo (TBLips)"
             enabled="false"
             description="Hide all *.woo files"
             pattern="*.woo">
@@ -95,7 +95,7 @@
       <filter
             targetId="org.objectstyle.wolips.jdt.ui.WOPackageExplorer"
             id="org.objectstyle.wolips.ui.javaelementfilters.woaicon"
-            name="WOA Icon (WOLips)"
+            name="WOA Icon (TBLips)"
             enabled="true"
             description="Hides the WOA Icon"
             pattern="WOAfile.icns">
@@ -103,7 +103,7 @@
       <filter
             targetId="org.objectstyle.wolips.jdt.ui.WOPackageExplorer"
             id="org.objectstyle.wolips.ui.javaelementfilters.custominfo.plist"
-            name="CustomInfo.plist (WOLips)"
+            name="CustomInfo.plist (TBLips)"
             enabled="true"
             description="Hide all CustomInfo.plist files"
             pattern="CustomInfo.Plist">
@@ -111,7 +111,7 @@
       <filter
             targetId="org.objectstyle.wolips.jdt.ui.WOPackageExplorer"
             id="org.objectstyle.wolips.ui.javaelementfilters.properties"
-            name="Properties (WOLips)"
+            name="Properties (TBLips)"
             enabled="false"
             description="Hides files named Properties"
             pattern="Properties">
@@ -119,7 +119,7 @@
       <filter
             targetId="org.objectstyle.wolips.jdt.ui.WOPackageExplorer"
             id="org.objectstyle.wolips.ui.javaelementfilters.builddotproperties"
-            name="build.properties (WOLips)"
+            name="build.properties (TBLips)"
             enabled="true"
             description="Hide all build.properties files"
             pattern="build.properties">
@@ -127,7 +127,7 @@
       <filter
             targetId="org.objectstyle.wolips.jdt.ui.WOPackageExplorer"
             id="org.objectstyle.wolips.ui.javaelementfilters.builddotxml"
-            name="build.xml (WOLips)"
+            name="build.xml (TBLips)"
             enabled="false"
             description="Hide all build.xml files"
             pattern="build.xml">
@@ -135,7 +135,7 @@
       <filter
             targetId="org.objectstyle.wolips.jdt.ui.WOPackageExplorer"
             id="org.objectstyle.wolips.ui.javaelementfilters.dotxcode"
-            name="Xcode (WOLips)"
+            name="Xcode (TBLips)"
             enabled="true"
             description="Hide all *.xcode/*.xcodeproj files"
             pattern="*.xcode*">
@@ -143,7 +143,7 @@
       <filter
             targetId="org.objectstyle.wolips.jdt.ui.WOPackageExplorer"
             id="org.objectstyle.wolips.ui.javaelementfilters.dist"
-            name="dist (WOLips)"
+            name="dist (TBLips)"
             enabled="false"
             description="Hide all dist files"
             pattern="dist">
@@ -151,7 +151,7 @@
       <filter
             targetId="org.objectstyle.wolips.jdt.ui.WOPackageExplorer"
       	   	id="org.objectstyle.wolips.ui.javaelementfilters.build"
-            name="Build Folder (WOLips)"
+            name="Build Folder (TBLips)"
             enabled="true"
             description="Hide all build files"
             class="org.objectstyle.wolips.jdt.javaelementfilters.BuildFolderFilter">
@@ -159,7 +159,7 @@
       <filter
             targetId="org.objectstyle.wolips.jdt.ui.WOPackageExplorer"
             id="org.objectstyle.wolips.ui.javaelementfilters.woproject"
-            name="woproject (WOLips)"
+            name="woproject (TBLips)"
             enabled="false"
             description="Hide all woproject files"
             class="org.objectstyle.wolips.jdt.javaelementfilters.WoprojectFilter">
@@ -167,7 +167,7 @@
       <filter
             targetId="org.objectstyle.wolips.jdt.ui.WOPackageExplorer"
       	   id="org.objectstyle.wolips.ui.javaelementfilters.wocomponent"
-            name="WOComponent (WOLips)"
+            name="WOComponent (TBLips)"
             enabled="false"
             description="Hide all WOComponents"
             class="org.objectstyle.wolips.jdt.javaelementfilters.ComponentFilter">
@@ -412,7 +412,7 @@
           allowMultiple="false"
           category="org.objectstyle.wolips.ui"
           class="org.objectstyle.wolips.jdt.ui.WOPackageExplorerPart"
-          icon="icons/WOLips16-16.png"
+          icon="icons/TBLips16-16.png"
           id="org.objectstyle.wolips.jdt.ui.WOPackageExplorer"
           name="WO Explorer">
     </view>

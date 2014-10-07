@@ -56,7 +56,7 @@ public class WOFrameworkResourceListener implements IResourceChangeListener {
 						if (project.isOpen()) {
 							final ProjectFrameworkAdapter projectFrameworkAdapter = (ProjectFrameworkAdapter) project.getAdapter(ProjectFrameworkAdapter.class);
 							if (projectFrameworkAdapter != null) {
-								new WorkspaceJob("Initialize WOLips Project") {
+								new WorkspaceJob("Initialize TBLips Project") {
 									
 									@Override
 									public IStatus runInWorkspace(IProgressMonitor monitor) throws CoreException {

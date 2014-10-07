@@ -9,7 +9,7 @@
    <extension
          point="org.eclipse.ui.newWizards">
       <category
-            name="WOLips"
+            name="TBLips"
             id="org.objectstyle.wolips.wizards">
       </category>
       <wizard
@@ -237,13 +237,13 @@
    <extension
          point="org.eclipse.ui.actionSets">
       <actionSet
-            label="WOLips Wizards"
-            description="WOLips Wizards"
+            label="TBLips Wizards"
+            description="TBLips Wizards"
             visible="false"
             id="org.objectstyle.wolips.wizards.ElementCreationActionSet">
         <action
               class="org.objectstyle.wolips.wizards.actions.NewWODropDown"
-              icon="icons/wolips/WOLips16-16.png"
+              icon="icons/wolips/TBLips16-16.png"
               id="org.objectstyle.wolips.wizards.actions.NewWODropDown"
               label="WO"
               style="pulldown"
@@ -289,7 +289,7 @@
          point="org.eclipse.ui.importWizards">
       <category
             id="org.objectstyle.wolips.wizards.actions.importEOModelCategory"
-            name="WOLips">
+            name="TBLips">
       </category>
       <wizard
             category="org.objectstyle.wolips.wizards.actions.importEOModelCategory"

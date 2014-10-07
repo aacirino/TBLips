@@ -12,7 +12,7 @@
 	<target name="init.properties">
 		<property file="build.properties" />
 
-		<property name="wolips.properties" value="${user.home}${file.separator}Library${file.separator}Application Support${file.separator}WOLips${file.separator}wolips.properties" />
+		<property name="wolips.properties" value="${user.home}${file.separator}Library${file.separator}Application Support${file.separator}TBLips${file.separator}wolips.properties" />
 		<property file="${wolips.properties}" />
 		<condition property="wo.properties.check.failed">
 			<not>

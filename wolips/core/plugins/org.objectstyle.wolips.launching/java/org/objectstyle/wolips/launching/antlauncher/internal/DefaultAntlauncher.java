@@ -115,7 +115,7 @@ public class DefaultAntlauncher implements IAntlauncher {
 		StringBuffer buffer = new StringBuffer(file.getProject().getName());
 		buffer.append(' ');
 		buffer.append(file.getName());
-		buffer.append(" (WOLips)");
+		buffer.append(" (TBLips)");
 		String name = buffer.toString().trim();
 		name = manager.generateUniqueLaunchConfigurationNameFrom(name);
 		ILaunchConfigurationWorkingCopy workingCopy = type.newInstance(null, name);

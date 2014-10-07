@@ -2,11 +2,11 @@
 <?eclipse version="3.0"?>
 <plugin>
 <!-- =================================================================================== -->
-<!-- Extension: WOLips projectbuild problem marker                                       -->
+<!-- Extension: TBLips projectbuild problem marker                                       -->
 <!-- =================================================================================== -->
    <extension
          id="projectbuild.taskmarker"
-         name="WOLips Task Marker"
+         name="TBLips Task Marker"
          point="org.eclipse.core.resources.markers">
       <super
             type="org.eclipse.core.resources.taskmarker">
@@ -14,7 +14,7 @@
    </extension>
    <extension
          id="projectbuild.marker"
-         name="WOLips Build Marker"
+         name="TBLips Build Marker"
          point="org.eclipse.core.resources.markers">
       <super
             type="org.eclipse.core.resources.problemmarker">
@@ -22,7 +22,7 @@
    </extension>
    <extension
          id="projectbuild.problem"
-         name="WOLips Build Problem Marker"
+         name="TBLips Build Problem Marker"
          point="org.eclipse.core.resources.markers">
       <persistent
             value="true">
@@ -33,7 +33,7 @@
    </extension>
    <extension
          id="projectbuild.duplicate"
-         name="WOLips Build Duplicate Marker"
+         name="TBLips Build Duplicate Marker"
          point="org.eclipse.core.resources.markers">
       <persistent
             value="true">

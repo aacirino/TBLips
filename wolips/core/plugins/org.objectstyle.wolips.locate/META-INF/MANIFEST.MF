@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: WOLips Locate Plug-in
+Bundle-Name: TBLips Locate Plug-in
 Bundle-SymbolicName: org.objectstyle.wolips.locate; singleton:=true
 Bundle-Version: 1.0.6
 Bundle-Activator: org.objectstyle.wolips.locate.LocatePlugin
-Bundle-Vendor: objectstyle.org
+Bundle-Vendor: treasureboat.org
 Require-Bundle: org.eclipse.core.resources,
  org.eclipse.jdt.core,
  org.objectstyle.wolips.baseforplugins,

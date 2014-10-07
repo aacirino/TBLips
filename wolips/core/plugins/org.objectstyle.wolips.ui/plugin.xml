@@ -16,7 +16,7 @@
             objectClass="org.eclipse.core.resources.IResource"
             id="org.objectstyle.wolips.maven.ui.ResourceContributions">
          <menu
-               label="&amp;WOLips Maven Tools"
+               label="&amp;TBLips Maven Tools"
                path="additions"
                id="org.objectstyle.wolips.maven.ui.ResourceContributions">
             <separator
@@ -35,7 +35,7 @@
             objectClass="org.eclipse.core.resources.IResource"
             id="org.objectstyle.wolips.deployment.ui.ResourceContributions">
          <menu
-               label="&amp;WOLips Ant Tools"
+               label="&amp;TBLips Ant Tools"
                path="additions"
                id="org.objectstyle.wolips.ant.ui.ResourceContributions">
             <separator
@@ -54,7 +54,7 @@
             objectClass="org.eclipse.core.resources.IResource"
             id="org.objectstyle.wolips.ui.ResourceContributions">
          <menu
-               label="&amp;WOLips Tools"
+               label="&amp;TBLips Tools"
                path="additions"
                id="org.objectstyle.wolips.ui.ResourceContributions">
             <separator
@@ -237,8 +237,8 @@
    <extension
          point="org.eclipse.ui.perspectives">
       <perspective
-            name="WOLips"
-            icon="icons/wolips/WOLips16-16.png"
+            name="TBLips"
+            icon="icons/wolips/TBLips16-16.png"
             class="org.objectstyle.wolips.ui.view.PerspectiveFactory"
             id="org.objectstyle.wolips.ui.Perspective">
       </perspective>
@@ -291,12 +291,12 @@
    <extension
          point="org.eclipse.ui.views">
       <category
-            name="WOLips"
+            name="TBLips"
             id="org.objectstyle.wolips.ui">
       </category>
       <view
             name="Related"
-            icon="icons/wolips/WOLips16-16.png"
+            icon="icons/wolips/TBLips16-16.png"
             category="org.objectstyle.wolips.ui"
             class="org.objectstyle.wolips.ui.view.RelatedView"
             id="org.objectstyle.wolips.ui.view.RelatedView">
@@ -308,7 +308,7 @@
    <extension
          point="org.eclipse.ui.preferencePages">
       <page
-            name="WOLips"
+            name="TBLips"
             class="org.objectstyle.wolips.ui.preferences.WOLipsPropertiesPreferencesPage"
             id="org.objectstyle.wolips.preferences.PreferencesPage">
       </page>
@@ -397,13 +397,13 @@
       <decorator
             lightweight="true"
             adaptable="true"
-            label="WOLips build folder"
+            label="TBLips build folder"
             icon="icons/ovr16/build_co.gif"
             state="true"
             location="TOP_LEFT"
             id="org.objectstyle.wolips.ui.labeldecorator.BuildFolderLabelDecorator">
          <description>
-            WOLips build folder
+            TBLips build folder
          </description>
 		<enablement>
 			<and>
@@ -518,12 +518,12 @@
       </decorator>
    </extension>
 <!-- =================================================================================== -->
-<!-- Extension: WOLips projectbuild property page                                        -->
+<!-- Extension: TBLips projectbuild property page                                        -->
 <!-- =================================================================================== -->
    <extension
          point="org.eclipse.ui.propertyPages">
       <page
-            name="WOLips Deployment"
+            name="TBLips Deployment"
             class="org.objectstyle.wolips.ui.propertypages.WOLipsDeploymentPropertyPage"
             id="org.objectstyle.wolips.ui.propertypages.WOLipsDeploymentPropertyPage">
          <enabledWhen>
@@ -533,7 +533,7 @@
          </enabledWhen> 
       </page>
       <page
-            name="WOLips Development"
+            name="TBLips Development"
             class="org.objectstyle.wolips.ui.propertypages.WOLipsDevelopmentPropertyPage"
             id="org.objectstyle.wolips.ui.propertypages.WOLipsDevelopmentPropertyPage">
          <enabledWhen>

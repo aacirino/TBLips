@@ -75,7 +75,7 @@ import org.eclipse.ui.dialogs.WizardNewLinkPage;
 
 
 /**
- * Used by WOLips project creation wizards to assign default packages for the template
+ * Used by TBLips project creation wizards to assign default packages for the template
  * Java classes.
  * @see NewWOProjectWizard
  */

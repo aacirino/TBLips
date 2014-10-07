@@ -324,7 +324,7 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 				
 				if (!BLANK_CONTENT.equals(this)) {
 					String dateString = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-					String userName = System.getProperty("user.name", "WOLips");
+					String userName = System.getProperty("user.name", "TBLips");
 					boolean isXML = true;
 					
 					if (HTML_UNSPECIFIED.equals(this)) {
@@ -376,7 +376,7 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 					buff.append(lineSeparator).append("<head>").append(lineSeparator);
 					buff.append(lineSeparator).append("	<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"").append(closingTag);
 					buff.append(lineSeparator).append("	<title>untitled</title>");
-					buff.append(lineSeparator).append("	<meta name=\"generator\" content=\"WOLips http://wiki.objectstyle.org/confluence/display/WOL/Home\"").append(closingTag);
+					buff.append(lineSeparator).append("	<meta name=\"generator\" content=\"TBLips http://wiki.objectstyle.org/confluence/display/WOL/Home\"").append(closingTag);
 					buff.append(lineSeparator).append("	<meta name=\"author\" content=\"").append(userName).append('"').append(closingTag);
 					buff.append(lineSeparator).append("	<!-- Date: ").append(dateString).append(" -->");
 					buff.append(lineSeparator).append("</head>");

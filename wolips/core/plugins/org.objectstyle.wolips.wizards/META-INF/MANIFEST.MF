@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: WOLips Wizards Plug-in
+Bundle-Name: TBLips Wizards Plug-in
 Bundle-SymbolicName: org.objectstyle.wolips.wizards; singleton:=true
 Bundle-Version: 1.0.6
 Bundle-Activator: org.objectstyle.wolips.wizards.WizardsPlugin
-Bundle-Vendor: objectstyle.org
+Bundle-Vendor: treasureboat.org
 Require-Bundle: org.eclipse.jdt.ui,
  org.objectstyle.wolips.templateengine,
  org.eclipse.jdt.core,

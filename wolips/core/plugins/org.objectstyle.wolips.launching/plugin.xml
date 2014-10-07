@@ -34,7 +34,7 @@
    <extension
          point="org.eclipse.debug.ui.launchConfigurationTypeImages">
       <launchConfigurationTypeImage
-            icon="icons/launching/WOLips16-16.png"
+            icon="icons/launching/TBLips16-16.png"
             configTypeID="org.objectstyle.wolips.launching.WOLocalJavaApplication"
             id="org.objectstyle.wolips.launching.WOLocalJavaApplicationImage">
       </launchConfigurationTypeImage>
@@ -69,7 +69,7 @@
          point="org.eclipse.debug.ui.launchShortcuts">
   <shortcut
             label="WOApplication"
-            icon="icons/launching/WOLips16-16.png"
+            icon="icons/launching/TBLips16-16.png"
             modes="run, debug"
             class="org.objectstyle.wolips.launching.actions.WOJavaApplicationLaunchShortcut"
             id="org.objectstyle.wolips.launching.WOJavaApplicationLaunchShortcut">
@@ -107,7 +107,7 @@
   </shortcut>
       <shortcut
             label="Wonder ERXMainRunner"
-            icon="icons/launching/WOLips16-16.png"
+            icon="icons/launching/TBLips16-16.png"
             modes="run, debug"
             class="org.objectstyle.wolips.launching.actions.ERXMainApplicationLaunchShortcut"
             id="org.objectstyle.wolips.launching.ERXMainApplicationLaunchShortcut">
@@ -171,7 +171,7 @@
       <variable
             name="working_dir_loc_WOLips"
             resolver="org.objectstyle.wolips.launching.variables.WorkingDirResolver"
-            description="Resolves the working dir for a WebObjects Application within a WOLips project. Add the ProjectName as the argument.">
+            description="Resolves the working dir for a WebObjects Application within a TBLips project. Add the ProjectName as the argument.">
       </variable>
    </extension>
 <!-- =================================================================================== -->

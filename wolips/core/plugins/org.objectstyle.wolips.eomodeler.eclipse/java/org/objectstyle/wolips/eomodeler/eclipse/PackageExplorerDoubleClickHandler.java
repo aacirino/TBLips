@@ -131,7 +131,7 @@ public class PackageExplorerDoubleClickHandler implements IPageListener, IPartLi
 		// rather it preserves the most recently selected perspective and applies it to all windows.
 		// So we want to catch when Eclipse starts up and look for any windows that are set to the
 		// Entity Modeler perspective, but that don't have any Entity Modeler editors in them, and
-		// change those perspectives back to the WOLips perspective.  We also only want to do this
+		// change those perspectives back to the TBLips perspective.  We also only want to do this
 		// on windows at startup, so we don't swap back an "Open Entity Modeler in New Window" window.
 		if (startup && Activator.getDefault().getPreferenceStore().getBoolean(PreferenceConstants.CHANGE_PERSPECTIVES_KEY)) {
 			IWorkbenchPage activePage = window.getActivePage();

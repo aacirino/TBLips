@@ -105,7 +105,7 @@ public class EOModelDocGenerator {
 
 	public static void main(String[] args) throws Exception {
 		// String userHomeWOLipsPath = System.getProperty("user.home") +
-		// File.separator + "Library" + File.separator + "WOLips";
+		// File.separator + "Library" + File.separator + "TBLips";
 		// URL url = null;
 		// url = FileLocator.resolve(Activator.getDefault().getBundle().);
 		// String templatePaths = userHomeWOLipsPath + ", ";

@@ -8,6 +8,6 @@ Require-Bundle: org.objectstyle.wolips.eomodeler.core,
  org.objectstyle.wolips.baseforuiplugins,
  org.objectstyle.wolips.woproject
 Bundle-ActivationPolicy: lazy
-Bundle-Vendor: objectstyle.org
+Bundle-Vendor: treasureboat.org
 Export-Package: org.objectstyle.wolips.eomodeler.factories
 Bundle-RequiredExecutionEnvironment: J2SE-1.5

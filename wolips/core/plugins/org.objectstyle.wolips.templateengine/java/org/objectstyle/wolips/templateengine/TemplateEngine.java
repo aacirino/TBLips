@@ -110,7 +110,7 @@ public class TemplateEngine implements IRunnableWithProgress {
 			/*
 			 * initialize the engine
 			 */
-			String userHomeWOLipsPath = System.getProperty("user.home") + File.separator + "Library" + File.separator + "WOLips";
+			String userHomeWOLipsPath = System.getProperty("user.home") + File.separator + "Library" + File.separator + "TBLips";
 			URL url = FileLocator.resolve(TemplateEnginePlugin.baseURL());
 			String templatePaths = userHomeWOLipsPath + ", ";
 			Path path = new Path(url.getPath());

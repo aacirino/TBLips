@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: WOLips Launching Plug-in
+Bundle-Name: TBLips Launching Plug-in
 Bundle-SymbolicName: org.objectstyle.wolips.launching; singleton:=true
 Bundle-Version: 1.0.6
 Bundle-Activator: org.objectstyle.wolips.launching.LaunchingPlugin
-Bundle-Vendor: objectstyle.org
+Bundle-Vendor: treasureboat.org
 Require-Bundle: org.eclipse.debug.ui,
  org.eclipse.jdt.core,
  org.eclipse.jdt.launching,

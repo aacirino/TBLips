@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: WOLips Third Party Velocity Plug-in
+Bundle-Name: TBLips Third Party Velocity Plug-in
 Bundle-SymbolicName: org.objectstyle.wolips.thirdparty.velocity;singleton:=true
 Bundle-Version: 1.0.6
 Bundle-Activator: org.objectstyle.wolips.thirdparty.velocity.Activator
-Bundle-Vendor: objectstyle.org
+Bundle-Vendor: treasureboat.org
 Require-Bundle: org.eclipse.core.runtime,
  org.objectstyle.wolips.thirdparty.log4j;bundle-version="1.0.6",
  org.objectstyle.wolips.thirdparty.commonscollections;bundle-version="1.0.6"

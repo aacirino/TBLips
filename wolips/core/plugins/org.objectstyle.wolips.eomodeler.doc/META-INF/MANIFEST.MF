@@ -8,6 +8,6 @@ Require-Bundle: org.objectstyle.wolips.eomodeler.core,
  org.objectstyle.wolips.thirdparty.velocity,
  org.objectstyle.wolips.baseforplugins
 Bundle-ActivationPolicy: lazy
-Bundle-Vendor: objectstyle.org
+Bundle-Vendor: treasureboat.org
 Bundle-ClassPath: .
 Bundle-RequiredExecutionEnvironment: J2SE-1.5

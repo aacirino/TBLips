@@ -138,7 +138,7 @@ public class WOAntBuilder extends AbstractIncrementalProjectBuilder {
 				throw new NullPointerException("WOBuilder.handleException called without an exception.");
 			}
 			aMarker = this.getBuildfileMarker();
-			aMarker.setAttribute(IMarker.MESSAGE, "WOLips: " + anException.getMessage());
+			aMarker.setAttribute(IMarker.MESSAGE, "TBLips: " + anException.getMessage());
 		} catch (Exception e) {
 			BuilderPlugin.getDefault().log(e);
 		} finally {
@@ -173,7 +173,7 @@ public class WOAntBuilder extends AbstractIncrementalProjectBuilder {
 		IMarker aMarker = null;
 		try {
 			aMarker = getProject().createMarker(BuilderPlugin.MARKER_TASK_GENERIC);
-			aMarker.setAttribute(IMarker.MESSAGE, "WOLips: Can not find: " + this.buildFile());
+			aMarker.setAttribute(IMarker.MESSAGE, "TBLips: Can not find: " + this.buildFile());
 			aMarker.setAttribute(IMarker.PRIORITY, IMarker.PRIORITY_HIGH);
 		} catch (Exception anException) {
 			BuilderPlugin.getDefault().log(anException);

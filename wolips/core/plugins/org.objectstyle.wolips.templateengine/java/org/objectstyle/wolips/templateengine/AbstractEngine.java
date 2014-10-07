@@ -112,7 +112,7 @@ public abstract class AbstractEngine implements IRunnableWithProgress {
 			/*
 			 * initialize the engine
 			 */
-			String userHomeWOLipsPath = System.getProperty("user.home") + File.separator + "Library" + File.separator + "WOLips";
+			String userHomeWOLipsPath = System.getProperty("user.home") + File.separator + "Library" + File.separator + "TBLips";
 			URL url = null;
 			url = Platform.resolve(TemplateEnginePlugin.baseURL());
 			String templatePaths = userHomeWOLipsPath + ", ";

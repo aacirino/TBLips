@@ -124,7 +124,7 @@ public class TemplateOutlinePage extends Page implements IContentOutlinePage, IH
 
   /**
    * The protocol that we use to communicate between the Browser preview component
-   * and WOLips is via the Browser status text.  Changing status text in Javascript
+   * and TBLips is via the Browser status text.  Changing status text in Javascript
    * fires an SWT event of the form 'command:target' that we parse on the Java side
    * to determine what action the user performed inside the Browser.  This method
    * handles each of the corresponding event types.

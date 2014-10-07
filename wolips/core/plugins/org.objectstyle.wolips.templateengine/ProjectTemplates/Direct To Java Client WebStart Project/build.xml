@@ -23,7 +23,7 @@
 	<target name="init.properties">
 		<property file="build.properties" />
 
-		<property name="wolips.properties" value="${user.home}${file.separator}Library${file.separator}Application Support${file.separator}WOLips${file.separator}wolips.properties" />
+		<property name="wolips.properties" value="${user.home}${file.separator}Library${file.separator}Application Support${file.separator}TBLips${file.separator}wolips.properties" />
 		<property file="${wolips.properties}" />
 		<condition property="wo.properties.check.failed">
 			<not>
@@ -125,7 +125,7 @@
 	<!-- To use this target
     	1) create the LICENSE in your project directory
     	2) add JavaWOJSPServlet in your WOFrameworks build path
-    	3) set servlet deployment to true in WOLips Properties
+    	3) set servlet deployment to true in TBLips Properties
     -->
 	<target name="ssdd" if="servletDeployment" depends="build.woapp">
 		<mkdir dir="${dest.dir}/${build.app.name}/WEB-INF/classes" />

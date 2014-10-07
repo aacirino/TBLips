@@ -61,13 +61,13 @@ public class WOLipsVelocityUtils {
 		}
 
 		templatePaths.append(",");
-		templatePaths.append(new File("/Library/Application Support/WOLips/" + templateFamilyName).getAbsolutePath());
+		templatePaths.append(new File("/Library/Application Support/TBLips/" + templateFamilyName).getAbsolutePath());
 		templatePaths.append(",");
-		templatePaths.append(new File(System.getProperty("user.home"), "Documents and Settings/Application Data/WOLips/" + templateFamilyName).getAbsolutePath());
+		templatePaths.append(new File(System.getProperty("user.home"), "Documents and Settings/Application Data/TBLips/" + templateFamilyName).getAbsolutePath());
 		templatePaths.append(",");
-		templatePaths.append(new File(System.getProperty("user.home"), "Documents and Settings/AppData/Local/WOLips/" + templateFamilyName).getAbsolutePath());
+		templatePaths.append(new File(System.getProperty("user.home"), "Documents and Settings/AppData/Local/TBLips/" + templateFamilyName).getAbsolutePath());
 		templatePaths.append(",");
-		templatePaths.append(new File(System.getProperty("user.home"), "Library/Application Support/WOLips/" + templateFamilyName).getAbsolutePath());
+		templatePaths.append(new File(System.getProperty("user.home"), "Library/Application Support/TBLips/" + templateFamilyName).getAbsolutePath());
 
 		Thread thread = Thread.currentThread();
 		ClassLoader loader = thread.getContextClassLoader();

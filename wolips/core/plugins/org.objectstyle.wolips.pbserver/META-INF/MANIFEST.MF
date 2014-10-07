@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: WOLips PB Server Plug-in
+Bundle-Name: TBLips PB Server Plug-in
 Bundle-SymbolicName: org.objectstyle.wolips.pbserver; singleton:=true
 Bundle-Version: 1.0.6
 Bundle-Activator: org.objectstyle.wolips.pbserver.PBServerPlugin
-Bundle-Vendor: org.objectstyle
+Bundle-Vendor: treasureboat.org
 Require-Bundle: org.objectstyle.wolips.preferences,
  org.objectstyle.wolips.baseforuiplugins
 Bundle-ActivationPolicy: lazy

@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: WOLips RuleEditor Plug-in
+Bundle-Name: TBLips RuleEditor Plug-in
 Bundle-SymbolicName: org.objectstyle.wolips.ruleeditor; singleton:=true
 Bundle-Version: 1.0.6
 Bundle-Activator: org.objectstyle.wolips.ruleeditor.RuleEditorPlugin
-Bundle-Vendor: objectstyle.org
+Bundle-Vendor: treasureboat.org
 Require-Bundle: org.objectstyle.wolips.baseforuiplugins,
  org.objectstyle.wolips.woproject;bundle-version="1.0.6"
 Bundle-ActivationPolicy: lazy

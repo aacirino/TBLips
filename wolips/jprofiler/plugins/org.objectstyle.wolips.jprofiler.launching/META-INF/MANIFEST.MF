@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: WOLips JProfiler Launching Plug-in
+Bundle-Name: TBLips JProfiler Launching Plug-in
 Bundle-SymbolicName: org.objectstyle.wolips.jprofiler.launching; singleton:=true
 Bundle-Version: 1.0.6
 Bundle-Activator: org.objectstyle.wolips.jprofiler.launching.Activator
-Bundle-Vendor: objectstyle.org
+Bundle-Vendor: treasureboat.org
 Require-Bundle: org.eclipse.jdt.debug.ui,
  org.eclipse.debug.core,
  org.eclipse.debug.ui,

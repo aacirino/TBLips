@@ -9,7 +9,7 @@
 <!-- =================================================================================== -->
    <extension
          id="incrementalbuilder"
-         name="WOLips Incremental Builder"
+         name="TBLips Incremental Builder"
          point="org.eclipse.core.resources.builders">
       <builder
             isConfigurable="false">
@@ -20,7 +20,7 @@
    </extension>
    <extension
          id="antbuilder"
-         name="WOLips Ant Builder"
+         name="TBLips Ant Builder"
          point="org.eclipse.core.resources.builders">
       <builder
             isConfigurable="false">

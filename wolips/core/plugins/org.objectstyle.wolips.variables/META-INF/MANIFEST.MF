@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: WOLips Variables Plug-in
+Bundle-Name: TBLips Variables Plug-in
 Bundle-SymbolicName: org.objectstyle.wolips.variables;singleton:=true
 Bundle-Version: 1.0.6
 Bundle-Activator: org.objectstyle.wolips.variables.VariablesPlugin
-Bundle-Vendor: objectstyle.org
+Bundle-Vendor: treasureboat.org
 Require-Bundle: org.objectstyle.wolips.woproject,
  org.eclipse.ant.core,
  org.objectstyle.wolips.baseforplugins,

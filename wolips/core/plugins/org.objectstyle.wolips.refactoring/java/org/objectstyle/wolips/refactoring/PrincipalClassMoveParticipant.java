@@ -63,7 +63,7 @@ import org.eclipse.ltk.core.refactoring.participants.MoveParticipant;
 import org.objectstyle.wolips.core.resources.types.project.ProjectAdapter;
 
 /**
- * Changes the package name of a WOLips project's Principal Class when it gets
+ * Changes the package name of a TBLips project's Principal Class when it gets
  * moved.
  * 
  * @author mschrag

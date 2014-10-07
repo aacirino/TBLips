@@ -10,6 +10,6 @@
             class="org.objectstyle.wolips.womodeler.preferences.WOModelerPreferencePage"
             category="org.objectstyle.wolips.preferences.PreferencesPage"
             id="org.objectstyle.wolips.womodeler.preferences.WOModelerPreferencePage"
-            name="WOLips Server"/>
+            name="TBLips Server"/>
    </extension>
 </plugin>

@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: WOLips UI Plug-in
+Bundle-Name: TBLips UI Plug-in
 Bundle-SymbolicName: org.objectstyle.wolips.ui; singleton:=true
 Bundle-Version: 1.0.6
 Bundle-Activator: org.objectstyle.wolips.ui.UIPlugin
-Bundle-Vendor: objectstyle.org
+Bundle-Vendor: treasureboat.org
 Require-Bundle: org.eclipse.search,
  org.eclipse.ui.console,
  org.eclipse.debug.ui,

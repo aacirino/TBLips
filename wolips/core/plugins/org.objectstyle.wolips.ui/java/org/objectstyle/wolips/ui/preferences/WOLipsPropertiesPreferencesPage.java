@@ -65,7 +65,7 @@ public class WOLipsPropertiesPreferencesPage extends FieldEditorPreferencePage i
 	
 	public WOLipsPropertiesPreferencesPage() {
 		super(FieldEditorPreferencePage.GRID);
-		setDescription("The following folders define the locations of your frameworks, javadoc, and install locations that are required to successfully build WebObjects applications with WOLips.");
+		setDescription("The following folders define the locations of your frameworks, javadoc, and install locations that are required to successfully build WebObjects applications with TBLips.");
 	}
 	
 	@Override
@@ -92,8 +92,8 @@ public class WOLipsPropertiesPreferencesPage extends FieldEditorPreferencePage i
 	public void createFieldEditors() {
 		int widthInChars = 50;
 		
-		// MS: WOLips Properties is set in a different preferences store, so we want to hijack this one field editor to use the primary preferences store
-		_wolipsPropertiesFieldEditor = new StringFieldEditor(Preferences.PREF_WOLIPS_PROPERTIES_FILE, "WOLips Properties File", widthInChars, StringFieldEditor.VALIDATE_ON_FOCUS_LOST, getFieldEditorParent()) {
+		// MS: TBLips Properties is set in a different preferences store, so we want to hijack this one field editor to use the primary preferences store
+		_wolipsPropertiesFieldEditor = new StringFieldEditor(Preferences.PREF_WOLIPS_PROPERTIES_FILE, "TBLips Properties File", widthInChars, StringFieldEditor.VALIDATE_ON_FOCUS_LOST, getFieldEditorParent()) {
 			@Override
 			public void setPreferenceStore(IPreferenceStore store) {
 				super.setPreferenceStore(store == null ? null : Preferences.getPreferenceStore());

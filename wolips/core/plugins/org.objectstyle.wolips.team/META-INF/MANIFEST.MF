@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: WOLips Team Plug-in
+Bundle-Name: TBLips Team Plug-in
 Bundle-SymbolicName: org.objectstyle.wolips.team; singleton:=true
 Bundle-Version: 1.0.6
 Bundle-Activator: org.objectstyle.wolips.team.TeamPlugin
-Bundle-Vendor: objectstyle.org
+Bundle-Vendor: treasureboat.org
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.objectstyle.wolips.baseforplugins
 Export-Package: org.objectstyle.wolips.team

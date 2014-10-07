@@ -153,7 +153,7 @@ public class InstallWithSelectionDialogAction extends AbstractInstallAction {
 
 		};
 		iProjects = this.getIProjects();
-		ListSelectionDialog listSelectionDialog = new ListSelectionDialog(new Shell(), "WOLips", structuredContentProvider, labelProvider, "Select the projects to install.");
+		ListSelectionDialog listSelectionDialog = new ListSelectionDialog(new Shell(), "TBLips", structuredContentProvider, labelProvider, "Select the projects to install.");
 		listSelectionDialog.setInitialSelections(iProjects);
 		listSelectionDialog.open();
 		if (listSelectionDialog.getReturnCode() == Window.CANCEL) {

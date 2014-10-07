@@ -20,7 +20,7 @@ Require-Bundle: org.eclipse.ui.views.properties.tabbed,
  org.objectstyle.wolips.workbenchutilities,
  org.objectstyle.wolips
 Bundle-ActivationPolicy: lazy
-Bundle-Vendor: objectstyle.org
+Bundle-Vendor: treasureboat.org
 Export-Package: org.objectstyle.wolips.womodeler
 Bundle-ClassPath: lib/jdom.jar,
  .

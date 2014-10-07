@@ -128,10 +128,10 @@ public class WOVariables {
 		File wolipsPropertiesFile = new File(name);
 		if (!wolipsPropertiesFile.isAbsolute()) {
 			if (isWindows()) {
-				wolipsPropertiesFile = new File(System.getenv("APPDATA") + "\\WOLips\\" + name);
+				wolipsPropertiesFile = new File(System.getenv("APPDATA") + "\\TBLips\\" + name);
 			}
 			else {
-				wolipsPropertiesFile = new File(userHomeFolder(), "Library/Application Support/WOLips/" + name);
+				wolipsPropertiesFile = new File(userHomeFolder(), "Library/Application Support/TBLips/" + name);
 			}
 		}
 		return wolipsPropertiesFile;

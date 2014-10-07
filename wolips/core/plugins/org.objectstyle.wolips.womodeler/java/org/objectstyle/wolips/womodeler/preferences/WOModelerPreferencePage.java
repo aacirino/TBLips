@@ -58,8 +58,8 @@ import org.objectstyle.wolips.preferences.PreferencesPlugin;
 public class WOModelerPreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
   public WOModelerPreferencePage() {
     super(GRID);
-    setTitle("WOLips Server");
-    setDescription("WOLips Server provides a service interface to external applications for communicating with WOLips to view and modify your projects.");
+    setTitle("TBLips Server");
+    setDescription("TBLips Server provides a service interface to external applications for communicating with TBLips to view and modify your projects.");
   }
 
   @Override

@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: WOLips Base For Plugins Plug-in
+Bundle-Name: TBLips Base For Plugins Plug-in
 Bundle-SymbolicName: org.objectstyle.wolips.baseforplugins
 Bundle-Version: 1.0.6
 Bundle-Activator: org.objectstyle.wolips.baseforplugins.Activator
@@ -12,3 +12,4 @@ Export-Package: org.objectstyle.wolips.baseforplugins,
  org.objectstyle.wolips.baseforplugins.logging,
  org.objectstyle.wolips.baseforplugins.util
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-Vendor: treasureboat.org

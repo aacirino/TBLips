@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: WOLips Groovy UI Plug-in
+Bundle-Name: TBLips Groovy UI Plug-in
 Bundle-SymbolicName: org.objectstyle.wolips.groovy.ui;singleton:=true
 Bundle-Version: 1.0.6
 Bundle-Activator: org.objectstyle.wolips.groovy.ui.Activator
-Bundle-Vendor: objectstyle.org
+Bundle-Vendor: treasureboat.org
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime
 Import-Package: org.objectstyle.wolips.componenteditor.editormenu

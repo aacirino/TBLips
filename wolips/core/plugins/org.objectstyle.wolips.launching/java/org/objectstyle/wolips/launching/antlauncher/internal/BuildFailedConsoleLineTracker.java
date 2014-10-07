@@ -109,7 +109,7 @@ public class BuildFailedConsoleLineTracker implements IConsoleLineTracker {
 				Display.getDefault().asyncExec(new Runnable() {
 
 					public void run() {
-						IStatus status = new Status(IStatus.ERROR, LaunchingPlugin.PLUGIN_ID, IStatus.ERROR, "Error while building project: " + projectName + " with the ant builder. Take a look into the console for details.\n\n" + "You mave have to enable the logging of the ant output in the WOLips preferences.", null);
+						IStatus status = new Status(IStatus.ERROR, LaunchingPlugin.PLUGIN_ID, IStatus.ERROR, "Error while building project: " + projectName + " with the ant builder. Take a look into the console for details.\n\n" + "You mave have to enable the logging of the ant output in the TBLips preferences.", null);
 						ErrorDialog.openError(null, "Error", "BUILD FAILED", status);
 					}
 				});

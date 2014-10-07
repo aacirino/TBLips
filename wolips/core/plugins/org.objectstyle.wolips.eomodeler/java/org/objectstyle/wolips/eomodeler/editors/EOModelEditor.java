@@ -1249,7 +1249,7 @@ public class EOModelEditor extends MultiPageEditorPart implements IResourceChang
 
 	/**
 	 * Called when Entity Modeler should switch from Entity Modeler Perspective
-	 * back to WOLips perspective.
+	 * back to TBLips perspective.
 	 */
 	public void switchFromEntityModelerPerspective() {
 		// MS: If "Open in New Window" is selected, then we want to watch for
@@ -1273,7 +1273,7 @@ public class EOModelEditor extends MultiPageEditorPart implements IResourceChang
 
 		// MS: If the window didn't need to close, then we want to switch
 		// perspectives on your current
-		// window from Entity Modeler over to the WOLips perspective.
+		// window from Entity Modeler over to the TBLips perspective.
 		if (!closedWindow && Activator.getDefault().getPreferenceStore().getBoolean(PreferenceConstants.CHANGE_PERSPECTIVES_KEY)) {
 			try {
 				IWorkbench workbench = Activator.getDefault().getWorkbench();

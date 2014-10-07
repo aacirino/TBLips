@@ -4,7 +4,7 @@ Bundle-Name: Baseforuiplugins Plug-in
 Bundle-SymbolicName: org.objectstyle.wolips.baseforuiplugins
 Bundle-Version: 1.0.6
 Bundle-Activator: org.objectstyle.wolips.baseforuiplugins.Activator
-Bundle-Vendor: objectstyle.org
+Bundle-Vendor: treasureboat.org
 Require-Bundle: org.eclipse.ui;visibility:=reexport,
  org.eclipse.core.resources;visibility:=reexport,
  org.eclipse.ui.ide;visibility:=reexport,

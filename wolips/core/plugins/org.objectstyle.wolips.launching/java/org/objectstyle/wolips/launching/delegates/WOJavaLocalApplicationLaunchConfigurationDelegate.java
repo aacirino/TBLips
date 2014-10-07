@@ -160,7 +160,7 @@ public class WOJavaLocalApplicationLaunchConfigurationDelegate extends JavaLaunc
 
 			public void run() {
 				Status status = new Status(IStatus.ERROR, "org.objectstyle.wolips.launching", IStatus.ERROR, "Classpath Provider missing or invalid", null);
-				WorkbenchUtilities.errorDialog(Display.getCurrent().getActiveShell(), "WOLips", message, status);
+				WorkbenchUtilities.errorDialog(Display.getCurrent().getActiveShell(), "TBLips", message, status);
 			}
 		}
 		RunnableExceptionHandler runnable = new RunnableExceptionHandler();
