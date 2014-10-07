@@ -446,18 +446,18 @@ public class TemplateOutlinePage extends Page implements IContentOutlinePage, IH
     renderBuffer.append("div.element.wo.WOConditional > div.summary table.bindings td.ognl { color: rgb(180, 0, 0); }\n");
     renderBuffer.append("div.element.wo.WOConditional > div.summary table.bindings td.keypath { color: rgb(180, 0, 0); }\n");
 
-    renderBuffer.append("div.element.wo.ERXElse { border-color: rgb(190, 250, 190); }\n");
-    renderBuffer.append("div.element.wo.ERXElse > div.summary { background-color: rgb(230, 250, 230); }\n");
-    renderBuffer.append("div.element.wo.ERXElse > div.summary:hover { background-color: rgb(200, 250, 200); border-color: rgb(200, 255, 200); }\n");
-    renderBuffer.append("div.element.wo.ERXElse > div.expandcollapse { border-color: rgb(200, 255, 200); }\n");
-    renderBuffer.append("div.element.wo.ERXElse > div.expandcollapse:hover { background-color: rgb(245, 255, 245); }\n");
-    renderBuffer.append("div.element.wo.ERXElse > div.expandcollapse:active { background-color: rgb(200, 255, 200); }\n");
-    renderBuffer.append("div.element.wo.ERXElse > div.contents { background-color: rgb(250, 255, 250); border-color: rgb(190, 250, 190); }\n");
-    renderBuffer.append("div.element.wo.ERXElse > div.summary div.title span.type { display: none; }\n");
-    renderBuffer.append("div.element.wo.ERXElse > div.summary table.bindings th { text-align: right; font-weight: normal; color: rgb(220, 0, 0); padding-right: 3px; }\n");
-    renderBuffer.append("div.element.wo.ERXElse > div.summary table.bindings td.literal { color: rgb(0, 0, 200); }\n");
-    renderBuffer.append("div.element.wo.ERXElse > div.summary table.bindings td.ognl { color: rgb(180, 0, 0); }\n");
-    renderBuffer.append("div.element.wo.ERXElse > div.summary table.bindings td.keypath { color: rgb(180, 0, 0); }\n");
+    renderBuffer.append("div.element.wo.TBElse { border-color: rgb(190, 250, 190); }\n");
+    renderBuffer.append("div.element.wo.TBElse > div.summary { background-color: rgb(230, 250, 230); }\n");
+    renderBuffer.append("div.element.wo.TBElse > div.summary:hover { background-color: rgb(200, 250, 200); border-color: rgb(200, 255, 200); }\n");
+    renderBuffer.append("div.element.wo.TBElse > div.expandcollapse { border-color: rgb(200, 255, 200); }\n");
+    renderBuffer.append("div.element.wo.TBElse > div.expandcollapse:hover { background-color: rgb(245, 255, 245); }\n");
+    renderBuffer.append("div.element.wo.TBElse > div.expandcollapse:active { background-color: rgb(200, 255, 200); }\n");
+    renderBuffer.append("div.element.wo.TBElse > div.contents { background-color: rgb(250, 255, 250); border-color: rgb(190, 250, 190); }\n");
+    renderBuffer.append("div.element.wo.TBElse > div.summary div.title span.type { display: none; }\n");
+    renderBuffer.append("div.element.wo.TBElse > div.summary table.bindings th { text-align: right; font-weight: normal; color: rgb(220, 0, 0); padding-right: 3px; }\n");
+    renderBuffer.append("div.element.wo.TBElse > div.summary table.bindings td.literal { color: rgb(0, 0, 200); }\n");
+    renderBuffer.append("div.element.wo.TBElse > div.summary table.bindings td.ognl { color: rgb(180, 0, 0); }\n");
+    renderBuffer.append("div.element.wo.TBElse > div.summary table.bindings td.keypath { color: rgb(180, 0, 0); }\n");
 
 //    renderBuffer.append("div.element.wo.WORepetition { border-color: rgb(255, 200, 200); }\n");
 //    renderBuffer.append("div.element.wo.WORepetition div.summary { background-color: rgb(255, 230, 230); }\n");
