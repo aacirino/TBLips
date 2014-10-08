@@ -127,7 +127,7 @@ public class ApiUtils {
                       }
                     }
                   }
-                  else {
+                  if (apiModel == null) {
                     IPath packagePath = parentPackage.getPath();
                     IPath apiPath = packagePath.removeLastSegments(2).append(elementType.getElementName()).addFileExtension("api");
                     File apiFile = apiPath.toFile();
