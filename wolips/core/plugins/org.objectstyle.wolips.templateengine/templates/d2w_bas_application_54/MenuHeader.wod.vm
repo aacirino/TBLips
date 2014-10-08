@@ -2,7 +2,7 @@ AssistantActiveConditional: TBConditional {
 	condition = isWebAssistantEnabled;
 }
 
-BASHeaderNoduleBottom: WOImage {
+BASHeaderNoduleBottom: TBImage {
 	filename="BASHeaderNoduleBottom.png";
 	framework="JavaDirectToWeb";
 	width="100%";
@@ -11,49 +11,49 @@ BASHeaderNoduleBottom: WOImage {
     id="BASHeaderNoduleBottom";
 }
 
-BASHeaderNoduleBottomLeft: WOImage {
+BASHeaderNoduleBottomLeft: TBImage {
 	filename="BASHeaderNoduleBottomLeft.png";
 	framework="JavaDirectToWeb";
 	width="21";
 	height="24";
 }
 
-BASHeaderNoduleBottomRight: WOImage {
+BASHeaderNoduleBottomRight: TBImage {
 	filename="BASHeaderNoduleBottomRight.png";
 	framework="JavaDirectToWeb";
 	width="21";
 	height="24";
 }
 
-BASHeaderNoduleLeft: WOImage {
+BASHeaderNoduleLeft: TBImage {
 	filename="BASHeaderNoduleLeft.png";
 	framework="JavaDirectToWeb";
 	width="53";
 	height="110";
 }
 
-BASHeaderNoduleRight: WOImage {
+BASHeaderNoduleRight: TBImage {
 	filename="BASHeaderNoduleRight.png";
 	framework="JavaDirectToWeb";
 	width="52";
 	height="110";
 }
 
-BASHeaderNoduleTop: WOImage {
+BASHeaderNoduleTop: TBImage {
 	filename="BASHeaderNoduleTop.png";
 	framework="JavaDirectToWeb";
 	width="100%";
 	height="7";
 }
 
-BASHeaderNoduleTopLeft: WOImage {
+BASHeaderNoduleTopLeft: TBImage {
 	filename="BASHeaderNoduleTopLeft.png";
 	framework="JavaDirectToWeb";
 	width="21";
 	height="7";
 }
 
-BASHeaderNoduleTopRight: WOImage {
+BASHeaderNoduleTopRight: TBImage {
 	filename="BASHeaderNoduleTopRight.png";
 	framework="JavaDirectToWeb";
 	width="21";
@@ -68,7 +68,7 @@ D2WLink2: WOHyperlink {
 	href = "http://www.apple.com/WebObjects/";
 }
 
-D2WLogo: WOImage {
+D2WLogo: TBImage {
 	alt = "Direct to Web - WebObjects 5.0";
 	border = "0";
 	filename = "DTW.png";
@@ -78,7 +78,7 @@ D2WLogo: WOImage {
 	width = "87";
 }
 
-D2WLogo2: WOImage {
+D2WLogo2: TBImage {
 	alt = "Direct to Web - WebObjects 5.0";
 	border = "0";
 	filename = "DTW.png";
@@ -116,7 +116,7 @@ HasValidSession: TBConditional {
 	condition = context.hasSession;
 }
 
-HomeButton: WOImage {
+HomeButton: TBImage {
 	alt = "Exit to Top/Home";
 	border = "0";
 	filename = "ButtonHome.png";
@@ -131,7 +131,7 @@ HomeLink: WOHyperlink {
 	action = homeAction;
 }
 
-LoginButton: WOImage {
+LoginButton: TBImage {
 	alt = "Logout";
 	border = "0";
 	filename = "ButtonLogout.png";
@@ -167,7 +167,7 @@ NoValidSession: TBConditional {
 RemoteControl: D2WRemoteControl {
 }
 
-ShowAssistantButton: WOImage {
+ShowAssistantButton: TBImage {
 	alt = "Activates the WebAssistant";
 	border = "0";
 	filename = "ButtonCustomize.png";

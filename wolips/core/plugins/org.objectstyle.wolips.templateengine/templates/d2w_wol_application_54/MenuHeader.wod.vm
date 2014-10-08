@@ -1,4 +1,4 @@
-AppleLogo: WOImage {
+AppleLogo: TBImage {
 	alt = "Apple lives";
 	border = "0";
 	filename = "Apple-bw.gif";
@@ -12,7 +12,7 @@ AssistantActiveConditional: TBConditional {
 	condition = isWebAssistantEnabled;
 }
 
-CustomizeButton: WOImage {
+CustomizeButton: TBImage {
 	alt = "Activates the WebAssistant";
 	border = "0";
 	filename = "custmz-btn.gif";
@@ -34,7 +34,7 @@ D2WLink2: WOHyperlink {
 	href = "http://www.apple.com/WebObjects/";
 }
 
-D2WLogo: WOImage {
+D2WLogo: TBImage {
 	alt = "Direct to Web - WebObjects 5.0";
 	border = "0";
 	filename = "powrdbyWO-ban.gif";
@@ -44,7 +44,7 @@ D2WLogo: WOImage {
 	width = "137";
 }
 
-D2WLogo2: WOImage {
+D2WLogo2: TBImage {
 	alt = "Direct to Web - WebObjects 5.0";
 	border = "0";
 	filename = "powrdbyWO-ban.gif";
@@ -76,7 +76,7 @@ HasValidSession: TBConditional {
 	condition = context.hasSession;
 }
 
-HomeButton: WOImage {
+HomeButton: TBImage {
 	alt = "Exit to Top/Home";
 	border = "0";
 	filename = "home-btn.gif";
@@ -94,7 +94,7 @@ LAEnabledConditional: TBConditional {
 	condition = isWebAssistantEnabled;
 }
 
-LoginButton: WOImage {
+LoginButton: TBImage {
 	alt = "Logout";
 	border = "0";
 	filename = "logout-btn.gif";

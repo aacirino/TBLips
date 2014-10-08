@@ -87,8 +87,8 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
     tagShortcuts.add(new TagShortcut("embeddedObject", "WOEmbeddedObject"));
     tagShortcuts.add(new TagShortcut("embedded", "WOEmbeddedObject"));
     tagShortcuts.add(new TagShortcut("frame", "WOFrame"));
-    tagShortcuts.add(new TagShortcut("image", "WOImage"));
-    tagShortcuts.add(new TagShortcut("img", "WOImage")); // not in 5.4
+    tagShortcuts.add(new TagShortcut("image", "TBImage"));
+    tagShortcuts.add(new TagShortcut("img", "TBImage")); // not in 5.4
     tagShortcuts.add(new TagShortcut("form", "WOForm"));
     tagShortcuts.add(new TagShortcut("javaScript", "WOJavaScript"));
     tagShortcuts.add(new TagShortcut("VBScript", "WOVBScript"));

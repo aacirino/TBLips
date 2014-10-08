@@ -1,4 +1,4 @@
-CustomizeButton: WOImage {
+CustomizeButton: TBImage {
 	alt = "Activates the WebAssistant";
 	border = "0";
 	filename = "CustomizeWOBoxMenu.gif";
@@ -37,7 +37,7 @@ HasValidSession: TBConditional {
 	condition = context.hasSession;
 }
 
-HomeButton: WOImage {
+HomeButton: TBImage {
 	alt = "Exit to Top/Home";
 	border = "0";
 	filename = "HomeWOBoxMenu.gif";
@@ -55,7 +55,7 @@ LAEnabledConditional: TBConditional {
 	condition = isWebAssistantEnabled;
 }
 
-LoginButton: WOImage {
+LoginButton: TBImage {
 	alt = "Logout";
 	border = "0";
 	filename = "LogoutWOBoxMenu.gif";

@@ -10,7 +10,7 @@ D2WLink2: WOHyperlink {
 	href = "http://www.apple.com/WebObjects/";
 }
 
-D2WLogo: WOImage {
+D2WLogo: TBImage {
 	alt = "Direct to Web - WebObjects 4.5";
 	border = "0";
 	filename = "DTW.gif";
@@ -20,7 +20,7 @@ D2WLogo: WOImage {
 	width = "196";
 }
 
-D2WLogo2: WOImage {
+D2WLogo2: TBImage {
 	alt = "Direct to Web - WebObjects 4.5";
 	border = "0";
 	filename = "DTW.gif";
@@ -54,7 +54,7 @@ HasValidSession: TBConditional {
 	condition = context.hasSession;
 }
 
-HomeButton: WOImage {
+HomeButton: TBImage {
 	alt = "Exit to Top/Home";
 	border = "0";
 	filename = "ButtonHome.gif";
@@ -68,7 +68,7 @@ HomeLink: WOHyperlink {
 	action = homeAction;
 }
 
-LoginButton: WOImage {
+LoginButton: TBImage {
 	alt = "Logout";
 	border = "0";
 	filename = "ButtonLogout.gif";
@@ -102,7 +102,7 @@ NoValidSession: TBConditional {
 RemoteControl: D2WRemoteControl {
 }
 
-ShowAssistantButton: WOImage {
+ShowAssistantButton: TBImage {
 	alt = "Activates the WebAssistant";
 	border = "0";
 	filename = "ButtonCustomize.gif";

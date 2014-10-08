@@ -11,7 +11,7 @@ BodyContainer: WOBody {
 	vlink = "white";
 }
 
-DirectToWebPlaque: WOImage {
+DirectToWebPlaque: TBImage {
 	alt = "Welcome to Direct To Web";
 	filename = "login-ban.gif";
 	framework = "JavaDirectToWeb";

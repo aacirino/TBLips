@@ -416,14 +416,14 @@
 				tooltip="Insert WOSubmitButton Component">
 			</action>
 			<action
-				class="org.objectstyle.wolips.componenteditor.actions.InsertComponentWOImageAction"
+				class="org.objectstyle.wolips.componenteditor.actions.InsertComponentTBImageAction"
 				icon="icons/image.png"
-				id="org.objectstyle.wolips.componenteditor.actions.InsertComponentWOImage"
-				label="Insert WOImage Component"
+				id="org.objectstyle.wolips.componenteditor.actions.InsertComponentTBImage"
+				label="Insert TBImage Component"
 				menubarPath="edit/org.objectstyle.wolips.componenteditor.insertMenuContribution/group1"
 				style="push"
 				toolbarPath="/Normal/additions"
-				tooltip="Insert WOImage Component">
+				tooltip="Insert TBImage Component">
 			</action>
 			<action
 				class="org.objectstyle.wolips.componenteditor.actions.InsertComponentWOTextFieldAction"

@@ -20,7 +20,7 @@ Head: BASHead {
 Header: MenuHeader {
 }
 
-spacerGifImage: WOImage {
+spacerGifImage: TBImage {
     style="visibility:hidden; position:absolute; left:0px; top:0px; width:1px; height:1px;";
 	filename="spacer.gif";
 	framework = "JavaDirectToWeb";

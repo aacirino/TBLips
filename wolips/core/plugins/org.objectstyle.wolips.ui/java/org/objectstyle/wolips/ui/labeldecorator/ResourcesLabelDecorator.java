@@ -138,20 +138,20 @@ public class ResourcesLabelDecorator implements ILabelDecorator {
 		// DO NOTHING
 	}
 
-	protected static Map<String, Map<Image, WOImageDescriptor>> _imageDescriptors;
+	protected static Map<String, Map<Image, TBImageDescriptor>> _imageDescriptors;
 
-	public static WOImageDescriptor cachedImageDescriptor(Image image, String overlayImageFilename) {
+	public static TBImageDescriptor cachedImageDescriptor(Image image, String overlayImageFilename) {
 		if (_imageDescriptors == null) {
-			_imageDescriptors = new HashMap<String, Map<Image, WOImageDescriptor>>();
+			_imageDescriptors = new HashMap<String, Map<Image, TBImageDescriptor>>();
 		}
-		Map<Image, WOImageDescriptor> overlayImageDescriptors = _imageDescriptors.get(overlayImageFilename);
+		Map<Image, TBImageDescriptor> overlayImageDescriptors = _imageDescriptors.get(overlayImageFilename);
 		if (overlayImageDescriptors == null) {
-			overlayImageDescriptors = new WeakHashMap<Image, WOImageDescriptor>();
+			overlayImageDescriptors = new WeakHashMap<Image, TBImageDescriptor>();
 			_imageDescriptors.put(overlayImageFilename, overlayImageDescriptors);
 		}
-		WOImageDescriptor imageDescriptor = overlayImageDescriptors.get(image);
+		TBImageDescriptor imageDescriptor = overlayImageDescriptors.get(image);
 		if (imageDescriptor == null) {
-			imageDescriptor = new WOImageDescriptor(image, overlayImageFilename);
+			imageDescriptor = new TBImageDescriptor(image, overlayImageFilename);
 			overlayImageDescriptors.put(image, imageDescriptor);
 		}
 		return imageDescriptor;
@@ -165,7 +165,7 @@ public class ResourcesLabelDecorator implements ILabelDecorator {
 	 * the creation of type comments go to Window>Preferences>Java>Code
 	 * Generation.
 	 */
-	private static class WOImageDescriptor extends CompositeImageDescriptor {
+	private static class TBImageDescriptor extends CompositeImageDescriptor {
 		private Image baseImage;
 
 		private String overlayImageFilename;
@@ -177,12 +177,12 @@ public class ResourcesLabelDecorator implements ILabelDecorator {
 		private Point size;
 
 		/**
-		 * Method WOImageDescriptor.
+		 * Method TBImageDescriptor.
 		 * 
 		 * @param image
 		 * @param overlayImageFilename
 		 */
-		public WOImageDescriptor(Image image, String overlayImageFilename) {
+		public TBImageDescriptor(Image image, String overlayImageFilename) {
 			super();
 			if (image != null) {
 				this.baseImage = image;
@@ -220,10 +220,10 @@ public class ResourcesLabelDecorator implements ILabelDecorator {
 		}
 
 		public boolean equals(Object object) {
-			if (object == null || !WOImageDescriptor.class.equals(object.getClass()))
+			if (object == null || !TBImageDescriptor.class.equals(object.getClass()))
 				return false;
 
-			WOImageDescriptor other = (WOImageDescriptor) object;
+			TBImageDescriptor other = (TBImageDescriptor) object;
 			boolean equals = true;
 			if (baseImage == null) {
 				equals = (other.baseImage == null);

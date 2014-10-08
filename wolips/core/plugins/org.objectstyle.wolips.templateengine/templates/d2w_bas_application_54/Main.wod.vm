@@ -2,7 +2,7 @@ AssistantConditional: TBConditional {
 	condition = isAssistantCheckboxVisible;
 }
 
-DirectToWebPlaque: WOImage {
+DirectToWebPlaque: TBImage {
 	alt = "Direct to Web - WebObjects 5.0";
 	filename = "DTW.gif";
 	framework = "JavaDirectToWeb";
