@@ -414,7 +414,7 @@
           class="org.objectstyle.wolips.jdt.ui.WOPackageExplorerPart"
           icon="icons/TBLips16-16.png"
           id="org.objectstyle.wolips.jdt.ui.WOPackageExplorer"
-          name="WO Explorer">
+          name="TB Explorer">
     </view>
  </extension>
  
