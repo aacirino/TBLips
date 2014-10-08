@@ -20,7 +20,7 @@ Stylesheet : ERXStyleSheet {
 	framework = "ERModernDefaultSkin";
 }
 
-HasErrorMessage : WOConditional {
+HasErrorMessage : TBConditional {
   condition = errorMessage;
 }
 

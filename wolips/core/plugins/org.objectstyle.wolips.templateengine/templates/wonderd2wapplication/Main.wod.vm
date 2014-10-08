@@ -1,4 +1,4 @@
-AssistantConditional: WOConditional {
+AssistantConditional: TBConditional {
 	condition = isAssistantCheckboxVisible;
 }
 

@@ -8,7 +8,7 @@ AppleLogo: WOImage {
 	width = "50";
 }
 
-AssistantActiveConditional: WOConditional {
+AssistantActiveConditional: TBConditional {
 	condition = isWebAssistantEnabled;
 }
 
@@ -47,7 +47,7 @@ FindButton: WOImageButton {
 	width = "102";
 }
 
-HasValidSession: WOConditional {
+HasValidSession: TBConditional {
 	condition = context.hasSession;
 }
 
@@ -65,7 +65,7 @@ HomeLink: WOHyperlink {
 	action = homeAction;
 }
 
-LAEnabledConditional: WOConditional {
+LAEnabledConditional: TBConditional {
 	condition = isWebAssistantEnabled;
 }
 
@@ -95,7 +95,7 @@ NewButton: WOImageButton {
 	width = "102";
 }
 
-NoValidSession: WOConditional {
+NoValidSession: TBConditional {
 	condition = context.hasSession;
 	negate = YES;
 }

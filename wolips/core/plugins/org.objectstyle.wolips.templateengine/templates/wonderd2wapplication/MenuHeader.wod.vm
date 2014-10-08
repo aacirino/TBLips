@@ -33,7 +33,7 @@ FindButton: WOImageButton {
 	width = "102";
 }
 
-HasValidSession: WOConditional {
+HasValidSession: TBConditional {
 	condition = context.hasSession;
 }
 
@@ -51,7 +51,7 @@ HomeLink: WOHyperlink {
 	action = homeAction;
 }
 
-LAEnabledConditional: WOConditional {
+LAEnabledConditional: TBConditional {
 	condition = isWebAssistantEnabled;
 }
 

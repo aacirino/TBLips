@@ -1,4 +1,4 @@
-AssistantActiveConditional: WOConditional {
+AssistantActiveConditional: TBConditional {
 	condition = isWebAssistantEnabled;
 }
 
@@ -50,7 +50,7 @@ FindButton: WOImageButton {
 	width = "74";
 }
 
-HasValidSession: WOConditional {
+HasValidSession: TBConditional {
 	condition = context.hasSession;
 }
 
@@ -94,7 +94,7 @@ NewButton: WOImageButton {
 	width = "74";
 }
 
-NoValidSession: WOConditional {
+NoValidSession: TBConditional {
 	condition = context.hasSession;
 	negate = true;
 }

@@ -456,14 +456,14 @@
 				tooltip="Insert WORepetition Component">
 			</action>
 			<action
-				class="org.objectstyle.wolips.componenteditor.actions.InsertComponentWOConditionalAction"
+				class="org.objectstyle.wolips.componenteditor.actions.InsertComponentTBConditionalAction"
 				icon="icons/conditional.png"
-				id="org.objectstyle.wolips.componenteditor.actions.InsertComponentWOConditional"
-				label="Insert WOConditional Component"
+				id="org.objectstyle.wolips.componenteditor.actions.InsertComponentTBConditional"
+				label="Insert TBConditional Component"
 				menubarPath="edit/org.objectstyle.wolips.componenteditor.insertMenuContribution/group1"
 				style="push"
 				toolbarPath="/Normal/additions"
-				tooltip="Insert WOConditional Component">
+				tooltip="Insert TBConditional Component">
 			</action>
 			<action
 				class="org.objectstyle.wolips.componenteditor.actions.InsertComponentTBStringAction"

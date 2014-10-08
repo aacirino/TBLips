@@ -24,7 +24,7 @@ import org.objectstyle.wolips.htmlpreview.editor.tags.ERXStyleSheetTagDelegate;
 import org.objectstyle.wolips.htmlpreview.editor.tags.WOBrowserTagDelegate;
 import org.objectstyle.wolips.htmlpreview.editor.tags.WOCheckBoxTagDelegate;
 import org.objectstyle.wolips.htmlpreview.editor.tags.WOComponentContentTagDelegate;
-import org.objectstyle.wolips.htmlpreview.editor.tags.WOConditionalTagDelegate;
+import org.objectstyle.wolips.htmlpreview.editor.tags.TBConditionalTagDelegate;
 import org.objectstyle.wolips.htmlpreview.editor.tags.WOGenericContainerTagDelegate;
 import org.objectstyle.wolips.htmlpreview.editor.tags.WOGenericElementTagDelegate;
 import org.objectstyle.wolips.htmlpreview.editor.tags.WOHyperlinkTagDelegate;
@@ -63,7 +63,7 @@ public class PreviewRenderDelegate implements RenderDelegate {
 		_tagDelegates = new HashMap<String, TagDelegate>();
 		_tagDelegates.put("TBString", new TBStringTagDelegate());
 		_tagDelegates.put("ERXLocalizedString", new TBStringTagDelegate());
-		_tagDelegates.put("WOConditional", new WOConditionalTagDelegate());
+		_tagDelegates.put("TBConditional", new TBConditionalTagDelegate());
 		_tagDelegates.put("WOComponentContent", new WOComponentContentTagDelegate());
 		_tagDelegates.put("WORepetition", new WORepetitionTagDelegate());
 		_tagDelegates.put("WOGenericContainer", new WOGenericContainerTagDelegate());

@@ -41,7 +41,7 @@ public class ElementRename {
       String newName = null;
       boolean forceAppendNumber = false;
 
-      if ("WOConditional".equals(typeName)) {
+      if ("TBConditional".equals(typeName)) {
         String conditionValue = wodElement.getBindingsMap().get("condition");
         String negateValue = wodElement.getBindingsMap().get("negate");
         String prefix = null;

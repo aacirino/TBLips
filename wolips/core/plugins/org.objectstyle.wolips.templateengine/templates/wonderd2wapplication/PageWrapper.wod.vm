@@ -17,6 +17,6 @@ ERD2WDebugFlags : ERD2WDebugFlags {
 	context = d2wContext;
 }
 
-IsDebug :WOConditional {
+IsDebug :TBConditional {
 	condition = application.isDevelopmentMode;
 }

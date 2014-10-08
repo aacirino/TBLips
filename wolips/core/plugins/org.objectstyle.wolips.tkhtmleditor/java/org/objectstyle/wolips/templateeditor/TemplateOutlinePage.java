@@ -433,18 +433,18 @@ public class TemplateOutlinePage extends Page implements IContentOutlinePage, IH
     renderBuffer.append("div.element.wo.ERXLocalizedString.simple div.text.ognl { color: rgb(180, 0, 0); }\n");
     renderBuffer.append("div.element.wo.ERXLocalizedString.simple div.text.keypath { color: rgb(180, 0, 0); }\n");
 
-    renderBuffer.append("div.element.wo.WOConditional { border-color: rgb(190, 250, 190); }\n");
-    renderBuffer.append("div.element.wo.WOConditional > div.summary { background-color: rgb(230, 250, 230); }\n");
-    renderBuffer.append("div.element.wo.WOConditional > div.summary:hover { background-color: rgb(200, 250, 200); border-color: rgb(200, 255, 200); }\n");
-    renderBuffer.append("div.element.wo.WOConditional > div.expandcollapse { border-color: rgb(200, 255, 200); }\n");
-    renderBuffer.append("div.element.wo.WOConditional > div.expandcollapse:hover { background-color: rgb(245, 255, 245); }\n");
-    renderBuffer.append("div.element.wo.WOConditional > div.expandcollapse:active { background-color: rgb(200, 255, 200); }\n");
-    renderBuffer.append("div.element.wo.WOConditional > div.contents { background-color: rgb(250, 255, 250); border-color: rgb(190, 250, 190); }\n");
-    renderBuffer.append("div.element.wo.WOConditional > div.summary div.title span.type { display: none; }\n");
-    renderBuffer.append("div.element.wo.WOConditional > div.summary table.bindings th { text-align: right; font-weight: normal; color: rgb(220, 0, 0); padding-right: 3px; }\n");
-    renderBuffer.append("div.element.wo.WOConditional > div.summary table.bindings td.literal { color: rgb(0, 0, 200); }\n");
-    renderBuffer.append("div.element.wo.WOConditional > div.summary table.bindings td.ognl { color: rgb(180, 0, 0); }\n");
-    renderBuffer.append("div.element.wo.WOConditional > div.summary table.bindings td.keypath { color: rgb(180, 0, 0); }\n");
+    renderBuffer.append("div.element.wo.TBConditional { border-color: rgb(190, 250, 190); }\n");
+    renderBuffer.append("div.element.wo.TBConditional > div.summary { background-color: rgb(230, 250, 230); }\n");
+    renderBuffer.append("div.element.wo.TBConditional > div.summary:hover { background-color: rgb(200, 250, 200); border-color: rgb(200, 255, 200); }\n");
+    renderBuffer.append("div.element.wo.TBConditional > div.expandcollapse { border-color: rgb(200, 255, 200); }\n");
+    renderBuffer.append("div.element.wo.TBConditional > div.expandcollapse:hover { background-color: rgb(245, 255, 245); }\n");
+    renderBuffer.append("div.element.wo.TBConditional > div.expandcollapse:active { background-color: rgb(200, 255, 200); }\n");
+    renderBuffer.append("div.element.wo.TBConditional > div.contents { background-color: rgb(250, 255, 250); border-color: rgb(190, 250, 190); }\n");
+    renderBuffer.append("div.element.wo.TBConditional > div.summary div.title span.type { display: none; }\n");
+    renderBuffer.append("div.element.wo.TBConditional > div.summary table.bindings th { text-align: right; font-weight: normal; color: rgb(220, 0, 0); padding-right: 3px; }\n");
+    renderBuffer.append("div.element.wo.TBConditional > div.summary table.bindings td.literal { color: rgb(0, 0, 200); }\n");
+    renderBuffer.append("div.element.wo.TBConditional > div.summary table.bindings td.ognl { color: rgb(180, 0, 0); }\n");
+    renderBuffer.append("div.element.wo.TBConditional > div.summary table.bindings td.keypath { color: rgb(180, 0, 0); }\n");
 
     renderBuffer.append("div.element.wo.TBElse { border-color: rgb(190, 250, 190); }\n");
     renderBuffer.append("div.element.wo.TBElse > div.summary { background-color: rgb(230, 250, 230); }\n");
@@ -649,7 +649,7 @@ public class TemplateOutlinePage extends Page implements IContentOutlinePage, IH
             renderBuffer.append("<div class = \"title\"><span class = \"nodeName verbose\">" + summaryName + "</span></div>");
 
             // Special case for the compact display of a conditional
-            if ("WOConditional".equals(summaryName)) {
+            if ("TBConditional".equals(summaryName)) {
               String conditionValue = wodElement.getBindingValue("condition");
               if (conditionValue != null) {
                 summaryName = conditionValue;

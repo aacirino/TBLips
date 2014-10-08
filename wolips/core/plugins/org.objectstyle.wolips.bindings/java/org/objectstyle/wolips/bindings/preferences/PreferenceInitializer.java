@@ -59,11 +59,11 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 
     List<TagShortcut> tagShortcuts = new ArrayList<TagShortcut>();
     tagShortcuts.add(new TagShortcut("localized", "ERXLocalizedString")); // not in 5.4
-    tagShortcuts.add(new TagShortcut("not", "WOConditional"));
+    tagShortcuts.add(new TagShortcut("not", "TBConditional"));
     tagShortcuts.add(new TagShortcut("else", "TBElse"));
-    tagShortcuts.add(new TagShortcut("if", "WOConditional"));
-    tagShortcuts.add(new TagShortcut("conditional", "WOConditional"));
-    tagShortcuts.add(new TagShortcut("condition", "WOConditional")); // not in 5.4
+    tagShortcuts.add(new TagShortcut("if", "TBConditional"));
+    tagShortcuts.add(new TagShortcut("conditional", "TBConditional"));
+    tagShortcuts.add(new TagShortcut("condition", "TBConditional")); // not in 5.4
     tagShortcuts.add(new TagShortcut("foreach", "WORepetition"));
     tagShortcuts.add(new TagShortcut("repeat", "WORepetition"));
     tagShortcuts.add(new TagShortcut("repetition", "WORepetition"));

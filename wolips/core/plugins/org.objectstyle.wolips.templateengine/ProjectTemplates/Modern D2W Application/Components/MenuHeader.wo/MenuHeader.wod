@@ -2,7 +2,7 @@ ERXNavigationMenu : ERXNavigationMenu {
   navigationContext = navigationContext;
 }
 
-HasValidSession: WOConditional {
+HasValidSession: TBConditional {
     condition = context.hasSession;
 }
 

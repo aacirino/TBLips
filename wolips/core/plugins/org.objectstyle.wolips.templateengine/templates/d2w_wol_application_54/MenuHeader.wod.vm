@@ -8,7 +8,7 @@ AppleLogo: WOImage {
 	width = "111";
 }
 
-AssistantActiveConditional: WOConditional {
+AssistantActiveConditional: TBConditional {
 	condition = isWebAssistantEnabled;
 }
 
@@ -72,7 +72,7 @@ FindButton: WOImageButton {
 	name = "Builds a Query Component for the selected Entity";
 }
 
-HasValidSession: WOConditional {
+HasValidSession: TBConditional {
 	condition = context.hasSession;
 }
 
@@ -90,7 +90,7 @@ HomeLink: WOHyperlink {
 	action = homeAction;
 }
 
-LAEnabledConditional: WOConditional {
+LAEnabledConditional: TBConditional {
 	condition = isWebAssistantEnabled;
 }
 
@@ -120,7 +120,7 @@ NewButton: WOImageButton {
 	width = "100";
 }
 
-NoValidSession: WOConditional {
+NoValidSession: TBConditional {
 	condition = context.hasSession;
 	negate = true;
 }
