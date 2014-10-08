@@ -346,14 +346,14 @@
 				tooltip="Insert Component">
 			</action>
 			<action
-				class="org.objectstyle.wolips.componenteditor.actions.InsertComponentWOFormAction"
+				class="org.objectstyle.wolips.componenteditor.actions.InsertComponentTBFormAction"
 				icon="icons/form.png"
-				id="org.objectstyle.wolips.componenteditor.actions.InsertComponentWOForm"
-				label="Insert WOForm Component"
+				id="org.objectstyle.wolips.componenteditor.actions.InsertComponentTBForm"
+				label="Insert TBForm Component"
 				menubarPath="edit/org.objectstyle.wolips.componenteditor.insertMenuContribution/group1"
 				style="push"
 				toolbarPath="/Normal/additions"
-				tooltip="Insert WOForm Component">
+				tooltip="Insert TBForm Component">
 			</action>
 			<action
 				class="org.objectstyle.wolips.componenteditor.actions.InsertComponentWOBrowserAction"

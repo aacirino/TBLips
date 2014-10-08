@@ -20,7 +20,7 @@ LoginButton: WOSubmitButton {
 	value = "Login";
 }
 
-LoginForm: WOForm {
+LoginForm: TBForm {
 }
 
 PasswordField: WOPasswordField {

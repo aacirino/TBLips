@@ -1,8 +1,8 @@
 package org.objectstyle.wolips.componenteditor.actions;
 
 
-public class InsertComponentWOFormAction extends InsertComponentAction
+public class InsertComponentTBFormAction extends InsertComponentAction
 {
 	public String getComponentInstanceNameSuffix() { return "Form"; }
-	public String getComponentName() { return "WOForm"; }
+	public String getComponentName() { return "TBForm"; }
 }

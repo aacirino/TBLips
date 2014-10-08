@@ -22,7 +22,7 @@ LoginButton: WOActiveImage {
 	width = "88";
 }
 
-LoginForm: WOForm {
+LoginForm: TBForm {
 	multipleSubmit = YES;
 }
 

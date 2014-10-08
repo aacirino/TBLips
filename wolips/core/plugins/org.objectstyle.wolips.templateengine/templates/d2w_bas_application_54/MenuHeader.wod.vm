@@ -91,7 +91,7 @@ D2WLogo2: TBImage {
 	id="wogearsButton";
 }
 
-EntitiesForm: WOForm {
+EntitiesForm: TBForm {
 }
 
 EntitiesPopup: WOPopUpButton {

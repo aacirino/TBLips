@@ -30,7 +30,7 @@ er.extensions.ERXEnterpriseObject.updateInverseRelationships=true
 #########################################################################
 # Misc Components
 #########################################################################
-#er.extensions.ERXWOForm.multipleSubmitDefault=true
+#er.extensions.ERXTBForm.multipleSubmitDefault=true
 #er.extensions.ERXWORepetition.checkHashCodes=true
 #er.extensions.ERXWORepetition.raiseOnUnmatchedObject=true
 #er.extensions.ERXWORepetition.eoSupport=true

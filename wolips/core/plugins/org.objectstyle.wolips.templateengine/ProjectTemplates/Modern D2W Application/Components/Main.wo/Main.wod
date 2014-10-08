@@ -1,4 +1,4 @@
-LoginForm : WOForm {
+LoginForm : TBForm {
   multipleSubmit = false;
   directActionName = "login";
   actionClass = "DirectAction";

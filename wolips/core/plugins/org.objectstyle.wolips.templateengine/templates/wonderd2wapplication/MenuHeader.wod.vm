@@ -12,7 +12,7 @@ CustomizeLink: TBHyperlink {
 	action = showWebAssistant;
 }
 
-EntitiesForm: WOForm {
+EntitiesForm: TBForm {
 }
 
 EntitiesPopup: WOPopUpButton {

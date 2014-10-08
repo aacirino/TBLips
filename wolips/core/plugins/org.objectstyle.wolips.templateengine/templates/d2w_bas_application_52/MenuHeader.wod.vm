@@ -30,7 +30,7 @@ D2WLogo2: TBImage {
 	width = "196";
 }
 
-EntitiesForm: WOForm {
+EntitiesForm: TBForm {
 }
 
 EntitiesPopup: WOPopUpButton {

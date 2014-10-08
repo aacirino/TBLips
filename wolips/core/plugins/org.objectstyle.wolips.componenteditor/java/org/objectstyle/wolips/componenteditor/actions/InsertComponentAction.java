@@ -107,7 +107,7 @@ public abstract class InsertComponentAction extends InsertHtmlAndWodAction {
 	/**
 	 * <P>
 	 * This is the name of the component that will be inserted. Some examples of
-	 * standard component named might be <TT>TBString</TT>, <TT>WOForm</TT>
+	 * standard component named might be <TT>TBString</TT>, <TT>TBForm</TT>
 	 * etc...
 	 * </P>
 	 */

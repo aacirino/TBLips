@@ -89,7 +89,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
     tagShortcuts.add(new TagShortcut("frame", "WOFrame"));
     tagShortcuts.add(new TagShortcut("image", "TBImage"));
     tagShortcuts.add(new TagShortcut("img", "TBImage")); // not in 5.4
-    tagShortcuts.add(new TagShortcut("form", "WOForm"));
+    tagShortcuts.add(new TagShortcut("form", "TBForm"));
     tagShortcuts.add(new TagShortcut("javaScript", "WOJavaScript"));
     tagShortcuts.add(new TagShortcut("VBScript", "WOVBScript"));
     tagShortcuts.add(new TagShortcut("resourceURL", "WOResourceURL"));
