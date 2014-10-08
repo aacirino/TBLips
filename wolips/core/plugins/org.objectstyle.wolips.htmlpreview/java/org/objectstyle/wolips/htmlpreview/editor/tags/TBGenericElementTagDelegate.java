@@ -11,7 +11,7 @@ import org.objectstyle.wolips.bindings.wod.IWodElement;
 import org.objectstyle.wolips.htmlpreview.editor.TagDelegate;
 import org.objectstyle.wolips.wodclipse.core.completion.WodParserCache;
 
-public class WOGenericElementTagDelegate extends TagDelegate {
+public class TBGenericElementTagDelegate extends TagDelegate {
 
 	@Override
 	public void renderNode(IWodElement wodElement, FuzzyXMLElement xmlElement, RenderContext renderContext, StringBuffer htmlBuffer, StringBuffer cssBuffer, Stack<WodParserCache> caches, Stack<FuzzyXMLNode> nodes) {

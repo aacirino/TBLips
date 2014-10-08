@@ -93,10 +93,10 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
     tagShortcuts.add(new TagShortcut("javaScript", "WOJavaScript"));
     tagShortcuts.add(new TagShortcut("VBScript", "WOVBScript"));
     tagShortcuts.add(new TagShortcut("resourceURL", "WOResourceURL"));
-    tagShortcuts.add(new TagShortcut("genericElement", "WOGenericElement"));
-    tagShortcuts.add(new TagShortcut("element", "WOGenericElement"));
-    tagShortcuts.add(new TagShortcut("genericContainer", "WOGenericContainer"));
-    tagShortcuts.add(new TagShortcut("container", "WOGenericContainer"));
+    tagShortcuts.add(new TagShortcut("genericElement", "TBGenericElement"));
+    tagShortcuts.add(new TagShortcut("element", "TBGenericElement"));
+    tagShortcuts.add(new TagShortcut("genericContainer", "TBGenericContainer"));
+    tagShortcuts.add(new TagShortcut("container", "TBGenericContainer"));
     tagShortcuts.add(new TagShortcut("activeImage", "WOActiveImage"));
     tagShortcuts.add(new TagShortcut("checkBox", "WOCheckBox"));
     tagShortcuts.add(new TagShortcut("checkbox", "WOCheckBox")); // not in 5.4 (5.4 is case insensitive)

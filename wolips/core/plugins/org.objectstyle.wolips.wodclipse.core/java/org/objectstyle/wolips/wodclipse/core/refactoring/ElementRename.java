@@ -80,7 +80,7 @@ public class ElementRename {
         String list = wodElement.getBindingsMap().get("list");
         newName = newNameFromBindingValue(null, list, null);
       }
-      else if ("WOGenericContainer".equals(typeName) || "WOGenericElement".equals(typeName)) {
+      else if ("TBGenericContainer".equals(typeName) || "TBGenericElement".equals(typeName)) {
         String genericElementName = wodElement.getBindingsMap().get("elementName");
         newName = newNameFromBindingValue(null, genericElementName, null);
         forceAppendNumber = true;
