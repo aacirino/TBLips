@@ -436,14 +436,14 @@
 				tooltip="Insert WOTextField Component">
 			</action>
 			<action
-				class="org.objectstyle.wolips.componenteditor.actions.InsertComponentWOHyperlinkAction"
+				class="org.objectstyle.wolips.componenteditor.actions.InsertComponentTBHyperlinkAction"
 				icon="icons/hyperlink.png"
-				id="org.objectstyle.wolips.componenteditor.actions.InsertComponentWOHyperlink"
-				label="Insert WOHyperlink Component"
+				id="org.objectstyle.wolips.componenteditor.actions.InsertComponentTBHyperlink"
+				label="Insert TBHyperlink Component"
 				menubarPath="edit/org.objectstyle.wolips.componenteditor.insertMenuContribution/group1"
 				style="push"
 				toolbarPath="/Normal/additions"
-				tooltip="Insert WOHyperlink Component">
+				tooltip="Insert TBHyperlink Component">
 			</action>
 			<action
 				class="org.objectstyle.wolips.componenteditor.actions.InsertComponentWORepetitionAction"

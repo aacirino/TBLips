@@ -1,3 +1,3 @@
-JavaClientLink: WOHyperlink {
+JavaClientLink: TBHyperlink {
     href = javaClientLink;
 }

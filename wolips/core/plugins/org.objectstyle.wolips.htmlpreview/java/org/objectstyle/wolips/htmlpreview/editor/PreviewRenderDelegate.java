@@ -27,7 +27,7 @@ import org.objectstyle.wolips.htmlpreview.editor.tags.WOComponentContentTagDeleg
 import org.objectstyle.wolips.htmlpreview.editor.tags.TBConditionalTagDelegate;
 import org.objectstyle.wolips.htmlpreview.editor.tags.WOGenericContainerTagDelegate;
 import org.objectstyle.wolips.htmlpreview.editor.tags.WOGenericElementTagDelegate;
-import org.objectstyle.wolips.htmlpreview.editor.tags.WOHyperlinkTagDelegate;
+import org.objectstyle.wolips.htmlpreview.editor.tags.TBHyperlinkTagDelegate;
 import org.objectstyle.wolips.htmlpreview.editor.tags.TBImageTagDelegate;
 import org.objectstyle.wolips.htmlpreview.editor.tags.WOPopUpButtonTagDelegate;
 import org.objectstyle.wolips.htmlpreview.editor.tags.WORepetitionTagDelegate;
@@ -75,7 +75,7 @@ public class PreviewRenderDelegate implements RenderDelegate {
 		_tagDelegates.put("WOText", new WOTextTagDelegate());
 		_tagDelegates.put("FocusText", new WOTextTagDelegate());
 		_tagDelegates.put("WOSubmitButton", new WOSubmitButtonTagDelegate());
-		_tagDelegates.put("WOHyperlink", new WOHyperlinkTagDelegate());
+		_tagDelegates.put("TBHyperlink", new TBHyperlinkTagDelegate());
 		_tagDelegates.put("TBImage", new TBImageTagDelegate());
 		_tagDelegates.put("WOBrowser", new WOBrowserTagDelegate());
 		_tagDelegates.put("ERXStyleSheet", new ERXStyleSheetTagDelegate());

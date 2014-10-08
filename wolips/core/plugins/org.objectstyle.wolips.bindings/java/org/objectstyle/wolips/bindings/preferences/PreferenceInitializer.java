@@ -124,8 +124,8 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
     tagShortcuts.add(new TagShortcut("textfield", "WOTextField")); // not in 5.4 (5.4 is case insensitive)
     tagShortcuts.add(new TagShortcut("search", "WOSearchField"));
     tagShortcuts.add(new TagShortcut("searchfield", "WOSearchField"));
-    tagShortcuts.add(new TagShortcut("hyperlink", "WOHyperlink"));
-    tagShortcuts.add(new TagShortcut("link", "WOHyperlink"));
+    tagShortcuts.add(new TagShortcut("hyperlink", "TBHyperlink"));
+    tagShortcuts.add(new TagShortcut("link", "TBHyperlink"));
     tagShortcuts.add(new TagShortcut("actionURL", "WOActionURL"));
     prefs.setDefault(PreferenceConstants.TAG_SHORTCUTS_KEY, TagShortcut.toPreferenceString(tagShortcuts));
 

@@ -67,7 +67,7 @@ public class ElementRename {
           newName = "Button";
         }
       }
-      else if ("WOHyperlink".equals(typeName)) {
+      else if ("TBHyperlink".equals(typeName)) {
         String action = wodElement.getBindingsMap().get("action");
         if (action != null) {
           newName = newNameFromBindingValue(null, action + "Link", null);

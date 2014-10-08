@@ -6,11 +6,11 @@ HasValidSession: TBConditional {
     condition = context.hasSession;
 }
 
-LoginLink: WOHyperlink {
+LoginLink: TBHyperlink {
     action = logout;
     target = "_top";
 }
 
-HomeLink: WOHyperlink {
+HomeLink: TBHyperlink {
     action = homeAction;
 }

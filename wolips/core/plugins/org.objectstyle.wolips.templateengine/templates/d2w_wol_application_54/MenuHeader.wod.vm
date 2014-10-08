@@ -22,15 +22,15 @@ CustomizeButton: TBImage {
 	width = "100";
 }
 
-CustomizeLink: WOHyperlink {
+CustomizeLink: TBHyperlink {
 	action = showWebAssistant;
 }
 
-D2WLink: WOHyperlink {
+D2WLink: TBHyperlink {
 	href = "http://www.apple.com/WebObjects/";
 }
 
-D2WLink2: WOHyperlink {
+D2WLink2: TBHyperlink {
 	href = "http://www.apple.com/WebObjects/";
 }
 
@@ -86,7 +86,7 @@ HomeButton: TBImage {
 	width = "100";
 }
 
-HomeLink: WOHyperlink {
+HomeLink: TBHyperlink {
 	action = homeAction;
 }
 
@@ -104,7 +104,7 @@ LoginButton: TBImage {
 	width = "100";
 }
 
-LoginLink: WOHyperlink {
+LoginLink: TBHyperlink {
 	action = logout;
 	target = "_top";
 }

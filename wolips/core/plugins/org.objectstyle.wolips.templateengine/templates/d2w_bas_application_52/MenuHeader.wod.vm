@@ -2,11 +2,11 @@ AssistantActiveConditional: TBConditional {
 	condition = isWebAssistantEnabled;
 }
 
-D2WLink: WOHyperlink {
+D2WLink: TBHyperlink {
 	href = "http://www.apple.com/WebObjects/";
 }
 
-D2WLink2: WOHyperlink {
+D2WLink2: TBHyperlink {
 	href = "http://www.apple.com/WebObjects/";
 }
 
@@ -64,7 +64,7 @@ HomeButton: TBImage {
 	width = "66";
 }
 
-HomeLink: WOHyperlink {
+HomeLink: TBHyperlink {
 	action = homeAction;
 }
 
@@ -78,7 +78,7 @@ LoginButton: TBImage {
 	width = "66";
 }
 
-LoginLink: WOHyperlink {
+LoginLink: TBHyperlink {
 	action = logout;
 	target = "_top";
 }
@@ -112,7 +112,7 @@ ShowAssistantButton: TBImage {
 	width = "66";
 }
 
-ShowAssistantLink: WOHyperlink {
+ShowAssistantLink: TBHyperlink {
 	action = showWebAssistant;
 }
 

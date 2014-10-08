@@ -8,7 +8,7 @@ CustomizeButton: TBImage {
 	width = "102";
 }
 
-CustomizeLink: WOHyperlink {
+CustomizeLink: TBHyperlink {
 	action = showWebAssistant;
 }
 
@@ -47,7 +47,7 @@ HomeButton: TBImage {
 	width = "102";
 }
 
-HomeLink: WOHyperlink {
+HomeLink: TBHyperlink {
 	action = homeAction;
 }
 
@@ -65,7 +65,7 @@ LoginButton: TBImage {
 	width = "102";
 }
 
-LoginLink: WOHyperlink {
+LoginLink: TBHyperlink {
 	action = logout;
 	target = "_top";
 }

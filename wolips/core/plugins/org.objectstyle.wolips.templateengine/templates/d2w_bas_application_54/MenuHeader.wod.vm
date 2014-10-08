@@ -60,11 +60,11 @@ BASHeaderNoduleTopRight: TBImage {
 	height="7";
 }
 
-D2WLink: WOHyperlink {
+D2WLink: TBHyperlink {
 	href = "http://www.apple.com/WebObjects/";
 }
 
-D2WLink2: WOHyperlink {
+D2WLink2: TBHyperlink {
 	href = "http://www.apple.com/WebObjects/";
 }
 
@@ -127,7 +127,7 @@ HomeButton: TBImage {
 	id="homeButton";
 }
 
-HomeLink: WOHyperlink {
+HomeLink: TBHyperlink {
 	action = homeAction;
 }
 
@@ -142,7 +142,7 @@ LoginButton: TBImage {
 	id="logoutButton";
 }
 
-LoginLink: WOHyperlink {
+LoginLink: TBHyperlink {
 	action = logout;
 	target = "_top";
 }
@@ -178,7 +178,7 @@ ShowAssistantButton: TBImage {
 	id="customizeButton";
 }
 
-ShowAssistantLink: WOHyperlink {
+ShowAssistantLink: TBHyperlink {
 	action = showWebAssistant;
 }
 
