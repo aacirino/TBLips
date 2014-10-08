@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Baseforuiplugins Plug-in
 Bundle-SymbolicName: org.objectstyle.wolips.baseforuiplugins
-Bundle-Version: 1.0.6
+Bundle-Version: 4.4.0
 Bundle-Activator: org.objectstyle.wolips.baseforuiplugins.Activator
 Bundle-Vendor: treasureboat.org
 Require-Bundle: org.eclipse.ui;visibility:=reexport,
@@ -11,7 +11,7 @@ Require-Bundle: org.eclipse.ui;visibility:=reexport,
  org.eclipse.ui.workbench.texteditor;visibility:=reexport,
  org.eclipse.jface.text;visibility:=reexport,
  org.objectstyle.wolips.baseforplugins;visibility:=reexport,
- org.objectstyle.wolips.woproject;bundle-version="1.0.6",
+ org.objectstyle.wolips.woproject,
  org.eclipse.equinox.common;bundle-version="3.5.0"
 Bundle-ActivationPolicy: lazy
 Export-Package: org.objectstyle.wolips.baseforuiplugins,

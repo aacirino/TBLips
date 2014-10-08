@@ -3,19 +3,19 @@
    <description url="http://www.objectstyle.org/woproject/index.html">
       TBLips feature list
    </description>
-   <feature url="features/org.objectstyle.wolips.feature_1.0.6.jar" id="org.objectstyle.wolips.feature" version="1.0.6">
+   <feature url="features/org.objectstyle.wolips.feature_4.4.0.jar" id="org.objectstyle.wolips.feature" version="4.4.0">
       <category name="Required"/>
    </feature>
-   <feature url="features/org.objectstyle.wolips.jprofiler.feature_1.0.6.jar" id="org.objectstyle.wolips.jprofiler.feature" version="1.0.6">
+   <feature url="features/org.objectstyle.wolips.jprofiler.feature_4.4.0.jar" id="org.objectstyle.wolips.jprofiler.feature" version="4.4.0">
       <category name="Optional"/>
    </feature>
-   <feature url="features/org.objectstyle.wolips.groovy.feature_1.0.6.jar" id="org.objectstyle.wolips.groovy.feature" version="1.0.6">
+   <feature url="features/org.objectstyle.wolips.groovy.feature_4.4.0.jar" id="org.objectstyle.wolips.groovy.feature" version="4.4.0">
       <category name="Optional"/>
    </feature>
-   <feature url="features/org.objectstyle.wolips.goodies.feature_1.0.6.jar" id="org.objectstyle.wolips.goodies.feature" version="1.0.6" os="macosx,win32">
+   <feature url="features/org.objectstyle.wolips.goodies.feature_4.4.0.jar" id="org.objectstyle.wolips.goodies.feature" version="4.4.0" os="macosx,win32">
       <category name="Optional"/>
    </feature>
-   <feature url="features/org.objectstyle.wolips.jrebel.feature_1.0.6.jar" id="org.objectstyle.wolips.jrebel.feature" version="1.0.6">
+   <feature url="features/org.objectstyle.wolips.jrebel.feature_4.4.0.jar" id="org.objectstyle.wolips.jrebel.feature" version="4.4.0">
       <category name="Optional"/>
    </feature>
    <category-def name="Required" label="TBLips">

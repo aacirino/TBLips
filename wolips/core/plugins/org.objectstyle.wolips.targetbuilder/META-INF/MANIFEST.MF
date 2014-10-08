@@ -2,13 +2,13 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: TBLips Targetbuilder Plug-in
 Bundle-SymbolicName: org.objectstyle.wolips.targetbuilder; singleton:=true
-Bundle-Version: 1.0.6
+Bundle-Version: 4.4.0
 Bundle-Activator: org.objectstyle.wolips.target.TargetBuilderPlugin
 Bundle-Vendor: treasureboat.org
 Require-Bundle: org.eclipse.jdt.core,
  org.objectstyle.wolips.baseforuiplugins,
- org.objectstyle.wolips.woproject;bundle-version="1.0.6",
- org.objectstyle.wolips;bundle-version="1.0.6"
+ org.objectstyle.wolips.woproject,
+ org.objectstyle.wolips
 Bundle-ActivationPolicy: lazy
 Export-Package: org.objectstyle.wolips.target
 Bundle-RequiredExecutionEnvironment: J2SE-1.5

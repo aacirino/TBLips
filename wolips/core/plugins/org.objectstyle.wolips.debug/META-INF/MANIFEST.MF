@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: TBLips Debug Plug-in
 Bundle-SymbolicName: org.objectstyle.wolips.debug; singleton:=true
-Bundle-Version: 1.0.6
+Bundle-Version: 4.4.0
 Bundle-Activator: org.objectstyle.wolips.debug.Activator
 Bundle-Vendor: treasureboat.org
 Require-Bundle: org.eclipse.debug.core,

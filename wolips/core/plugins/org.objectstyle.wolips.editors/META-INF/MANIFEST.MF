@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: TBLips Editors Plug-in
 Bundle-SymbolicName: org.objectstyle.wolips.editors; singleton:=true
-Bundle-Version: 1.0.6
+Bundle-Version: 4.4.0
 Bundle-Activator: org.objectstyle.wolips.editors.EditorsPlugin
 Bundle-Vendor: treasureboat.org
 Require-Bundle: org.objectstyle.wolips.baseforuiplugins,

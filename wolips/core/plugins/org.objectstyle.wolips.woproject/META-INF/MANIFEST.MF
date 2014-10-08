@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: TBLips WOProject Plug-in
 Bundle-SymbolicName: org.objectstyle.wolips.woproject; singleton:=true
-Bundle-Version: 1.0.6
+Bundle-Version: 4.4.0
 Bundle-ClassPath: lib/woproject.jar,
  .
 Bundle-Vendor: treasureboat.org

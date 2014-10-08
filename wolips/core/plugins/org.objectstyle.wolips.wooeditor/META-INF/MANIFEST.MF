@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: TBLips Woo Editor Plug-in
 Bundle-SymbolicName: org.objectstyle.wolips.wooeditor;singleton:=true
-Bundle-Version: 1.0.6
+Bundle-Version: 4.4.0
 Bundle-Activator: org.objectstyle.wolips.wooeditor.WooeditorPlugin
 Bundle-Vendor: treasureboat.org
 Require-Bundle: org.eclipse.core.filesystem,
@@ -17,8 +17,8 @@ Require-Bundle: org.eclipse.core.filesystem,
  org.objectstyle.wolips.bindings,
  org.objectstyle.wolips.eomodeler.core,
  org.objectstyle.wolips.wodclipse.core,
- org.objectstyle.wolips.thirdparty.commonscollections;bundle-version="1.0.6",
- org.objectstyle.wolips.woproject;bundle-version="1.0.6"
+ org.objectstyle.wolips.thirdparty.commonscollections,
+ org.objectstyle.wolips.woproject
 Bundle-ActivationPolicy: lazy
 Export-Package: org.objectstyle.wolips.wooeditor,
  org.objectstyle.wolips.wooeditor.databinding.observable,

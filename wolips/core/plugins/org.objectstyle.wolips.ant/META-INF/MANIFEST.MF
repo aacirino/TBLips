@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: TBLips Ant Plug-in
 Bundle-SymbolicName: org.objectstyle.wolips.ant; singleton:=true
-Bundle-Version: 1.0.6
+Bundle-Version: 4.4.0
 Bundle-Activator: org.objectstyle.wolips.ant.AntPlugin
 Bundle-Vendor: treasureboat.org
 Require-Bundle: org.eclipse.core.resources,

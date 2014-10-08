@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: TBLips Launching Plug-in
 Bundle-SymbolicName: org.objectstyle.wolips.launching; singleton:=true
-Bundle-Version: 1.0.6
+Bundle-Version: 4.4.0
 Bundle-Activator: org.objectstyle.wolips.launching.LaunchingPlugin
 Bundle-Vendor: treasureboat.org
 Require-Bundle: org.eclipse.debug.ui,

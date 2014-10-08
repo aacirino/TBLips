@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: TBLips Builder Plug-in
 Bundle-SymbolicName: org.objectstyle.wolips.builder; singleton:=true
-Bundle-Version: 1.0.6
+Bundle-Version: 4.4.0
 Bundle-Activator: org.objectstyle.wolips.builder.BuilderPlugin
 Bundle-Vendor: treasureboat.org
 Require-Bundle: org.objectstyle.wolips,
@@ -13,9 +13,9 @@ Require-Bundle: org.objectstyle.wolips,
  org.objectstyle.wolips.ant,
  org.objectstyle.wolips.woproject,
  org.objectstyle.wolips.baseforplugins,
- org.objectstyle.wolips.jdt;bundle-version="1.0.6",
- org.objectstyle.wolips.variables;bundle-version="1.0.6",
- org.objectstyle.wolips.templateengine;bundle-version="1.0.6",
+ org.objectstyle.wolips.jdt,
+ org.objectstyle.wolips.variables,
+ org.objectstyle.wolips.templateengine,
  org.eclipse.ant.core;bundle-version="3.2.100"
 Bundle-ActivationPolicy: lazy
 Export-Package: org.objectstyle.wolips.builder

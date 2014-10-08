@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: TBLips Templateengine Plug-in
 Bundle-SymbolicName: org.objectstyle.wolips.templateengine; singleton:=true
-Bundle-Version: 1.0.6
+Bundle-Version: 4.4.0
 Bundle-Activator: org.objectstyle.wolips.templateengine.TemplateEnginePlugin
 Bundle-Vendor: treasureboat.org
 Require-Bundle: org.junit,
@@ -10,9 +10,9 @@ Require-Bundle: org.junit,
  org.eclipse.ui,
  org.objectstyle.wolips.baseforplugins,
  org.objectstyle.wolips.baseforuiplugins,
- org.objectstyle.wolips.thirdparty.velocity;bundle-version="1.0.6",
- org.objectstyle.wolips.variables;bundle-version="1.0.6",
- org.objectstyle.wolips;bundle-version="1.0.6"
+ org.objectstyle.wolips.thirdparty.velocity,
+ org.objectstyle.wolips.variables,
+ org.objectstyle.wolips
 Bundle-ActivationPolicy: lazy
 Export-Package: org.objectstyle.wolips.templateengine
 Bundle-RequiredExecutionEnvironment: J2SE-1.5

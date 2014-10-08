@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: TBLips WODclips Core Plug-in
 Bundle-SymbolicName: org.objectstyle.wolips.wodclipse.core; singleton:=true
-Bundle-Version: 1.0.6
+Bundle-Version: 4.4.0
 Bundle-Activator: org.objectstyle.wolips.wodclipse.core.Activator
 Require-Bundle: org.objectstyle.wolips,
  org.eclipse.jdt.core,
@@ -13,11 +13,11 @@ Require-Bundle: org.objectstyle.wolips,
  org.objectstyle.wolips.workbenchutilities,
  org.objectstyle.wolips.eomodeler.core,
  org.eclipse.ui.editors,
- org.objectstyle.wolips.bindings;bundle-version="1.0.6",
+ org.objectstyle.wolips.bindings,
  org.eclipse.ltk.core.refactoring,
- org.objectstyle.wolips.thirdparty.commonscollections;bundle-version="1.0.6",
- org.objectstyle.wolips.woproject;bundle-version="1.0.6",
- org.objectstyle.wolips.variables;bundle-version="1.0.6"
+ org.objectstyle.wolips.thirdparty.commonscollections,
+ org.objectstyle.wolips.woproject,
+ org.objectstyle.wolips.variables
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .,
  lib/commons-jxpath-1.2.jar,
