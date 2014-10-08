@@ -31,7 +31,7 @@ import org.objectstyle.wolips.htmlpreview.editor.tags.WOHyperlinkTagDelegate;
 import org.objectstyle.wolips.htmlpreview.editor.tags.WOImageTagDelegate;
 import org.objectstyle.wolips.htmlpreview.editor.tags.WOPopUpButtonTagDelegate;
 import org.objectstyle.wolips.htmlpreview.editor.tags.WORepetitionTagDelegate;
-import org.objectstyle.wolips.htmlpreview.editor.tags.WOStringTagDelegate;
+import org.objectstyle.wolips.htmlpreview.editor.tags.TBStringTagDelegate;
 import org.objectstyle.wolips.htmlpreview.editor.tags.WOSubmitButtonTagDelegate;
 import org.objectstyle.wolips.htmlpreview.editor.tags.WOTextFieldTagDelegate;
 import org.objectstyle.wolips.htmlpreview.editor.tags.WOTextTagDelegate;
@@ -61,8 +61,8 @@ public class PreviewRenderDelegate implements RenderDelegate {
 		_cssBuffer = new StringBuffer();
 
 		_tagDelegates = new HashMap<String, TagDelegate>();
-		_tagDelegates.put("WOString", new WOStringTagDelegate());
-		_tagDelegates.put("ERXLocalizedString", new WOStringTagDelegate());
+		_tagDelegates.put("TBString", new TBStringTagDelegate());
+		_tagDelegates.put("ERXLocalizedString", new TBStringTagDelegate());
 		_tagDelegates.put("WOConditional", new WOConditionalTagDelegate());
 		_tagDelegates.put("WOComponentContent", new WOComponentContentTagDelegate());
 		_tagDelegates.put("WORepetition", new WORepetitionTagDelegate());

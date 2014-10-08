@@ -70,8 +70,8 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
     tagShortcuts.add(new TagShortcut("loop", "WORepetition")); // not in 5.4
     tagShortcuts.add(new TagShortcut("content", "WOComponentContent"));
     tagShortcuts.add(new TagShortcut("componentContent", "WOComponentContent"));
-    tagShortcuts.add(new TagShortcut("str", "WOString")); // not in 5.4
-    tagShortcuts.add(new TagShortcut("string", "WOString"));
+    tagShortcuts.add(new TagShortcut("str", "TBString")); // not in 5.4
+    tagShortcuts.add(new TagShortcut("string", "TBString"));
     tagShortcuts.add(new TagShortcut("switchComponent", "WOSwitchComponent"));
     tagShortcuts.add(new TagShortcut("switch", "WOSwitchComponent"));
     tagShortcuts.add(new TagShortcut("XMLNode", "WOXMLNode"));

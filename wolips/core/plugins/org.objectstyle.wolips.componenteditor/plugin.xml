@@ -466,14 +466,14 @@
 				tooltip="Insert WOConditional Component">
 			</action>
 			<action
-				class="org.objectstyle.wolips.componenteditor.actions.InsertComponentWOStringAction"
+				class="org.objectstyle.wolips.componenteditor.actions.InsertComponentTBStringAction"
 				icon="icons/string.png"
-				id="org.objectstyle.wolips.componenteditor.actions.InsertComponentWOString"
-				label="Insert WOString Component"
+				id="org.objectstyle.wolips.componenteditor.actions.InsertComponentTBString"
+				label="Insert TBString Component"
 				menubarPath="edit/org.objectstyle.wolips.componenteditor.insertMenuContribution/group1"
 				style="push"
 				toolbarPath="/Normal/additions"
-				tooltip="Insert WOString Component">
+				tooltip="Insert TBString Component">
 			</action>
 		</editorContribution>
 </extension>

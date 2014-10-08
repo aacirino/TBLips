@@ -415,16 +415,16 @@ public class TemplateOutlinePage extends Page implements IContentOutlinePage, IH
 
     renderBuffer.append("span.negate { font-weight: bold; }\n");
 
-    renderBuffer.append("div.element.wo.WOString.simple { display: inline; border: none; }\n");
-    renderBuffer.append("div.element.wo.WOString.simple div.summary { display: inline; border: 1px solid rgb(200, 200, 255); border: none; background-color: transparent; padding: 0px; }\n");
-    renderBuffer.append("div.element.wo.WOString.simple div.summary div.title { display: inline; }\n");
-    renderBuffer.append("div.element.wo.WOString.simple div.text.literal { color: rgb(0, 0, 200); }\n");
-    renderBuffer.append("div.element.wo.WOString.simple div.text.ognl { color: rgb(180, 0, 0); }\n");
-    renderBuffer.append("div.element.wo.WOString.simple div.text.keypath { color: rgb(180, 0, 0); }\n");
-//    renderBuffer.append("div.element.wo.WOString div.summary { background-color: rgb(240, 240, 255); }\n");
-//    renderBuffer.append("div.element.wo.WOString div.summary:hover { background-color: rgb(240, 240, 255); border-color: rgb(170, 225, 170); }\n");
-//    renderBuffer.append("div.element.wo.WOString div.contents { background-color: rgb(250, 255, 250); border-color: rgb(200, 255, 200); }\n");
-//    renderBuffer.append("div.element.wo.WOString:hover div.contents { display: block; }\n");
+    renderBuffer.append("div.element.wo.TBString.simple { display: inline; border: none; }\n");
+    renderBuffer.append("div.element.wo.TBString.simple div.summary { display: inline; border: 1px solid rgb(200, 200, 255); border: none; background-color: transparent; padding: 0px; }\n");
+    renderBuffer.append("div.element.wo.TBString.simple div.summary div.title { display: inline; }\n");
+    renderBuffer.append("div.element.wo.TBString.simple div.text.literal { color: rgb(0, 0, 200); }\n");
+    renderBuffer.append("div.element.wo.TBString.simple div.text.ognl { color: rgb(180, 0, 0); }\n");
+    renderBuffer.append("div.element.wo.TBString.simple div.text.keypath { color: rgb(180, 0, 0); }\n");
+//    renderBuffer.append("div.element.wo.TBString div.summary { background-color: rgb(240, 240, 255); }\n");
+//    renderBuffer.append("div.element.wo.TBString div.summary:hover { background-color: rgb(240, 240, 255); border-color: rgb(170, 225, 170); }\n");
+//    renderBuffer.append("div.element.wo.TBString div.contents { background-color: rgb(250, 255, 250); border-color: rgb(200, 255, 200); }\n");
+//    renderBuffer.append("div.element.wo.TBString:hover div.contents { display: block; }\n");
 
     renderBuffer.append("div.element.wo.ERXLocalizedString.simple { display: inline; border: none; }\n");
     renderBuffer.append("div.element.wo.ERXLocalizedString.simple div.summary { display: inline; border: 1px solid rgb(200, 200, 255); border: none; background-color: transparent; padding: 0px; }\n");
@@ -485,12 +485,12 @@ public class TemplateOutlinePage extends Page implements IContentOutlinePage, IH
     renderBuffer.append("body.compact div.element div.summary div.title span.type { display: none; }\n");
     renderBuffer.append("body.compact div.element div.contents { padding-left: 8px; padding-top: 2px; padding-bottom: 2px; }\n");
 
-    renderBuffer.append("body.compact div.element.wo.WOString { display: inline; border: none; }\n");
-    renderBuffer.append("body.compact div.element.wo.WOString div.summary { display: inline; border: 1px solid rgb(200, 200, 255); }\n");
-    renderBuffer.append("body.compact div.element.wo.WOString div.summary div.title { display: inline; }\n");
-    renderBuffer.append("body.compact div.element.wo.WOString.simple { border: none; }\n");
-    renderBuffer.append("body.compact div.element.wo.WOString.simple div.summary { border: none; background-color: transparent; padding: 0px; }\n");
-    renderBuffer.append("body.compact div.element.wo.WOString.simple div.summary div.title { display: inline; }\n");
+    renderBuffer.append("body.compact div.element.wo.TBString { display: inline; border: none; }\n");
+    renderBuffer.append("body.compact div.element.wo.TBString div.summary { display: inline; border: 1px solid rgb(200, 200, 255); }\n");
+    renderBuffer.append("body.compact div.element.wo.TBString div.summary div.title { display: inline; }\n");
+    renderBuffer.append("body.compact div.element.wo.TBString.simple { border: none; }\n");
+    renderBuffer.append("body.compact div.element.wo.TBString.simple div.summary { border: none; background-color: transparent; padding: 0px; }\n");
+    renderBuffer.append("body.compact div.element.wo.TBString.simple div.summary div.title { display: inline; }\n");
 
     renderBuffer.append("body.compact div.element.wo.ERXLocalizedString { display: inline; border: none; }\n");
     renderBuffer.append("body.compact div.element.wo.ERXLocalizedString div.summary { display: inline; border: 1px solid rgb(200, 200, 255); }\n");
@@ -570,7 +570,7 @@ public class TemplateOutlinePage extends Page implements IContentOutlinePage, IH
         if (wodElement != null) {
           className = className + " " + wodElement.getElementType();
 
-          if ("WOString".equals(wodElement.getElementType()) || "ERXLocalizedString".equals(wodElement.getElementType())) {
+          if ("TBString".equals(wodElement.getElementType()) || "ERXLocalizedString".equals(wodElement.getElementType())) {
             if (wodElement.getBindingNamed("value") != null) {
               if (wodElement.getBindingNamed("escapeHTML") != null && wodElement.getBindings().size() == 2) {
                 woSimpleString = true;
@@ -673,10 +673,10 @@ public class TemplateOutlinePage extends Page implements IContentOutlinePage, IH
               }
             }
             // Special case for the compact display of a string
-            else if ("WOString".equals(summaryName)) {
+            else if ("TBString".equals(summaryName)) {
               String value = wodElement.getBindingValue("value");
               if (value != null) {
-                summaryName = "WOString: " + value;
+                summaryName = "TBString: " + value;
               }
             }
             // Special case for the compact display of a localized string

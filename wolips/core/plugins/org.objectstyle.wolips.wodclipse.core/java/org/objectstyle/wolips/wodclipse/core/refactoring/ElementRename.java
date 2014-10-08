@@ -50,7 +50,7 @@ public class ElementRename {
         }
         newName = newNameFromBindingValue(prefix, conditionValue, null);
       }
-      else if ("WOString".equals(typeName)) {
+      else if ("TBString".equals(typeName)) {
         String value = wodElement.getBindingsMap().get("value");
         newName = newNameFromBindingValue(null, value, null);
       }

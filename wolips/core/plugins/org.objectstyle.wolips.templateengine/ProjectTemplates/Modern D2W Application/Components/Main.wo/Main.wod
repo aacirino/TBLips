@@ -24,7 +24,7 @@ HasErrorMessage : WOConditional {
   condition = errorMessage;
 }
 
-ErrorMessage : WOString {
+ErrorMessage : TBString {
   value = errorMessage;
 }
 
