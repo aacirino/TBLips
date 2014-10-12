@@ -31,7 +31,7 @@ public class NewComponentCreationWizard extends NewElementWizard {
 	 * @param openEditorOnFinish
 	 */
 	public NewComponentCreationWizard(NewComponentCreationPage page, boolean openEditorOnFinish) {
-		setDefaultPageImageDescriptor(WizardsPlugin.WOCOMPONENT_CONTROLLER_WIZARD_BANNER());
+		setDefaultPageImageDescriptor(WizardsPlugin.tbComponentControllerBanner());
 		setDialogSettings(JavaPlugin.getDefault().getDialogSettings());
 		setWindowTitle(Messages.getString("WOComponentCreationWizard.title"));
 		this.fPage = page;

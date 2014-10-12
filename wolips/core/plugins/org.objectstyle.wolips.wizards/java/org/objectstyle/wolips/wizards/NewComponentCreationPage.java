@@ -1,4 +1,3 @@
-
 package org.objectstyle.wolips.wizards;
 
 import java.io.ByteArrayInputStream;
@@ -6,10 +5,8 @@ import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.charset.Charset;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -87,7 +84,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Link;
 import org.eclipse.swt.widgets.Widget;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.ElementTreeSelectionDialog;
@@ -98,24 +94,239 @@ import org.eclipse.ui.model.WorkbenchLabelProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.ui.views.navigator.ResourceComparator;
 import org.objectstyle.wolips.baseforplugins.util.CharSetUtils;
+import org.objectstyle.wolips.wizards.enums.HTML;
 
 /**
- * Page for creating a new WebObjects WOComponent type. i.e., component view with component controller.
+ * Page for creating a new TreasureBoat TBComponent type. i.e., 
+ * component view with component controller.
+ * 
+ * Thanks to
  * @author ldeck
  */
 public class NewComponentCreationPage extends NewTypeWizardPage {
-	
+
+	//********************************************************************
+	//	HTML View
+	//********************************************************************
+
+	private IStatus fComponentHTMLStatus;
+	private Combo fComponentHTMLCombo;
+
+	/**
+	 * Populate a SWT Combo with HTML doctypes
+	 * 
+	 * @param c
+	 */
+	private void populateHTMLCombo(Combo c) {
+		for (HTML entry : HTML.values()) {
+			c.add(entry.getDisplayString());
+		}
+		selectHTMLDocTypePreference(c);
+	}
+
+	/*
+	 * here we create the HTML Line
+	 */
+	private void createComponentHTMLControls(Composite parent, @SuppressWarnings("unused") int nColumns) {	
+		Composite componentHTMLControls = parent;
+
+		Label htmlLabel = new Label(componentHTMLControls, SWT.LEFT);
+		htmlLabel.setText("HTML template:");
+		htmlLabel.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+
+		Composite controlsComposite = new Composite(componentHTMLControls, SWT.NONE);
+		GridLayout layout = new GridLayout(2, false);
+		layout.marginWidth = 0;
+		controlsComposite.setLayout(layout);
+
+		GridData data = new GridData(GridData.FILL_HORIZONTAL | GridData.GRAB_HORIZONTAL);
+		controlsComposite.setLayoutData(data);
+
+		fComponentHTMLCombo = new Combo(controlsComposite, SWT.DROP_DOWN);
+		fComponentHTMLCombo.setLayoutData(new GridData(GridData.FILL_HORIZONTAL | GridData.GRAB_HORIZONTAL));
+		fComponentHTMLCombo.addModifyListener(new ModifyListener() {
+
+			@SuppressWarnings("synthetic-access")
+			public void modifyText(ModifyEvent modifyevent) {
+				setComponentHTMLKey(fComponentHTMLCombo.getText());
+			}
+
+		});
+		populateHTMLCombo(fComponentHTMLCombo);
+
+		LayoutUtil.setHorizontalSpan(fComponentHTMLCombo, 1);
+		LayoutUtil.setWidthHint(fComponentHTMLCombo, getMaxFieldWidth());
+
+		LayoutUtil.setHorizontalSpan(controlsComposite, 2);
+
+		LayoutUtil.setHorizontalSpan(new Label(componentHTMLControls, SWT.NONE), 1);
+	}
+
+	/*
+	 * here we have the current value for the HTML key
+	 */
+	private void setComponentHTMLKey(String key) {
+		_componentHTMLKey = key;
+	}
+	private String getComponentHTMLKey() {
+		return _componentHTMLKey;
+	}
+	private String _componentHTMLKey;
+
+
+
+
+
+	// TODO bellow
+	private static final String HTML_DOCTYPE_KEY = "NewComponentCreationPage.htmlDocType";
+
+	/**
+	 * Pick the previous encoding preference else default to
+	 * HTML.TRANSITIONAL_XHTML10
+	 * 
+	 * @param c
+	 */
+	private void selectHTMLDocTypePreference(Combo c) {
+		String previousDocType = this.getDialogSettings().get(HTML_DOCTYPE_KEY);
+
+		if (previousDocType != null && previousDocType.length() > 0) {
+			int i = 0;
+			for (HTML entry : HTML.values()) {
+				if (previousDocType.equals(entry.getDisplayString())) {
+					c.select(i);
+					return;
+				}
+				i++;
+			}
+		}
+		// default
+		c.select(0);
+	}
+
+	protected IStatus componentHTMLChanged() {
+		return fComponentHTMLStatus;
+	}
+
+	private HTML getSelectedHTML() {
+		return HTML.getValueForKey(getComponentHTMLKey());
+	}
+
+
+	//********************************************************************
+	//	Superclass View
+	//********************************************************************
+
+	@Override
+	protected void createSuperClassControls(Composite composite, int columns) {
+		super.createSuperClassControls(composite, columns);
+	}
+
+	private static final String DEFAULT_SUPERCLASS_NAME = "org.treasureboat.webcore.components.TBComponent";
+
+	@Override
+	protected IStatus superClassChanged() {
+		StatusInfo superclassStatus = new StatusInfo();
+
+		if (!DEFAULT_SUPERCLASS_NAME.equals(getSuperClass())) {
+			// Check if a superClass is selected
+			if (getSuperClass() == null || getSuperClass().matches("\\s*")) {
+				superclassStatus.setError("The super type must be assignable to " + DEFAULT_SUPERCLASS_NAME);
+			}
+
+			// Check if we have TBComponent as super
+			else if (getDefaultTBComponentType() == null) {
+				superclassStatus.setError(DEFAULT_SUPERCLASS_NAME + " is not on the classpath");
+			}
+
+			else {
+				try {
+					IType type = getJavaProject().findType(getSuperClass());
+					ITypeHierarchy typeHierarchy = type.newSupertypeHierarchy(new NullProgressMonitor());
+					if (!JavaModelUtil.isSuperType(typeHierarchy, getDefaultTBComponentType(), type)) {
+						superclassStatus.setError("The super type must be assignable to " + DEFAULT_SUPERCLASS_NAME);
+					}
+				} catch (JavaModelException e) {
+					System.err.println(getClass().getName() + ".superClassChanged() Failed to determine superclass hierarchy.");
+					e.printStackTrace(System.err);
+					superclassStatus.setWarning("Unable to determine superclass hierarchy");
+				}
+			}
+		}
+		if (!superclassStatus.isError()) {
+			IStatus status = super.superClassChanged();
+			if (!superclassStatus.isWarning() && status.getSeverity() == (IStatus.ERROR | IStatus.WARNING)) {
+				return status;
+			}
+		}
+		return superclassStatus;
+	}
+
+	/*
+	 * this will return the type for superclass
+	 * it get called for check to see if the superclass is set correct and
+	 * in the hierarchy of TBComponent  
+	 */
+	private IType getDefaultTBComponentType() {
+		if (_tbComponentType == null && getJavaProject() != null) {
+			try {
+				_tbComponentType = getJavaProject().findType(DEFAULT_SUPERCLASS_NAME);
+			} catch (JavaModelException e) {
+				e.printStackTrace(System.err);
+			}
+		}
+		return _tbComponentType;
+	}
+	private IType _tbComponentType;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	/**
 	 * Represents an abstract project layout
 	 * @author ldeck
 	 */
 	// TODO amalgamate with some other util
 	private abstract static class AbstractLayout {
-		
+
 		public final boolean isReservedJavaSourcesPath(IPath path) {
 			return isReservedPath(path, reservedPathPrefixes(), reservedJavaSourcePaths());
 		}
-		
+
 		private boolean isReservedPath(IPath path, List<String> prefixes, List<String> reservedPaths) {
 			if (path != null) {
 				IPath relPath = path.makeAbsolute().makeRelative().removeFirstSegments(1);
@@ -135,20 +346,20 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 			}
 			return false;
 		}
-		
+
 		public final boolean isReservedResourcesPath(IPath path) {
 			return isReservedPath(path, reservedPathPrefixes(), reservedResourceSourcePaths());
 		}
-		
+
 		protected abstract List<String> reservedJavaSourcePaths();
-		
+
 		protected abstract List<String> reservedPathPrefixes();
-		
+
 		protected abstract List<String> reservedPathRejects();
-		
+
 		protected abstract List<String> reservedResourceSourcePaths();
 	}
-	
+
 	/**
 	 * Listener for registered button events.
 	 * @author ldeck
@@ -163,7 +374,7 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 			handleSelectionEvent(event);
 		}
 	}
-	
+
 	/**
 	 * Component container field adaptor.
 	 * @author ldeck
@@ -178,28 +389,28 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 			componentContainerDialogFieldChanged(field);
 		}
 	}
-	
+
 	/**
 	 * Worker for creating a file with the given contents.
 	 * @author ldeck
 	 */
 	class FileCreationWorker implements IRunnableWithProgress {
-		
+
 		private final IFolder fileContainer;
 		private final String fileContents;
 		private final String fileExtension;
 		private final String fileName;
-		
+
 		public FileCreationWorker(final IFolder container, String name, String extension, String initialContents) {
 			this.fileContainer = container;
 			this.fileName = name;
 			this.fileExtension = extension;
 			this.fileContents = initialContents == null ? "" : initialContents;
 		}
-		
+
 		private IFile createFileHandle(IPath filePath) {
 			return IDEWorkbenchPlugin.getPluginWorkspace().getRoot().getFile(filePath);
-	    }
+		}
 
 		/**
 		 * @see org.eclipse.jface.operation.IRunnableWithProgress#run(org.eclipse.core.runtime.IProgressMonitor)
@@ -208,12 +419,12 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 			try {
 				IPath containerPath = this.fileContainer.getFullPath();
 				IPath newFilePath = containerPath.addTrailingSeparator().append(this.fileName + "." + this.fileExtension);
-				
+
 				final IFile newFileHandle = createFileHandle(newFilePath);
 				final InputStream initialContents;
 				try {
 					initialContents = new ByteArrayInputStream(this.fileContents.getBytes("UTF-8"));
-					
+
 					newFileHandle.create(initialContents, true, progressMonitor);	
 				}
 				catch (UnsupportedEncodingException e) {
@@ -226,7 +437,7 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 					IDEWorkbenchPlugin.log(getClass(), "run(IProgressMonitor)", e.getCause());
 					MessageDialog.openError(getShell(), IDEWorkbenchMessages.WizardNewFileCreationPage_internalErrorTitle, NLS.bind(IDEWorkbenchMessages.WizardNewFileCreationPage_internalErrorMessage, e.getMessage()));
 				}
-				
+
 			} finally {
 				progressMonitor.worked(1);
 			}
@@ -238,11 +449,11 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 	 * @author ldeck
 	 */
 	private static class FluffyLayout extends AbstractLayout {
-		
+
 		private static final List<String> RESERVED_FLUFFY_PREFIX_PATHS = Arrays.asList("");
-		
+
 		private static final List<String> RESERVED_FLUFFY_RESOURCE_PATHS = Arrays.asList("components");
-		
+
 		private static final List<String> RESERVED_FLUFFY_SOURCE_PATHS = Arrays.asList("Sources", "Tests", "src");
 
 		private static final List<String> RESERVED_ROOT_PATHS = Arrays.asList("bin", "build", "resources", "lib", "libraries", "webserverresources", "woproject");
@@ -266,148 +477,22 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 		protected List<String> reservedResourceSourcePaths() {
 			return RESERVED_FLUFFY_RESOURCE_PATHS;
 		}
-		
+
 	}
-	
-	/**
-	 * HTML Template Defaults.
-	 * @author ldeck
-	 */
-	// TODO (ldeck) move templating to project/workspace preferences
-	enum HTML {
-		BLANK_CONTENT("Blank HTML Content", 0),
-		HTML_UNSPECIFIED("HTML", 1),
-		HTML401_STRICT("HTML 4.0.1 Strict", 2), 
-		HTML401_TRANSITIONAL("HTML 4.0.1 Transitional", 3),
-		XHTML10_FRAMESET("XHTML 1.0 Frameset", 4), 
-		XHTML10_STRICT("XHTML 1.0 Strict", 5),
-		XHTML10_TRANSITIONAL("XHTML 1.0 Transitional", 6),
-		XHTML11("XHTML 1.1", 7);
 
-		static HTML getDefaultHTML() {
-			return XHTML10_TRANSITIONAL;
-		}
 
-		static HTML getValueForKey(String key) {
-			for (HTML value : values()) {
-				if (value.getDisplayString().equals(key)) {
-					return value;
-				}
-			}
-			return getDefaultHTML();
-		}
-
-		private final String _displayString;
-
-		private String _html;
-
-		private final int _templateIndex;
-		
-		HTML(String display, int templateIndex) {
-			this(display, templateIndex, null);
-		}
-
-		// template index is just to make things easier in velocity engine
-		HTML(String display, int templateIndex, String html) {
-			_displayString = display;
-			_html = html;
-			_templateIndex = templateIndex;
-		}
-
-		String getDisplayString() {
-			return _displayString;
-		}
-
-		String getHTML(String lineSeparator) {
-			if (this._html == null) {
-				StringBuilder buff = new StringBuilder();
-				
-				if (!BLANK_CONTENT.equals(this)) {
-					String dateString = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-					String userName = System.getProperty("user.name", "TBLips");
-					boolean isXML = true;
-					
-					if (HTML_UNSPECIFIED.equals(this)) {
-						isXML = false;
-						buff.append("<html>");
-					}
-					else if (HTML401_STRICT.equals(this)) {
-						isXML = false;
-						buff.append("<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01//EN\"").append(lineSeparator);
-						buff.append("   \"http://www.w3.org/TR/html4/strict.dtd\">").append(lineSeparator);
-						buff.append(lineSeparator);
-						buff.append("<html lang=\"en\">").append(lineSeparator);
-					}
-					else if (HTML401_TRANSITIONAL.equals(this)) {
-						isXML = false;
-						buff.append("<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\"").append(lineSeparator);
-						buff.append("   \"http://www.w3.org/TR/html4/loose.dtd\">").append(lineSeparator);
-						buff.append(lineSeparator);
-						buff.append("<html lang=\"en\">").append(lineSeparator);
-					}
-					else if (XHTML10_FRAMESET.equals(this)) {
-						buff.append("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Frameset//EN\"").append(lineSeparator);
-						buff.append("	\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd\">").append(lineSeparator);
-						buff.append(lineSeparator);
-						buff.append("<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">").append(lineSeparator);
-					}
-					else if (XHTML10_STRICT.equals(this)) {
-						buff.append("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"").append(lineSeparator);
-						buff.append("	\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">").append(lineSeparator);
-						buff.append(lineSeparator);
-						buff.append("<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">").append(lineSeparator);
-					}
-					else if (XHTML10_TRANSITIONAL.equals(this)) {
-						buff.append("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"").append(lineSeparator);
-						buff.append("	\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">").append(lineSeparator);
-						buff.append(lineSeparator);
-						buff.append("<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">").append(lineSeparator);
-					}
-					else if (XHTML11.equals(this)) {
-						buff.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>").append(lineSeparator);
-						buff.append("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.1//EN\"").append(lineSeparator);
-						buff.append("	\"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd\">").append(lineSeparator);
-						buff.append(lineSeparator);
-						buff.append("<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\">").append(lineSeparator);
-					}
-					
-					String closingTag = isXML ? "/>" : ">";
-					
-					buff.append(lineSeparator).append("<head>").append(lineSeparator);
-					buff.append(lineSeparator).append("	<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"").append(closingTag);
-					buff.append(lineSeparator).append("	<title>untitled</title>");
-					buff.append(lineSeparator).append("	<meta name=\"generator\" content=\"TBLips http://wiki.objectstyle.org/confluence/display/WOL/Home\"").append(closingTag);
-					buff.append(lineSeparator).append("	<meta name=\"author\" content=\"").append(userName).append('"').append(closingTag);
-					buff.append(lineSeparator).append("	<!-- Date: ").append(dateString).append(" -->");
-					buff.append(lineSeparator).append("</head>");
-					buff.append(lineSeparator).append("<body>");
-					buff.append(lineSeparator).append(lineSeparator);
-					buff.append(lineSeparator).append("</body>");
-					buff.append(lineSeparator).append("</html>");
-				}
-				
-				this._html = buff.toString();
-			}
-			return _html;
-		}
-		
-		int getTemplateIndex() {
-			return _templateIndex;
-		}
-	}
-	
 	/**
 	 * Represents the maven2 woproject layout
 	 * @author ldeck
 	 */
 	private static class MavenLayout extends AbstractLayout {
-		
+
 		private static final List<String> RESERVED_MAVEN2_PREFIX_PATHS = Arrays.asList("src/main/", "src/test/", "src/itest/");
-		
+
 		private static final List<String> RESERVED_MAVEN2_RESOURCE_PATHS = Arrays.asList("components", "resources", "webserver-resources");
 
 		private static final List<String> RESERVED_MAVEN2_SOURCE_PATHS = Arrays.asList("java");
-		
+
 		private static final List<String> RESERVED_ROOT_PATHS = Arrays.asList("target");
 
 		@Override
@@ -429,39 +514,36 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 		protected List<String> reservedResourceSourcePaths() {
 			return RESERVED_MAVEN2_RESOURCE_PATHS;
 		}
-		
+
 	}
-	
+
 	private static final String API_CHECKBOX_KEY = "NewComponentCreationPage.apiCheckbox";
-	
+
 	private static final String BODY_CHECKBOX_KEY = "NewComponentCreationPage.bodyCheckbox";
-	
+
 	private static final String CHARSET_ENCODING_KEY = "NewComponentCreationPage.encoding";
-	
+
 	protected static final String COMPONENT_CONTAINER = "NewComponentCreationPage.componentContainer";
-	
-	private static final String DEFAULT_SUPERCLASS_NAME = "com.webobjects.appserver.WOComponent";
-	
-	private static final String HTML_DOCTYPE_KEY = "NewComponentCreationPage.htmlDocType";
-	
+
+
+
 	private static final int LABEL_IMG_SIZE = 12;
-	
+
 	private static final String PAGE_NAME = "NewComponentCreationPage";
-	
+
 	private static final List<String> PREFERRED_COMPONENT_CONTAINER_PATHS = Arrays.asList("Components", "src/main/components");
-	
+
 	private static final List<String> PREFERRED_SOURCE_CONTAINER_PATHS = Arrays.asList("Sources", "src/main/java");
-	
+
 	private static final String SETTINGS_CREATECONSTR = "create_constructor";
-	
+
 	private static final String SETTINGS_CREATEUNIMPLEMENTED = "create_unimplemented";
-	
-	private static final String SUPERCLASS_KEY = "NewComponentCreationPage.superclass";
-	
+
+
 	private static final String WOD_CHECKBOX_KEY = "NewComponentCreationPage.wodCheckbox";
-	
+
 	private static final String WOO_CHECKBOX_KEY = "NewComponentCreationPage.wooCheckbox";
-	
+
 	private static IJavaElement findClassWithName(IJavaElement el, String name) {
 		if (el != null && el.getElementName().equals(name + ".java")) {
 			return el;
@@ -481,11 +563,11 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 		}
 		return null;
 	}
-	
+
 	private static IJavaElement findMainClass(IJavaElement el) {
 		return findClassWithName(el, "Main");
 	}
-	
+
 	private static boolean isReservedResourcesPath(IPath path) {
 		return new FluffyLayout().isReservedResourcesPath(path) || new MavenLayout().isReservedResourcesPath(path);
 	}
@@ -507,7 +589,7 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 		layout.verticalSpacing = verticalSpacing;
 		return layout;
 	}
-	
+
 	private static Font scaledFont(Font font, int height) {
 		FontData[] labellingFontData = font.getFontData();
 		for (FontData fd : labellingFontData) {
@@ -515,12 +597,12 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 		}
 		return new Font(font.getDevice(), labellingFontData);
 	}
-	
+
 	private static Image scaledImage(Display display, ImageDescriptor imageDescriptor, int width, int height) {
 		ImageData imageData =  imageDescriptor.getImageData().scaledTo(width, height);
 		return new Image(display, imageData);
 	}
-	
+
 	/**
 	 * @param lineDelimiter
 	 * @param selectedEncoding
@@ -534,13 +616,13 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 		buff.append("}").append(lineDelimiter);
 		return buff.toString();
 	}
-	
+
 	private ImageDescriptor componentImageDescriptor;
 
 	private Group componentViewTitle;
-	
+
 	private Label componentViewTitleLabel;
-	
+
 	private Button fComponentAPICheckbox;
 
 	private IStatus fComponentAPIStatus;
@@ -548,80 +630,88 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 	private StringButtonDialogField fComponentContainerDialogField;
 
 	private IStatus fComponentContainerStatus;
-	
-	private Button fComponentHTMLBodyCheckbox;
 
-	private Combo fComponentHTMLCombo;
-	
-	private IStatus fComponentHTMLStatus;
-	
+
+
 	private Button fComponentWODCheckbox;
 
 	private IStatus fComponentWODStatus;
-	
+
 	private Button fComponentWOOCheckbox;
-	
+
 	private Combo fComponentWOOEncodingCombo;
-	
+
 	private IStatus fComponentWOOStatus;
-	
+
 	private SelectionButtonDialogFieldGroup fMethodStubsButtons;
-	
+
 	private boolean vComponentAPIEnabled;
-	
+
 	private IFolder vComponentContainerRoot;
-	
-	private boolean vComponentHTMLBodyEnabled;
-	
-	private String vComponentHTMLKey;
+
 
 	private boolean vComponentWODEnabled;
 
 	private boolean vComponentWOOEnabled;
-	
+
 	private String vComponentWOOEncodingKey;
-	
-	private IType wocomponentType;
-	
+
+
+	//********************************************************************
+	//	Constructor : コンストラクタ
+	//********************************************************************
+
 	public NewComponentCreationPage() {
 		this(true, PAGE_NAME);
 	}
-	
+
 	/**
 	 * @param isClass
 	 * @param pageName
 	 */
 	public NewComponentCreationPage(boolean isClass, String pageName) {
 		super(isClass, pageName);
-		setTitle("WebObjects Component" /*NewWizardMessages.NewClassWizardPage_title*/);
-		setDescription("Create a new component view with controller class" /*NewWizardMessages.NewClassWizardPage_description*/);
+
+		setTitle("TreasureBoat Component");
+		setDescription("Create a new component view with controller class");
+
+		/* HTML Area */
+		fComponentHTMLStatus = new StatusInfo();
+
+
+
+
+
+		this.componentImageDescriptor = AbstractUIPlugin.imageDescriptorFromPlugin("org.objectstyle.wolips.wizards", "icons/wobuilder/WOComponentBundle.png");
+
+
 		String buttonNames2[] = { NewWizardMessages.NewClassWizardPage_methods_constructors, NewWizardMessages.NewClassWizardPage_methods_inherited };
 		this.fMethodStubsButtons = new SelectionButtonDialogFieldGroup(32, buttonNames2, 1);
 		this.fMethodStubsButtons.setLabelText(NewWizardMessages.NewClassWizardPage_methods_label);
+
+
+
 
 		ComponentContainerFieldAdapter componentContainerAdaptor = new ComponentContainerFieldAdapter();
 		this.fComponentContainerDialogField = new StringButtonDialogField(componentContainerAdaptor);
 		this.fComponentContainerDialogField.setDialogFieldListener(componentContainerAdaptor);
 		this.fComponentContainerDialogField.setLabelText(getComponentContainerLabel());
 		this.fComponentContainerDialogField.setButtonLabel(NewWizardMessages.NewContainerWizardPage_container_button);
-		
+
 		this.fComponentContainerStatus = new StatusInfo();
-		this.fComponentHTMLStatus = new StatusInfo();
 		this.fComponentWODStatus = new StatusInfo();
 		this.fComponentWOOStatus = new StatusInfo();
 		this.fComponentAPIStatus = new StatusInfo();
-		
-		this.componentImageDescriptor = AbstractUIPlugin.imageDescriptorFromPlugin("org.objectstyle.wolips.wizards", "icons/wobuilder/WOComponentBundle.png");
-		
+
+
 		this.vComponentAPIEnabled = true;
 		this.vComponentContainerRoot = null;
-		this.vComponentHTMLBodyEnabled = false;
-		this.vComponentHTMLKey = HTML.BLANK_CONTENT.getDisplayString();
+		this._componentHTMLKey = HTML.BLANK_CONTENT.getDisplayString();
 		this.vComponentWODEnabled = true;
 		this.vComponentWOOEnabled = true;
 		this.vComponentWOOEncodingKey = "UTF-8";
 	}
-	
+
 	private IFolder chooseComponentContainer(String title, String message, IPath initialPath) {
 		//System.out.println("building choose componentContainer for " + initialPath.getDevice() + ":" + initialPath.getFileExtension());
 		Class acceptedClasses[] = {
@@ -647,7 +737,7 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 			}
 		};
 		org.eclipse.jface.viewers.ViewerFilter filter = new TypedViewerFilter(acceptedClasses) {
-			
+
 			List<String> rejectPathExtensions = Arrays.asList(
 					"wo");
 			List<String> rejectRelativePaths = Arrays.asList(
@@ -659,7 +749,7 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 					"lib",
 					"target",
 					"woproject");
-				
+
 			/**
 			 * @see org.eclipse.jdt.internal.ui.wizards.TypedViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 			 */
@@ -693,7 +783,7 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 		};
 		org.eclipse.jface.viewers.ILabelProvider lp = new WorkbenchLabelProvider();
 		org.eclipse.jface.viewers.ITreeContentProvider cp = new WorkbenchContentProvider();
-		
+
 		IProject currProject = getJavaProject().getProject();
 		ElementTreeSelectionDialog dialog = new ElementTreeSelectionDialog(getShell(), lp, cp);
 		dialog.setValidator(validator);
@@ -709,12 +799,12 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 			return (IFolder)dialog.getFirstResult();
 		return null;
 	}
-	
+
 	protected IStatus componentAPIChanged() {
 		// TODO
 		return this.fComponentAPIStatus;
 	}
-	
+
 	/**
 	 * @param field
 	 */
@@ -727,12 +817,12 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 			if (folder != null) {
 				setComponentContainerRoot(folder, true);
 			}
-        }
+		}
 	}
-	
+
 	protected IStatus componentContainerChanged() {
 		StatusInfo status = new StatusInfo();
-		
+
 		//fComponentContainerRoot = null;
 		String str = getComponentContainerRootText();
 		if (str.length() == 0) {
@@ -743,7 +833,7 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 			status.setError("A component cannot be created within another component");
 			return status;
 		}
-		
+
 		IPath path = new Path(str);
 		IResource res = getWorkspaceRoot().findMember(path);
 		if (res != null) {
@@ -755,7 +845,7 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 					return status;
 				}
 				IJavaProject jproject = JavaCore.create(proj);
-				
+
 				IPackageFragmentRoot fragmentRoot = jproject.getPackageFragmentRoot(res);
 				if (res.exists()) {
 					try {
@@ -779,7 +869,7 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 						}
 					} catch (JavaModelException e) {
 						// no problems. Just a standard components folder.
-						
+
 					} catch (CoreException e) {
 						System.err.println(getClass().getName() + ".componentContainerChanged threw an exception.");
 						e.printStackTrace(System.err);
@@ -793,30 +883,26 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 		}
 		status.setError(Messages.format(NewWizardMessages.NewContainerWizardPage_error_ContainerDoesNotExist, BasicElementLabels.getPathLabel(path, false)));
 		return status;
-    }
-	
+	}
+
 	/**
 	 * @param field
 	 */
 	protected void componentContainerDialogFieldChanged(DialogField field) {
 		handleFieldChanged(COMPONENT_CONTAINER);
 	}
-	
-	protected IStatus componentHTMLChanged() {
-		// TODO
-		return this.fComponentHTMLStatus;
-	}
-	
+
+
 	protected IStatus componentWODChanged() {
 		// TODO
 		return this.fComponentWODStatus;
 	}
-	
+
 	protected IStatus componentWOOChanged() {
 		// TODO
 		return this.fComponentWOOStatus;
 	}
-	
+
 	/**
 	 * @see org.eclipse.jdt.ui.wizards.NewTypeWizardPage#createCommentControls(org.eclipse.swt.widgets.Composite, int)
 	 */
@@ -826,22 +912,22 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 		enableCommentControl(true);
 		setAddComments(true, true);
 	}
-	
+
 	private void createComponentAPIControls(Composite parent, int nColumns) {
 		fComponentAPICheckbox = new Button(parent, SWT.CHECK);
 		fComponentAPICheckbox.setText("API file");
 		fComponentAPICheckbox.setSelection(getDialogSettings().getBoolean(API_CHECKBOX_KEY));
 		fComponentAPICheckbox.addSelectionListener(new ButtonSelectionAdaptor());
 	}
-	
+
 	private void createComponentContainerControls(Composite parent, int nColumns) {
 		fComponentContainerDialogField.doFillIntoGrid(parent, nColumns);
 		LayoutUtil.setWidthHint(fComponentContainerDialogField.getTextControl(null), getMaxFieldWidth());
 	}
-	
+
 	private void createComponentHeader(Composite parent, int nColumns) {
 		Font labellingFont = scaledFont(parent.getFont(), 9);
-		
+
 		// component view section label
 		{
 			this.componentViewTitle = new Group(parent, SWT.NONE); 
@@ -849,74 +935,22 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 			componentViewTitle.setLayout(newGridLayout(nColumns, 0, 1));
 			componentViewTitle.setLayoutData(new GridData(GridData.GRAB_HORIZONTAL | GridData.HORIZONTAL_ALIGN_FILL));
 			componentViewTitle.setFont(labellingFont);
-			
+
 			// add image label for component view
 			Label componentViewTitleIcon = new Label(componentViewTitle, SWT.NONE);
 			componentViewTitleIcon.setFont(labellingFont);
 			componentViewTitleIcon.setImage(scaledImage(componentViewTitleIcon.getDisplay(), componentImageDescriptor, LABEL_IMG_SIZE + 2, LABEL_IMG_SIZE + 2));
-			
+
 			this.componentViewTitleLabel = new Label(componentViewTitle, SWT.NONE);
 			this.componentViewTitleLabel.setFont(labellingFont);
 			this.componentViewTitleLabel.setText("Component View");
-			
+
 			// fill 
 			LayoutUtil.setHorizontalSpan(componentViewTitle, nColumns);
 		}
 	}
-	
-	private void createComponentHTMLControls(Composite parent, int nColumns) {
-		Composite componentHTMLControls = parent; //= new Composite(parent, SWT.NONE); 
-//		componentHTMLControls.setLayoutData(new GridData(GridData.GRAB_HORIZONTAL | GridData.HORIZONTAL_ALIGN_FILL));
-//		componentHTMLControls.setLayout(newGridLayout(nColumns - 1, 0, 1));
-		
-//		ButtonSelectionAdaptor listener = new ButtonSelectionAdaptor();
-//		fComponentHTMLBodyCheckbox = new Button(componentHTMLControls, SWT.CHECK);
-//		fComponentHTMLBodyCheckbox.setText("HTML doctype:"/*org.objectstyle.wolips.wizards.Messages.getString("WOComponentCreationPage.creationOptions.bodyTag.button")*/);
-//		fComponentHTMLBodyCheckbox.setSelection(this.getDialogSettings().getBoolean(BODY_CHECKBOX_KEY));
-//		fComponentHTMLBodyCheckbox.setAlignment(SWT.CENTER);
-//		//fComponentHTMLBodyCheckbox.addListener();
-//		fComponentHTMLBodyCheckbox.addSelectionListener(listener);
 
-		Label htmlLabel = new Label(componentHTMLControls, SWT.LEFT);
-		htmlLabel.setText("HTML template:"/*org.objectstyle.wolips.wizards.Messages.getString("WOComponentCreationPage.creationOptions.bodyTag.label")*/);
-		htmlLabel.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-		
-		Composite controlsComposite = new Composite(componentHTMLControls, SWT.NONE);
-		GridLayout layout = new GridLayout(2, false);
-		layout.marginWidth = 0;
-		controlsComposite.setLayout(layout);
-				
-		GridData data = new GridData(GridData.FILL_HORIZONTAL | GridData.GRAB_HORIZONTAL);
-		controlsComposite.setLayoutData(data);
 
-		fComponentHTMLCombo = new Combo(controlsComposite, SWT.DROP_DOWN);
-		fComponentHTMLCombo.setLayoutData(new GridData(GridData.FILL_HORIZONTAL | GridData.GRAB_HORIZONTAL));
-		fComponentHTMLCombo.addModifyListener(new ModifyListener() {
-
-			@SuppressWarnings("synthetic-access")
-			public void modifyText(ModifyEvent modifyevent) {
-				setComponentHTMLKey(fComponentHTMLCombo.getText());
-			}
-			
-		});
-		populateHTMLCombo(fComponentHTMLCombo);
-		LayoutUtil.setHorizontalSpan(fComponentHTMLCombo, 1);
-		LayoutUtil.setWidthHint(fComponentHTMLCombo, getMaxFieldWidth());
-		
-				
-		Link link = new Link(controlsComposite, 0);
-		link.setText(" <a>configure templates</a>");
-		link.setFont(scaledFont(link.getFont(), 10));
-		
-		LayoutUtil.setHorizontalSpan(controlsComposite, 2);
-		
-		new Label(componentHTMLControls, SWT.NONE);
-		
-		
-		//LayoutUtil.setHorizontalSpan(componentHTMLControls, nColumns);
-		//refreshButtonSettings(fComponentHTMLBodyCheckbox);
-	}
-	
 	private void createComponentWODControls(Composite parent, int nColumns) {
 		//new Label(parent, SWT.NONE);
 		fComponentWODCheckbox = new Button(parent, SWT.CHECK);
@@ -924,27 +958,27 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 		fComponentWODCheckbox.setSelection(getDialogSettings().getBoolean(WOD_CHECKBOX_KEY));
 		fComponentWODCheckbox.addSelectionListener(new ButtonSelectionAdaptor());
 	}
-	
+
 	private void createComponentWOOControls(Composite parent, int nColumns) {
 		Composite componentWOOComposite = parent;
-		
-//		fComponentWOOCheckbox = new Button(componentWOOComposite, SWT.CHECK);
-//		fComponentWOOCheckbox.setText("WOO file:"/*org.objectstyle.wolips.wizards.Messages.getString("WOComponentCreationPage.creationOptions.apiFile.button")*/);
-//		fComponentWOOCheckbox.setSelection(true /*getDialogSettings().getBoolean(WOO_CHECKBOX_KEY)*/);
-//		fComponentWOOCheckbox.addSelectionListener(new ButtonSelectionAdaptor());
-//		fComponentWOOCheckbox.setEnabled(false);
-		
+
+		//		fComponentWOOCheckbox = new Button(componentWOOComposite, SWT.CHECK);
+		//		fComponentWOOCheckbox.setText("WOO file:"/*org.objectstyle.wolips.wizards.Messages.getString("WOComponentCreationPage.creationOptions.apiFile.button")*/);
+		//		fComponentWOOCheckbox.setSelection(true /*getDialogSettings().getBoolean(WOO_CHECKBOX_KEY)*/);
+		//		fComponentWOOCheckbox.addSelectionListener(new ButtonSelectionAdaptor());
+		//		fComponentWOOCheckbox.setEnabled(false);
+
 		Label label = new Label(componentWOOComposite, SWT.LEFT);
 		label.setText("Charset encoding:");
-		
+
 		Composite controlsComposite = new Composite(componentWOOComposite, SWT.LEFT);
 		GridLayout layout = new GridLayout(3, false);
 		layout.marginWidth = 0;
 		controlsComposite.setLayout(layout);
-				
+
 		GridData data = new GridData(GridData.FILL_HORIZONTAL | GridData.GRAB_HORIZONTAL);
 		controlsComposite.setLayoutData(data);
-		
+
 		fComponentWOOEncodingCombo = new Combo(controlsComposite, SWT.LEFT);
 		fComponentWOOEncodingCombo.setLayoutData(new GridData(GridData.FILL_HORIZONTAL | GridData.GRAB_HORIZONTAL));
 		fComponentWOOEncodingCombo.addModifyListener(new ModifyListener() {
@@ -952,22 +986,22 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 			public void modifyText(ModifyEvent modifyevent) {
 				setComponentWOOEncodingKey(fComponentWOOEncodingCombo.getText());
 			}
-			
+
 		});
 		populateComponentWOOEncodingCombo(fComponentWOOEncodingCombo);
 		//refreshButtonSettings(fComponentWOOCheckbox);
-		
+
 		LayoutUtil.setHorizontalSpan(fComponentWOOEncodingCombo, 2);
 		LayoutUtil.setHorizontalGrabbing(fComponentWOOEncodingCombo);
 		//LayoutUtil.setWidthHint(fComponentWOOEncodingCombo, getMaxFieldWidth());
-		
+
 		label = new Label(controlsComposite, SWT.LEFT);
 		label.setText("UTF-8 recommended");
 		label.setFont(scaledFont(label.getFont(), 10));
 		label.setLayoutData(new GridData());
-		
+
 		LayoutUtil.setHorizontalSpan(controlsComposite, 2);
-		
+
 		//label = new Label(componentWOOComposite, SWT.LEFT);
 	}
 
@@ -984,7 +1018,7 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 
 		createTypeNameControls(composite, nColumns);
 		createSeparator(composite, nColumns);
-		
+
 		createComponentHeader(composite, nColumns);
 		createComponentContainerControls(composite, nColumns);
 		createComponentHTMLControls(composite, nColumns);
@@ -1006,7 +1040,7 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 		}
 		//createMethodStubSelectionControls(composite, nColumns);
 		//createCommentControls(composite, nColumns);
-		
+
 		setControl(composite);
 		Dialog.applyDialogFont(composite);
 		PlatformUI.getWorkbench().getHelpSystem().setHelp(composite, "org.eclipse.jdt.ui.new_class_wizard_page_context");
@@ -1024,21 +1058,21 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 			controllerComposite.setLayout(newGridLayout(nColumns, 0, 1));
 			controllerComposite.setLayoutData(new GridData(GridData.GRAB_HORIZONTAL | GridData.HORIZONTAL_ALIGN_FILL));
 			controllerComposite.setFont(labellingFont);
-			
+
 			// add image label for component view
 			label = new Label(controllerComposite, SWT.NONE);
 			label.setFont(labellingFont);
 			label.setImage(scaledImage(label.getDisplay(), JavaPluginImages.DESC_TOOL_NEWCLASS, LABEL_IMG_SIZE + 2, LABEL_IMG_SIZE + 2));
-			
+
 			label = new Label(controllerComposite, SWT.NONE);
 			label.setFont(labellingFont);
 			label.setText("Component Controller");
-			
+
 			// fill 
 			LayoutUtil.setHorizontalSpan(controllerComposite, nColumns);
 		}
 	}
-	
+
 	private void createMethodStubSelectionControls(Composite composite, int nColumns) {
 		org.eclipse.swt.widgets.Control labelControl = fMethodStubsButtons.getLabelControl(composite);
 		LayoutUtil.setHorizontalSpan(labelControl, nColumns);
@@ -1052,14 +1086,6 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 	protected void createPackageControls(Composite composite, int nColumns) {
 		super.createPackageControls(composite, nColumns);
 	}
-	
-	/**
-	 * @see org.eclipse.jdt.ui.wizards.NewTypeWizardPage#createSuperClassControls(org.eclipse.swt.widgets.Composite, int)
-	 */
-	@Override
-	protected void createSuperClassControls(Composite composite, int columns) {
-		super.createSuperClassControls(composite, columns);
-	}
 
 	/**
 	 * @see org.eclipse.jdt.ui.wizards.NewTypeWizardPage#createType(org.eclipse.core.runtime.IProgressMonitor)
@@ -1069,15 +1095,15 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 		IProgressMonitor progressMonitor = monitor;
 		if (progressMonitor == null) 
 			progressMonitor = new NullProgressMonitor();
-		
+
 		IPath componentContainerPath = getComponentContainer().getProjectRelativePath();
 		IProject project = getComponentContainer().getProject();
-		
+
 		progressMonitor.beginTask("Creating component....", 8 + componentContainerPath.segmentCount() + 4);
-		
+
 		// create controller
 		super.createType(new SubProgressMonitor(progressMonitor, 8));
-		
+
 		// create component.wo folder
 		String componentName = getTypeName();
 		IPath componentBundlePath = componentContainerPath.addTrailingSeparator().append(componentName + ".wo");
@@ -1087,7 +1113,7 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 		} else {
 			progressMonitor.worked(componentBundlePath.segmentCount());
 		}
-		
+
 		// gather contents to populate wod, woo, html files
 		String lineDelimiter = StubUtility.getLineDelimiterUsed(getJavaProject());
 		Map<String, String> filesContents = new HashMap<String, String>();
@@ -1096,7 +1122,7 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 		progressMonitor.worked(1);
 		filesContents.put("html", getSelectedHTML().getHTML(lineDelimiter));
 		progressMonitor.worked(1);
-		
+
 		// create wod, woo, html files
 		for (Entry<String, String> entry : filesContents.entrySet()) {
 			FileCreationWorker fileCreator = new FileCreationWorker(componentBundleFolder, componentName, entry.getKey(), entry.getValue());
@@ -1110,7 +1136,7 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 		}
 		progressMonitor.done();
 	}
-	
+
 	protected void createTypeMembers(IType type, NewTypeWizardPage.ImportsManager imports, IProgressMonitor monitor) throws CoreException {
 		boolean doMain = isCreateMain();
 		boolean doConstr = isCreateConstructors();
@@ -1135,25 +1161,25 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 			buf.append("}");
 			mainMethod = type.createMethod(buf.toString(), null, false, null);
 		}
-		
-// TODO (lachlan) add serialVersionUID automatically
-//		boolean doSerialVersionUID = true;
-//		if (doSerialVersionUID) {
-//			boolean defaultSerialUID = false;
-//			ICleanUp serialVersionCleanUp = createCleanUp(defaultSerialUID);
-//			serialVersionCleanUp.createFix(cleanupcontext);
-//
-//			OR the following after class creation somewhere
-//
-//			ObjectStreamClass osclass = ObjectStreamClass.lookup(null);
-//			osclass.getSerialVersionUID();
-//			etc
-//		}
-		
+
+		// TODO (lachlan) add serialVersionUID automatically
+		//		boolean doSerialVersionUID = true;
+		//		if (doSerialVersionUID) {
+		//			boolean defaultSerialUID = false;
+		//			ICleanUp serialVersionCleanUp = createCleanUp(defaultSerialUID);
+		//			serialVersionCleanUp.createFix(cleanupcontext);
+		//
+		//			OR the following after class creation somewhere
+		//
+		//			ObjectStreamClass osclass = ObjectStreamClass.lookup(null);
+		//			osclass.getSerialVersionUID();
+		//			etc
+		//		}
+
 		if (monitor != null)
 			monitor.done();
 	}
-	
+
 	private void doStatusUpdate() {
 		IStatus statuses[] = { 
 				fComponentContainerStatus,
@@ -1163,17 +1189,17 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 				fComponentAPIStatus,
 				fContainerStatus,
 				isEnclosingTypeSelected() ? fEnclosingTypeStatus : fPackageStatus,
-				fTypeNameStatus,
-				fModifierStatus,
-				fSuperClassStatus,
-				fSuperInterfacesStatus
+						fTypeNameStatus,
+						fModifierStatus,
+						fSuperClassStatus,
+						fSuperInterfacesStatus
 		};
-//		for (IStatus status : statuses) {
-//			System.out.println("status:" + status.getCode() + " " + status.getMessage() + " " + status.getSeverity());
-//		}	
+		//		for (IStatus status : statuses) {
+		//			System.out.println("status:" + status.getCode() + " " + status.getMessage() + " " + status.getSeverity());
+		//		}	
 		updateStatus(statuses);
 	}
-	
+
 	private IFolder getComponentContainer() {
 		return this.vComponentContainerRoot;
 	}
@@ -1183,35 +1209,18 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 	}
 
 	public String getComponentContainerRootText() {
-        return fComponentContainerDialogField.getText();
-    }
-	
-	private String getComponentHTMLKey() {
-		return this.vComponentHTMLKey;
+		return fComponentContainerDialogField.getText();
 	}
-	
+
 	private String getComponentWOOEncodingKey() {
 		return this.vComponentWOOEncodingKey;
 	}
 
-	private IType getDefaultWOComponentType() {
-		if (this.wocomponentType == null && getJavaProject() != null) {
-			try {
-				this.wocomponentType = getJavaProject().findType(DEFAULT_SUPERCLASS_NAME);
-			} catch (JavaModelException e) {
-				System.err.println(getClass().getName() + ".getWOComponentType()");
-				e.printStackTrace(System.err);
-			}
-		}
-		return this.wocomponentType;
-	}
-	
-	private HTML getSelectedHTML() {
-		return HTML.getValueForKey(getComponentHTMLKey());
-	}
-	
+
+
 	protected void handleFieldChanged(String fieldName) {
 		//System.out.println("Handling fieldName changed:" + fieldName);
+
 		super.handleFieldChanged(fieldName);
 		if (COMPONENT_CONTAINER.equals(fieldName)) {
 			this.fComponentAPIStatus = this.componentAPIChanged();
@@ -1222,18 +1231,23 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 		}
 		if (NewContainerWizardPage.CONTAINER.equals(fieldName)) {
 			this.fPackageStatus = packageChanged();
-            this.fEnclosingTypeStatus = enclosingTypeChanged();
-            this.fTypeNameStatus = typeNameChanged();
-            this.fSuperClassStatus = superClassChanged();
-            this.fSuperInterfacesStatus = superInterfacesChanged();
-        }
+			this.fEnclosingTypeStatus = enclosingTypeChanged();
+			this.fTypeNameStatus = typeNameChanged();
+			this.fSuperClassStatus = superClassChanged();
+			this.fSuperInterfacesStatus = superInterfacesChanged();
+		}
 		if (NewTypeWizardPage.MODIFIERS.equals(fieldName)) {
 			int modifiers = getModifiers();
 			setComponentViewEnabled(Flags.isPublic(modifiers) && !Flags.isAbstract(modifiers));
 		}
 		doStatusUpdate();
 	}
-	
+
+
+
+
+
+
 	protected void handleSelectionEvent(SelectionEvent event) {
 		Widget w = event.widget;
 		if (w instanceof Button) {
@@ -1261,12 +1275,12 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 		}
 		setMethodStubSelection(createMain, createConstructors, createUnimplemented, true);
 	}
-	
+
 	protected void initComponentContainerPage(IStructuredSelection selection, IJavaElement jelem) {
-		
+
 		IProject project = null;
 		IResource resource = null;
-		
+
 		if (jelem != null) {
 			project = jelem.getJavaProject().getProject();
 			if (jelem.getElementType() != IJavaElement.JAVA_PROJECT) {
@@ -1293,7 +1307,7 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 				}
 			}
 		}
-		
+
 		IFolder componentFolder = null;
 		if (resource instanceof IFolder) {
 			componentFolder = (IFolder) resource;
@@ -1302,7 +1316,7 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 				componentFolder = null;
 			}
 		}
-		
+
 		if (componentFolder == null) {
 			if (getComponentContainer() != null) {
 				componentFolder = getComponentContainer();
@@ -1322,48 +1336,48 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 
 	protected void initContainerPage(IJavaElement elem) {
 		IPackageFragmentRoot initRoot = null;
-        if (elem != null) {
-        	try {
-        		initRoot = JavaModelUtil.getPackageFragmentRoot(elem);
-                
-        		IPath initRootPath = initRoot == null ? null : initRoot.getPath();
+		if (elem != null) {
+			try {
+				initRoot = JavaModelUtil.getPackageFragmentRoot(elem);
+
+				IPath initRootPath = initRoot == null ? null : initRoot.getPath();
 				if (isReservedResourcesPath(initRootPath)) {
 					initRoot = null;
 					initRootPath = null;
 				}
-	            
+
 				if (initRoot == null) {
-	        		IJavaProject jproject = elem.getJavaProject();
-	        		if (jproject != null && jproject.exists()) {
-	                    IPackageFragmentRoot roots[] = jproject.getPackageFragmentRoots();
-	                    CONTAINERS: for (String root : PREFERRED_SOURCE_CONTAINER_PATHS) {
-	                    	for (int i = 0; i < roots.length; i++) {
-	    				    	if (roots[i].getKind() != IPackageFragmentRoot.K_SOURCE) {
-	    				    		IPath rootPath = roots[i].getPath().makeRelative().removeFirstSegments(1);
-		    				    	if (!root.equals(rootPath.toString())) {
-		    				    		continue;
-		    				    	}
-	    				        }
-	    				        initRoot = roots[i];
-	    				        break CONTAINERS;
-	    				    }
-	    				}
-	                }
-	        	}
-        	}
-            catch (JavaModelException e) {
-                JavaPlugin.log(e);
-            }
-        }
-        setPackageFragmentRoot(initRoot, true);
-    }
-	
+					IJavaProject jproject = elem.getJavaProject();
+					if (jproject != null && jproject.exists()) {
+						IPackageFragmentRoot roots[] = jproject.getPackageFragmentRoots();
+						CONTAINERS: for (String root : PREFERRED_SOURCE_CONTAINER_PATHS) {
+							for (int i = 0; i < roots.length; i++) {
+								if (roots[i].getKind() != IPackageFragmentRoot.K_SOURCE) {
+									IPath rootPath = roots[i].getPath().makeRelative().removeFirstSegments(1);
+									if (!root.equals(rootPath.toString())) {
+										continue;
+									}
+								}
+								initRoot = roots[i];
+								break CONTAINERS;
+							}
+						}
+					}
+				}
+			}
+			catch (JavaModelException e) {
+				JavaPlugin.log(e);
+			}
+		}
+		setPackageFragmentRoot(initRoot, true);
+	}
+
 	protected void initSuperInterfaces(IJavaElement elem) {
 		if (isSuperInterfacesEnabled() && (getSuperInterfaces() == null || getSuperInterfaces().size() == 0)) {
 			List<String> interfaces = new ArrayList<String>();
 			if (elem instanceof ICompilationUnit) {
 				ICompilationUnit unit = (ICompilationUnit) elem;
-				
+
 				try {
 					if (elem.getElementType() == IJavaElement.COMPILATION_UNIT) {
 						IType primaryType = unit.findPrimaryType();
@@ -1374,7 +1388,7 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 							}
 						}
 					}
-					
+
 				} catch (JavaModelException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -1385,13 +1399,13 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 			}
 		}
 	}
-	
+
 	@Override
 	protected void initTypePage(IJavaElement elem) {
 		super.initTypePage(elem);
-		
+
 		if (getJavaProject() != null) {
-			
+
 			// auto-populate superclass from selection (if WOComponent assignable)
 			if (elem instanceof ICompilationUnit) {
 				ICompilationUnit unit = (ICompilationUnit) elem;
@@ -1399,7 +1413,7 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 					IType primaryType = unit.findPrimaryType();
 					if (primaryType != null) {
 						ITypeHierarchy supertypeHierarchy = primaryType.newSupertypeHierarchy(new NullProgressMonitor());
-						if (supertypeHierarchy.contains(getDefaultWOComponentType())) {
+						if (supertypeHierarchy.contains(getDefaultTBComponentType())) {
 							setSuperClass(primaryType.getFullyQualifiedName(), true);
 						}
 					}
@@ -1408,10 +1422,10 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 					e.printStackTrace();
 				}
 			}
-			
+
 			// auto-populate implementing interface (if selected)
 			initSuperInterfaces(elem);
-			
+
 			// if the package fragment isn't set default to Main.class's package 
 			if (getPackageFragment() == null || getPackageFragment().isDefaultPackage()) {
 				IPackageFragmentRoot froot = getPackageFragmentRoot();
@@ -1433,7 +1447,7 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 			try {
 				IType supertype = getJavaProject().findType(getSuperClass());
 				ITypeHierarchy supertypeHierarchy = supertype.newSupertypeHierarchy(new NullProgressMonitor());
-				if (supertypeHierarchy.contains(getDefaultWOComponentType())) {
+				if (supertypeHierarchy.contains(getDefaultTBComponentType())) {
 					requiresSuperclass = false;
 				}
 			} catch (JavaModelException e) {
@@ -1454,7 +1468,7 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 	public boolean isCreateInherited() {
 		return fMethodStubsButtons.isSelected(2);
 	}
-	
+
 	public boolean isCreateMain() {
 		return false;
 	}
@@ -1464,7 +1478,7 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 		if (el instanceof IPackageFragmentRoot) {
 			IPackageFragmentRoot froot = (IPackageFragmentRoot) el;
 			IPath frootPath = froot.getPath();
-			
+
 			if (!isReservedResourcesPath(frootPath)) {
 				result = true;
 				try {
@@ -1483,7 +1497,7 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 		}
 		return result;
 	}
-	
+
 	protected boolean isSuperInterfacesEnabled() {
 		return false;
 	}
@@ -1499,17 +1513,6 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 		selectCharsetEncodingPreference(componentAPIEncodingCombo);
 	}
 
-	/**
-	 * Populate a SWT Combo with HTML doctypes
-	 * 
-	 * @param c
-	 */
-	private void populateHTMLCombo(Combo c) {
-		for (HTML entry : HTML.values()) {
-			c.add(entry.getDisplayString());
-		}
-		selectHTMLDocTypePreference(c);
-	}
 
 	private void prepareFolder(IFolder folder, IProgressMonitor progressMonitor) throws CoreException {
 		if (!folder.exists()) {
@@ -1525,10 +1528,7 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 
 	protected void refreshButtonSettings(Button button) {
 		if (button != null) {
-			if (button.equals(this.fComponentHTMLBodyCheckbox)) {
-				this.fComponentHTMLCombo.setEnabled(this.fComponentHTMLBodyCheckbox.getSelection());
-			}
-			else if (button.equals(this.fComponentWOOCheckbox)) {
+			if (button.equals(this.fComponentWOOCheckbox)) {
 				this.fComponentWOOEncodingCombo.setEnabled(this.fComponentWOOCheckbox.getSelection());
 			}
 		}
@@ -1552,28 +1552,6 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 		combo.setText("UTF-8");
 	}
 
-	/**
-	 * Pick the previous encoding preference else default to
-	 * HTML.TRANSITIONAL_XHTML10
-	 * 
-	 * @param c
-	 */
-	private void selectHTMLDocTypePreference(Combo c) {
-		String previousDocType = this.getDialogSettings().get(HTML_DOCTYPE_KEY);
-
-		if (previousDocType != null && previousDocType.length() > 0) {
-			int i = 0;
-			for (HTML entry : HTML.values()) {
-				if (previousDocType.equals(entry.getDisplayString())) {
-					c.select(i);
-					return;
-				}
-				i++;
-			}
-		}
-		// default
-		c.select(0);
-	}
 
 	/**
 	 * @param folder
@@ -1587,17 +1565,11 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 			path.append(folder.getProject().getProjectRelativePath().addTrailingSeparator());
 			path.append(folder.getProjectRelativePath());
 		}
-		
+
 		fComponentContainerDialogField.setText(path.toString());
 		fComponentContainerDialogField.setEnabled(canBeModified);
 	}
 
-	private void setComponentHTMLKey(String key) {
-		this.vComponentHTMLKey = key;
-		HTML html = HTML.getValueForKey(getComponentHTMLKey());
-		this.vComponentHTMLBodyEnabled = !HTML.BLANK_CONTENT.equals(html);
-	}
-	
 	protected void setComponentViewEnabled(boolean enabled) {
 		if (enabled) {
 			this.componentViewTitle.setBackground(componentViewTitle.getDisplay().getSystemColor(SWT.COLOR_TITLE_BACKGROUND_GRADIENT));
@@ -1608,12 +1580,8 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 		}
 		this.fComponentAPICheckbox.setEnabled(enabled);
 		this.fComponentContainerDialogField.setEnabled(enabled);
-		this.fComponentHTMLBodyCheckbox.setEnabled(enabled);
-		if (enabled) {
-			refreshButtonSettings(this.fComponentHTMLBodyCheckbox);
-		} else {
-			this.fComponentHTMLCombo.setEnabled(enabled);
-		}
+		this.fComponentHTMLCombo.setEnabled(enabled);
+
 		this.fComponentWODCheckbox.setEnabled(enabled);
 		this.fComponentWOOCheckbox.setEnabled(enabled);
 		if (enabled) {
@@ -1651,43 +1619,11 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 		}
 	}
 
-	@Override
-	protected IStatus superClassChanged() {
-		StatusInfo superclassStatus = new StatusInfo();
-		if (!DEFAULT_SUPERCLASS_NAME.equals(getSuperClass())) {
-			if (getSuperClass() == null || getSuperClass().matches("\\s*")) {
-				superclassStatus.setError("The super type must be assignable to " + DEFAULT_SUPERCLASS_NAME);
-			}
-			else if (getDefaultWOComponentType() == null) {
-				superclassStatus.setError(DEFAULT_SUPERCLASS_NAME + " is not on the classpath");
-			}
-			else {
-				try {
-					IType type = getJavaProject().findType(getSuperClass());
-					ITypeHierarchy typeHierarchy = type.newSupertypeHierarchy(new NullProgressMonitor());
-					if (!JavaModelUtil.isSuperType(typeHierarchy, getDefaultWOComponentType(), type)) {
-						superclassStatus.setError("The super type must be assignable to " + DEFAULT_SUPERCLASS_NAME);
-					}
-				} catch (JavaModelException e) {
-					System.err.println(getClass().getName() + ".superClassChanged() Failed to determine superclass hierarchy.");
-					e.printStackTrace(System.err);
-					superclassStatus.setWarning("Unable to determine superclass hierarchy");
-				}
-			}
-		}
-		if (!superclassStatus.isError()) {
-			IStatus status = super.superClassChanged();
-			if (!superclassStatus.isWarning() && status.getSeverity() == (IStatus.ERROR | IStatus.WARNING)) {
-				return status;
-			}
-		}
-		return superclassStatus;
-	}
 
 	@Override
 	protected IStatus typeNameChanged() {
 		IStatus typeNameStatus = super.typeNameChanged();
-		
+
 		if (typeNameStatus.getSeverity() != IStatus.ERROR && getTypeName() != null && !getTypeName().matches("\\s*")) {
 			if (getComponentContainer() == null) {
 				if (typeNameStatus.getSeverity() != IStatus.WARNING) {
