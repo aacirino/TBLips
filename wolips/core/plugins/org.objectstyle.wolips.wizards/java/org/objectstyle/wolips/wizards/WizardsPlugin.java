@@ -77,8 +77,7 @@ public class WizardsPlugin extends AbstractBaseUIActivator {
 	private static WizardsPlugin plugin;
 
 	private static ImageDescriptor WOCOMPONENT_WIZARD_BANNER;
-	
-	private static ImageDescriptor WOCOMPONENT_CONTROLLER_BANNER;
+
 
 	private static ImageDescriptor WOPROJECT_WIZARD_BANNER;
 
@@ -123,6 +122,40 @@ public class WizardsPlugin extends AbstractBaseUIActivator {
 			return _displayString;
 		}
 	}
+
+
+
+
+
+
+
+
+	public static ImageDescriptor tbComponentControllerBanner() {
+		if (_tbComponentControllerBanner == null) {
+			_tbComponentControllerBanner = getImageDescriptor("icons/tbwizard/add-component-controller.png");
+		}
+		return _tbComponentControllerBanner;
+	}
+	private static ImageDescriptor _tbComponentControllerBanner;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	/**
 	 * The constructor.
@@ -174,13 +207,7 @@ public class WizardsPlugin extends AbstractBaseUIActivator {
 			WOCOMPONENT_WIZARD_BANNER = getImageDescriptor("icons/wizban/webobjects_wiz.gif");
 		return WOCOMPONENT_WIZARD_BANNER;
 	}
-	
-	public static ImageDescriptor WOCOMPONENT_CONTROLLER_WIZARD_BANNER() {
-		if (WOCOMPONENT_CONTROLLER_BANNER == null) {
-			WOCOMPONENT_CONTROLLER_BANNER = getImageDescriptor("icons/wizban/add-component-controller.png");
-		}
-		return WOCOMPONENT_CONTROLLER_BANNER;
-	}
+
 
 	/**
 	 * @return Returns the image descriptor.
