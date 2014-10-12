@@ -376,7 +376,7 @@
 				tooltip="Insert WOPopUpButton Component">
 			</action>
 			<action
-				class="org.objectstyle.wolips.componenteditor.actions.InsertComponentWOTextAction"
+				class="org.objectstyle.wolips.componenteditor.actions.InsertComponentTBTextAction"
 				icon="icons/textarea.png"
 				id="org.objectstyle.wolips.componenteditor.actions.InsertComponentWOText"
 				label="Insert WOText Component"
@@ -426,7 +426,7 @@
 				tooltip="Insert TBImage Component">
 			</action>
 			<action
-				class="org.objectstyle.wolips.componenteditor.actions.InsertComponentWOTextFieldAction"
+				class="org.objectstyle.wolips.componenteditor.actions.InsertComponentTBTextFieldAction"
 				icon="icons/textfield.png"
 				id="org.objectstyle.wolips.componenteditor.actions.InsertComponentWOTextField"
 				label="Insert WOTextField Component"

@@ -1,7 +1,7 @@
 package org.objectstyle.wolips.componenteditor.actions;
 
 
-public class InsertComponentWOTextFieldAction extends InsertComponentAction {
+public class InsertComponentTBTextFieldAction extends InsertComponentAction {
 	public String getComponentInstanceNameSuffix() { return "TextField"; }
-	public String getComponentName() { return "WOTextField"; }
+	public String getComponentName() { return "TBTextField"; }
 }
