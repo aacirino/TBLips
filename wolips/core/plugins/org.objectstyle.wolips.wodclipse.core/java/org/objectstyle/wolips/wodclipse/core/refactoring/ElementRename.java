@@ -54,7 +54,7 @@ public class ElementRename {
         String value = wodElement.getBindingsMap().get("value");
         newName = newNameFromBindingValue(null, value, null);
       }
-      else if ("ERXLocalizedString".equals(typeName)) {
+      else if ("TBWLocalizedString".equals(typeName)) {
         String value = wodElement.getBindingsMap().get("value");
         newName = newNameFromBindingValue(null, value, null);
       }

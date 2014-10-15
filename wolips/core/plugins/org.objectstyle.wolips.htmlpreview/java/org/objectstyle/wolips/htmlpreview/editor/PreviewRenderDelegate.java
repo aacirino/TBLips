@@ -62,7 +62,7 @@ public class PreviewRenderDelegate implements RenderDelegate {
 
 		_tagDelegates = new HashMap<String, TagDelegate>();
 		_tagDelegates.put("TBString", new TBStringTagDelegate());
-		_tagDelegates.put("ERXLocalizedString", new TBStringTagDelegate());
+		_tagDelegates.put("TBWLocalizedString", new TBStringTagDelegate());
 		_tagDelegates.put("TBConditional", new TBConditionalTagDelegate());
 		_tagDelegates.put("WOComponentContent", new WOComponentContentTagDelegate());
 		_tagDelegates.put("WORepetition", new WORepetitionTagDelegate());

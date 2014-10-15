@@ -160,7 +160,7 @@ public class BindingReflectionUtils {
   }
 
   public static boolean isNSCollection(IType type, TypeCache cache) throws JavaModelException {
-    return BindingReflectionUtils.isType(type, new String[] { "com.webobjects.foundation.NSDictionary", "com.webobjects.foundation.NSArray", "com.webobjects.foundation.NSSet", "er.extensions.ERXLocalizer" }, cache);
+    return BindingReflectionUtils.isType(type, new String[] { "com.webobjects.foundation.NSDictionary", "com.webobjects.foundation.NSArray", "com.webobjects.foundation.NSSet", "er.extensions.TBWLocalizer" }, cache);
   }
 
   public static boolean isType(IType type, String[] possibleTypes, TypeCache cache) throws JavaModelException {

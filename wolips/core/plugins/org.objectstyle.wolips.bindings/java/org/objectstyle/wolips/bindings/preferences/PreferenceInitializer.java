@@ -58,7 +58,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
     IPreferenceStore prefs = Activator.getDefault().getPreferenceStore();
 
     List<TagShortcut> tagShortcuts = new ArrayList<TagShortcut>();
-    tagShortcuts.add(new TagShortcut("localized", "ERXLocalizedString")); // not in 5.4
+    tagShortcuts.add(new TagShortcut("localized", "TBWLocalizedString")); // not in 5.4
     tagShortcuts.add(new TagShortcut("not", "TBConditional"));
     tagShortcuts.add(new TagShortcut("else", "TBElse"));
     tagShortcuts.add(new TagShortcut("if", "TBConditional"));
