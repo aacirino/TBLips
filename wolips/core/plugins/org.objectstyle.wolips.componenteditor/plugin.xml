@@ -378,12 +378,12 @@
 			<action
 				class="org.objectstyle.wolips.componenteditor.actions.InsertComponentTBTextAction"
 				icon="icons/textarea.png"
-				id="org.objectstyle.wolips.componenteditor.actions.InsertComponentWOText"
-				label="Insert WOText Component"
+				id="org.objectstyle.wolips.componenteditor.actions.InsertComponentTBText"
+				label="Insert TBText Component"
 				menubarPath="edit/org.objectstyle.wolips.componenteditor.insertMenuContribution/group1"
 				style="push"
 				toolbarPath="/Normal/additions"
-				tooltip="Insert WOText Component">
+				tooltip="Insert TBText Component">
 			</action>
 			<action
 				class="org.objectstyle.wolips.componenteditor.actions.InsertComponentWOCheckBoxAction"
@@ -428,12 +428,12 @@
 			<action
 				class="org.objectstyle.wolips.componenteditor.actions.InsertComponentTBTextFieldAction"
 				icon="icons/textfield.png"
-				id="org.objectstyle.wolips.componenteditor.actions.InsertComponentWOTextField"
-				label="Insert WOTextField Component"
+				id="org.objectstyle.wolips.componenteditor.actions.InsertComponentTBTextField"
+				label="Insert TBTextField Component"
 				menubarPath="edit/org.objectstyle.wolips.componenteditor.insertMenuContribution/group1"
 				style="push"
 				toolbarPath="/Normal/additions"
-				tooltip="Insert WOTextField Component">
+				tooltip="Insert TBTextField Component">
 			</action>
 			<action
 				class="org.objectstyle.wolips.componenteditor.actions.InsertComponentTBHyperlinkAction"

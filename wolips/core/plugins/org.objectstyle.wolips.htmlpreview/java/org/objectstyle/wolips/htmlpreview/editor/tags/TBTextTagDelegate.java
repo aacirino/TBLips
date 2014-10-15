@@ -11,7 +11,7 @@ import org.objectstyle.wolips.bindings.wod.IWodElement;
 import org.objectstyle.wolips.htmlpreview.editor.TagDelegate;
 import org.objectstyle.wolips.wodclipse.core.completion.WodParserCache;
 
-public class WOTextFieldTagDelegate extends TagDelegate {
+public class TBTextTagDelegate extends TagDelegate {
 
 	@Override
 	public void renderNode(IWodElement wodElement, FuzzyXMLElement xmlElement, RenderContext renderContext, StringBuffer htmlBuffer, StringBuffer cssBuffer, Stack<WodParserCache> caches, Stack<FuzzyXMLNode> nodes) {
@@ -22,7 +22,7 @@ public class WOTextFieldTagDelegate extends TagDelegate {
 		} else {
 			value = "";
 		}
-		htmlBuffer.append("<input type = \"text\" value = \"" + value + "\"/>");
+		htmlBuffer.append("<textarea>" + value + "</textarea>");
 	}
 
 }

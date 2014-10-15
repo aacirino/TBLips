@@ -5,7 +5,7 @@ LoginForm : TBForm {
   name="LoginForm";
 }
 
-UsernameField : WOTextField {
+UsernameField : TBTextField {
   value = username;
   name = "username";
 }

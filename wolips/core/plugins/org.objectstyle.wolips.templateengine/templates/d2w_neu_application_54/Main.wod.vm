@@ -31,7 +31,7 @@ PasswordField: WOPasswordField {
 	width = "16";
 }
 
-UsernameField: WOTextField {
+UsernameField: TBTextField {
 	value = username;
 	width = "16";
 }
