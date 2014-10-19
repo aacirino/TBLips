@@ -128,7 +128,19 @@ public class WizardsPlugin extends AbstractBaseUIActivator {
 
 
 
-
+	/**
+	 * Returns an image descriptor for the image file at the given plug-in
+	 * relative path.
+	 *
+	 * @param path
+	 * 		the path
+	 * 
+	 * @return 
+	 * 		the image descriptor
+	 */
+	public static ImageDescriptor getImageDescriptor(String path) {
+		return AbstractUIPlugin.imageDescriptorFromPlugin("org.objectstyle.wolips.wizards", path);
+	}
 
 	public static ImageDescriptor tbComponentControllerBanner() {
 		if (_tbComponentControllerBanner == null) {
@@ -138,8 +150,13 @@ public class WizardsPlugin extends AbstractBaseUIActivator {
 	}
 	private static ImageDescriptor _tbComponentControllerBanner;
 
-
-
+	public static ImageDescriptor tbComponentImageDescriptor() {
+		if (_tbComponentImageDescriptor == null) {
+			_tbComponentImageDescriptor = getImageDescriptor("icons/tbwizard/component.png");
+		}
+		return _tbComponentImageDescriptor;		
+	}
+	private static ImageDescriptor _tbComponentImageDescriptor;
 
 
 
@@ -187,17 +204,6 @@ public class WizardsPlugin extends AbstractBaseUIActivator {
 		return plugin;
 	}
 
-	/**
-	 * Returns an image descriptor for the image file at the given plug-in
-	 * relative path.
-	 *
-	 * @param path
-	 *            the path
-	 * @return the image descriptor
-	 */
-	public static ImageDescriptor getImageDescriptor(String path) {
-		return AbstractUIPlugin.imageDescriptorFromPlugin("org.objectstyle.wolips.wizards", path);
-	}
 
 	/**
 	 * @return Returns the image descriptor.

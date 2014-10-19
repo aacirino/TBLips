@@ -27,11 +27,11 @@
          </selection>
       </wizard>
       <wizard
-            name="WOComponent Controller/View"
-            icon="icons/action/new-component-controller.png"
+            name="TBComponent Controller/View"
+            icon="icons/tbwizard/new-component-controller.png"
             category="org.objectstyle.wolips.wizards"
             id="org.objectstyle.wolips.wizards.new.wo.5.2.wocomponentview">
-            <class class="org.objectstyle.wolips.wizards.NewComponentCreationWizard">
+            <class class="org.objectstyle.wolips.wizards.component.NewComponentCreationWizard">
               <parameter name="javatype" value="true"/>
             </class>
          <description>

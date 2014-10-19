@@ -1,4 +1,4 @@
-package org.objectstyle.wolips.wizards;
+package org.objectstyle.wolips.wizards.component;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -91,9 +91,9 @@ import org.eclipse.ui.internal.ide.IDEWorkbenchMessages;
 import org.eclipse.ui.internal.ide.IDEWorkbenchPlugin;
 import org.eclipse.ui.model.WorkbenchContentProvider;
 import org.eclipse.ui.model.WorkbenchLabelProvider;
-import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.ui.views.navigator.ResourceComparator;
 import org.objectstyle.wolips.baseforplugins.util.CharSetUtils;
+import org.objectstyle.wolips.wizards.WizardsPlugin;
 import org.objectstyle.wolips.wizards.enums.HTML;
 
 /**
@@ -104,6 +104,44 @@ import org.objectstyle.wolips.wizards.enums.HTML;
  * @author ldeck
  */
 public class NewComponentCreationPage extends NewTypeWizardPage {
+
+	//********************************************************************
+	//	Component Header
+	//********************************************************************
+
+	private void createComponentHeader(Composite parent, int nColumns) {
+		Font labellingFont = scaledFont(parent.getFont(), 9);
+
+		// component view section label
+		Group componentViewTitle = new Group(parent, SWT.NONE); 
+		componentViewTitle.setBackground(componentViewTitle.getDisplay().getSystemColor(SWT.COLOR_TITLE_BACKGROUND_GRADIENT));
+		componentViewTitle.setLayout(newGridLayout(nColumns, 0, 1));
+		componentViewTitle.setLayoutData(new GridData(GridData.GRAB_HORIZONTAL | GridData.HORIZONTAL_ALIGN_FILL));
+		componentViewTitle.setFont(labellingFont);
+
+		// add image label for component view
+		Label componentViewTitleIcon = new Label(componentViewTitle, SWT.NONE);
+		componentViewTitleIcon.setFont(labellingFont);
+		componentViewTitleIcon.setImage(scaledImage(componentViewTitleIcon.getDisplay(), WizardsPlugin.tbComponentImageDescriptor(), LABEL_IMG_SIZE + 2, LABEL_IMG_SIZE + 2));
+
+		Label componentViewTitleLabel = new Label(componentViewTitle, SWT.NONE);
+		componentViewTitleLabel.setFont(labellingFont);
+		componentViewTitleLabel.setText("Component View");
+
+		// fill 
+		LayoutUtil.setHorizontalSpan(componentViewTitle, nColumns);
+	}
+
+	//********************************************************************
+	//	Component folder View
+	//********************************************************************
+
+	private StringButtonDialogField fComponentContainerDialogField;
+
+	private void createComponentContainerControls(Composite parent, int nColumns) {
+		fComponentContainerDialogField.doFillIntoGrid(parent, nColumns);
+		LayoutUtil.setWidthHint(fComponentContainerDialogField.getTextControl(null), getMaxFieldWidth());
+	}
 
 	//********************************************************************
 	//	HTML View
@@ -210,6 +248,145 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 	private HTML getSelectedHTML() {
 		return HTML.getValueForKey(getComponentHTMLKey());
 	}
+
+	//********************************************************************
+	//	WOO : Encoding Charset
+	//********************************************************************
+
+	/**
+	 * @param componentAPIEncodingCombo
+	 */
+	private void populateComponentWOOEncodingCombo(Combo componentAPIEncodingCombo) {
+		for (String charset : CharSetUtils.defaultCharsetEncodingNames()) {
+			componentAPIEncodingCombo.add(charset);
+		}
+		selectCharsetEncodingPreference(componentAPIEncodingCombo);
+	}
+
+	/**
+	 * @param componentAPIEncodingCombo
+	 */
+	private void selectCharsetEncodingPreference(Combo combo) {
+		String previousEncoding = this.getDialogSettings().get(CHARSET_ENCODING_KEY);
+		if (previousEncoding != null && previousEncoding.length() > 0) {
+			int i = 0;
+			for (String encoding : Charset.availableCharsets().keySet()) {
+				if (previousEncoding.equals(encoding)) {
+					combo.select(i);
+					return;
+				}
+				i++;
+			}
+		}
+		combo.setText("UTF-8");
+	}
+
+	private Combo fComponentWOOEncodingCombo;
+
+	private void createComponentWOOControls(Composite parent, @SuppressWarnings("unused") int nColumns) {
+		Composite componentWOOComposite = parent;
+		Label label = new Label(componentWOOComposite, SWT.LEFT);
+		label.setText("Charset encoding:");
+
+		Composite controlsComposite = new Composite(componentWOOComposite, SWT.LEFT);
+		GridLayout layout = new GridLayout(3, false);
+		layout.marginWidth = 0;
+		controlsComposite.setLayout(layout);
+
+		GridData data = new GridData(GridData.FILL_HORIZONTAL | GridData.GRAB_HORIZONTAL);
+		controlsComposite.setLayoutData(data);
+
+		fComponentWOOEncodingCombo = new Combo(controlsComposite, SWT.LEFT);
+		fComponentWOOEncodingCombo.setLayoutData(new GridData(GridData.FILL_HORIZONTAL | GridData.GRAB_HORIZONTAL));
+		fComponentWOOEncodingCombo.addModifyListener(new ModifyListener() {
+
+			@SuppressWarnings("synthetic-access")
+			public void modifyText(ModifyEvent modifyevent) {
+				setComponentWOOEncodingKey(fComponentWOOEncodingCombo.getText());
+			}
+		});
+
+		populateComponentWOOEncodingCombo(fComponentWOOEncodingCombo);
+
+		LayoutUtil.setHorizontalSpan(fComponentWOOEncodingCombo, 2);
+		LayoutUtil.setHorizontalGrabbing(fComponentWOOEncodingCombo);
+		LayoutUtil.setWidthHint(fComponentWOOEncodingCombo, getMaxFieldWidth());
+
+		label = new Label(controlsComposite, SWT.LEFT);
+		label.setText("UTF-8 recommended");
+		label.setFont(scaledFont(label.getFont(), 10));
+		label.setLayoutData(new GridData());
+
+		LayoutUtil.setHorizontalSpan(controlsComposite, 2);
+		LayoutUtil.setHorizontalSpan(new Label(componentWOOComposite, SWT.NONE), 1);
+	}
+
+	protected IStatus componentWOOChanged() {
+		return fComponentWOOStatus;
+	}
+
+	//********************************************************************
+	//	API View
+	//********************************************************************
+
+	private Button fComponentAPICheckbox;
+
+	private void createComponentAPIControls(Composite parent, @SuppressWarnings("unused") int nColumns) {
+		Composite componentAPIComposite = parent;
+
+		LayoutUtil.setHorizontalSpan(new Label(componentAPIComposite, SWT.NONE), 1);
+
+		fComponentAPICheckbox = new Button(componentAPIComposite, SWT.CHECK);
+		fComponentAPICheckbox.setText("API file");
+		fComponentAPICheckbox.setSelection(getDialogSettings().getBoolean(API_CHECKBOX_KEY));
+		fComponentAPICheckbox.addSelectionListener(new ButtonSelectionAdaptor());
+
+		LayoutUtil.setHorizontalSpan(new Label(componentAPIComposite, SWT.NONE), 2);
+	}
+
+	protected IStatus componentAPIChanged() {
+		return this.fComponentAPIStatus;
+	}
+
+	//********************************************************************
+	//	Controller Header
+	//********************************************************************
+
+	private void createControllerHeader(Composite parent, int nColumns) {
+		Font labellingFont = scaledFont(parent.getFont(), 9);
+
+		// java controller section label
+		Group controllerComposite = new Group(parent, SWT.NONE); 
+		Color color = new Color(controllerComposite.getDisplay(), 187, 226, 174);
+		controllerComposite.setBackground(color);
+		controllerComposite.setLayout(newGridLayout(nColumns, 0, 1));
+		controllerComposite.setLayoutData(new GridData(GridData.GRAB_HORIZONTAL | GridData.HORIZONTAL_ALIGN_FILL));
+		controllerComposite.setFont(labellingFont);
+
+		// add image label for controller view
+		Label controllerViewTitleIcon = new Label(controllerComposite, SWT.NONE);
+		controllerViewTitleIcon.setFont(labellingFont);
+		controllerViewTitleIcon.setImage(scaledImage(controllerViewTitleIcon.getDisplay(), JavaPluginImages.DESC_TOOL_NEWCLASS, LABEL_IMG_SIZE + 2, LABEL_IMG_SIZE + 2));
+
+		Label controllerViewTitleLabel = new Label(controllerComposite, SWT.NONE);
+		controllerViewTitleLabel.setFont(labellingFont);
+		controllerViewTitleLabel.setText("Component Controller");
+
+		// fill 
+		LayoutUtil.setHorizontalSpan(controllerComposite, nColumns);
+	}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 	//********************************************************************
@@ -360,8 +537,12 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 		protected abstract List<String> reservedResourceSourcePaths();
 	}
 
+
+
+
 	/**
 	 * Listener for registered button events.
+	 * 
 	 * @author ldeck
 	 */
 	class ButtonSelectionAdaptor implements SelectionListener {
@@ -374,6 +555,13 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 			handleSelectionEvent(event);
 		}
 	}
+
+
+
+
+
+
+
 
 	/**
 	 * Component container field adaptor.
@@ -617,29 +805,22 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 		return buff.toString();
 	}
 
-	private ImageDescriptor componentImageDescriptor;
 
-	private Group componentViewTitle;
 
-	private Label componentViewTitleLabel;
 
-	private Button fComponentAPICheckbox;
 
 	private IStatus fComponentAPIStatus;
 
-	private StringButtonDialogField fComponentContainerDialogField;
 
 	private IStatus fComponentContainerStatus;
 
 
 
-	private Button fComponentWODCheckbox;
 
 	private IStatus fComponentWODStatus;
 
 	private Button fComponentWOOCheckbox;
 
-	private Combo fComponentWOOEncodingCombo;
 
 	private IStatus fComponentWOOStatus;
 
@@ -650,7 +831,7 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 	private IFolder vComponentContainerRoot;
 
 
-	private boolean vComponentWODEnabled;
+	//	private boolean vComponentWODEnabled;
 
 	private boolean vComponentWOOEnabled;
 
@@ -682,7 +863,7 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 
 
 
-		this.componentImageDescriptor = AbstractUIPlugin.imageDescriptorFromPlugin("org.objectstyle.wolips.wizards", "icons/wobuilder/WOComponentBundle.png");
+		//		this._componentImageDescriptor = AbstractUIPlugin.imageDescriptorFromPlugin("org.objectstyle.wolips.wizards", "icons/wobuilder/WOComponentBundle.png");
 
 
 		String buttonNames2[] = { NewWizardMessages.NewClassWizardPage_methods_constructors, NewWizardMessages.NewClassWizardPage_methods_inherited };
@@ -707,7 +888,7 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 		this.vComponentAPIEnabled = true;
 		this.vComponentContainerRoot = null;
 		this._componentHTMLKey = HTML.BLANK_CONTENT.getDisplayString();
-		this.vComponentWODEnabled = true;
+		//		this.vComponentWODEnabled = true;
 		this.vComponentWOOEnabled = true;
 		this.vComponentWOOEncodingKey = "UTF-8";
 	}
@@ -800,11 +981,6 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 		return null;
 	}
 
-	protected IStatus componentAPIChanged() {
-		// TODO
-		return this.fComponentAPIStatus;
-	}
-
 	/**
 	 * @param field
 	 */
@@ -893,15 +1069,6 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 	}
 
 
-	protected IStatus componentWODChanged() {
-		// TODO
-		return this.fComponentWODStatus;
-	}
-
-	protected IStatus componentWOOChanged() {
-		// TODO
-		return this.fComponentWOOStatus;
-	}
 
 	/**
 	 * @see org.eclipse.jdt.ui.wizards.NewTypeWizardPage#createCommentControls(org.eclipse.swt.widgets.Composite, int)
@@ -913,97 +1080,19 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 		setAddComments(true, true);
 	}
 
-	private void createComponentAPIControls(Composite parent, int nColumns) {
-		fComponentAPICheckbox = new Button(parent, SWT.CHECK);
-		fComponentAPICheckbox.setText("API file");
-		fComponentAPICheckbox.setSelection(getDialogSettings().getBoolean(API_CHECKBOX_KEY));
-		fComponentAPICheckbox.addSelectionListener(new ButtonSelectionAdaptor());
-	}
-
-	private void createComponentContainerControls(Composite parent, int nColumns) {
-		fComponentContainerDialogField.doFillIntoGrid(parent, nColumns);
-		LayoutUtil.setWidthHint(fComponentContainerDialogField.getTextControl(null), getMaxFieldWidth());
-	}
-
-	private void createComponentHeader(Composite parent, int nColumns) {
-		Font labellingFont = scaledFont(parent.getFont(), 9);
-
-		// component view section label
-		{
-			this.componentViewTitle = new Group(parent, SWT.NONE); 
-			componentViewTitle.setBackground(componentViewTitle.getDisplay().getSystemColor(SWT.COLOR_TITLE_BACKGROUND_GRADIENT));
-			componentViewTitle.setLayout(newGridLayout(nColumns, 0, 1));
-			componentViewTitle.setLayoutData(new GridData(GridData.GRAB_HORIZONTAL | GridData.HORIZONTAL_ALIGN_FILL));
-			componentViewTitle.setFont(labellingFont);
-
-			// add image label for component view
-			Label componentViewTitleIcon = new Label(componentViewTitle, SWT.NONE);
-			componentViewTitleIcon.setFont(labellingFont);
-			componentViewTitleIcon.setImage(scaledImage(componentViewTitleIcon.getDisplay(), componentImageDescriptor, LABEL_IMG_SIZE + 2, LABEL_IMG_SIZE + 2));
-
-			this.componentViewTitleLabel = new Label(componentViewTitle, SWT.NONE);
-			this.componentViewTitleLabel.setFont(labellingFont);
-			this.componentViewTitleLabel.setText("Component View");
-
-			// fill 
-			LayoutUtil.setHorizontalSpan(componentViewTitle, nColumns);
-		}
-	}
 
 
-	private void createComponentWODControls(Composite parent, int nColumns) {
-		//new Label(parent, SWT.NONE);
-		fComponentWODCheckbox = new Button(parent, SWT.CHECK);
-		fComponentWODCheckbox.setText("WOD file");
-		fComponentWODCheckbox.setSelection(getDialogSettings().getBoolean(WOD_CHECKBOX_KEY));
-		fComponentWODCheckbox.addSelectionListener(new ButtonSelectionAdaptor());
-	}
 
-	private void createComponentWOOControls(Composite parent, int nColumns) {
-		Composite componentWOOComposite = parent;
 
-		//		fComponentWOOCheckbox = new Button(componentWOOComposite, SWT.CHECK);
-		//		fComponentWOOCheckbox.setText("WOO file:"/*org.objectstyle.wolips.wizards.Messages.getString("WOComponentCreationPage.creationOptions.apiFile.button")*/);
-		//		fComponentWOOCheckbox.setSelection(true /*getDialogSettings().getBoolean(WOO_CHECKBOX_KEY)*/);
-		//		fComponentWOOCheckbox.addSelectionListener(new ButtonSelectionAdaptor());
-		//		fComponentWOOCheckbox.setEnabled(false);
 
-		Label label = new Label(componentWOOComposite, SWT.LEFT);
-		label.setText("Charset encoding:");
 
-		Composite controlsComposite = new Composite(componentWOOComposite, SWT.LEFT);
-		GridLayout layout = new GridLayout(3, false);
-		layout.marginWidth = 0;
-		controlsComposite.setLayout(layout);
 
-		GridData data = new GridData(GridData.FILL_HORIZONTAL | GridData.GRAB_HORIZONTAL);
-		controlsComposite.setLayoutData(data);
 
-		fComponentWOOEncodingCombo = new Combo(controlsComposite, SWT.LEFT);
-		fComponentWOOEncodingCombo.setLayoutData(new GridData(GridData.FILL_HORIZONTAL | GridData.GRAB_HORIZONTAL));
-		fComponentWOOEncodingCombo.addModifyListener(new ModifyListener() {
 
-			public void modifyText(ModifyEvent modifyevent) {
-				setComponentWOOEncodingKey(fComponentWOOEncodingCombo.getText());
-			}
 
-		});
-		populateComponentWOOEncodingCombo(fComponentWOOEncodingCombo);
-		//refreshButtonSettings(fComponentWOOCheckbox);
 
-		LayoutUtil.setHorizontalSpan(fComponentWOOEncodingCombo, 2);
-		LayoutUtil.setHorizontalGrabbing(fComponentWOOEncodingCombo);
-		//LayoutUtil.setWidthHint(fComponentWOOEncodingCombo, getMaxFieldWidth());
 
-		label = new Label(controlsComposite, SWT.LEFT);
-		label.setText("UTF-8 recommended");
-		label.setFont(scaledFont(label.getFont(), 10));
-		label.setLayoutData(new GridData());
 
-		LayoutUtil.setHorizontalSpan(controlsComposite, 2);
-
-		//label = new Label(componentWOOComposite, SWT.LEFT);
-	}
 
 	/**
 	 * @see org.eclipse.jface.dialogs.IDialogPage#createControl(org.eclipse.swt.widgets.Composite)
@@ -1016,18 +1105,42 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 		int nColumns = 4;
 		composite.setLayout(newGridLayout(nColumns, 5, 5));
 
+
+
+
+		/* Name of the Control (super) */
 		createTypeNameControls(composite, nColumns);
+
+		/* Separator Line (super) */
 		createSeparator(composite, nColumns);
 
+		/* Component Header */
 		createComponentHeader(composite, nColumns);
-		createComponentContainerControls(composite, nColumns);
-		createComponentHTMLControls(composite, nColumns);
-		//createComponentWODControls(composite, nColumns);
-		createComponentWOOControls(composite, nColumns);
-		//createComponentAPIControls(composite, nColumns);
 
+		/* Component folder View */
+		createComponentContainerControls(composite, nColumns);
+
+		/* HTML View */
+		createComponentHTMLControls(composite, nColumns);
+
+		/* WOO Charset Encoding */
+		createComponentWOOControls(composite, nColumns);
+
+		/* API View */	
+		createComponentAPIControls(composite, nColumns);
+
+		/* Separator Line (super) */
 		createSeparator(composite, nColumns);
+
+		/* Controller Header */
 		createControllerHeader(composite, nColumns);
+
+
+
+
+
+
+
 		createContainerControls(composite, nColumns);
 		createPackageControls(composite, nColumns);
 		//createEnclosingTypeControls(composite, nColumns);
@@ -1046,32 +1159,6 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 		PlatformUI.getWorkbench().getHelpSystem().setHelp(composite, "org.eclipse.jdt.ui.new_class_wizard_page_context");
 	}
 
-	private void createControllerHeader(Composite parent, int nColumns) {
-		// view label composite
-		Font labellingFont = scaledFont(parent.getFont(), 9);
-		Label label = null;
-		// java controller section label
-		{
-			Group controllerComposite = new Group(parent, SWT.NONE);
-			Color color = new Color(controllerComposite.getDisplay(), 187, 226, 174);
-			controllerComposite.setBackground(color);
-			controllerComposite.setLayout(newGridLayout(nColumns, 0, 1));
-			controllerComposite.setLayoutData(new GridData(GridData.GRAB_HORIZONTAL | GridData.HORIZONTAL_ALIGN_FILL));
-			controllerComposite.setFont(labellingFont);
-
-			// add image label for component view
-			label = new Label(controllerComposite, SWT.NONE);
-			label.setFont(labellingFont);
-			label.setImage(scaledImage(label.getDisplay(), JavaPluginImages.DESC_TOOL_NEWCLASS, LABEL_IMG_SIZE + 2, LABEL_IMG_SIZE + 2));
-
-			label = new Label(controllerComposite, SWT.NONE);
-			label.setFont(labellingFont);
-			label.setText("Component Controller");
-
-			// fill 
-			LayoutUtil.setHorizontalSpan(controllerComposite, nColumns);
-		}
-	}
 
 	private void createMethodStubSelectionControls(Composite composite, int nColumns) {
 		org.eclipse.swt.widgets.Control labelControl = fMethodStubsButtons.getLabelControl(composite);
@@ -1226,7 +1313,6 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 			this.fComponentAPIStatus = this.componentAPIChanged();
 			this.fComponentContainerStatus = componentContainerChanged();
 			this.fComponentHTMLStatus = componentHTMLChanged();
-			this.fComponentWODStatus = componentWODChanged();
 			this.fComponentWOOStatus = componentWOOChanged();
 		}
 		if (NewContainerWizardPage.CONTAINER.equals(fieldName)) {
@@ -1502,16 +1588,6 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 		return false;
 	}
 
-	/**
-	 * @param componentAPIEncodingCombo
-	 */
-	private void populateComponentWOOEncodingCombo(Combo componentAPIEncodingCombo) {
-		for (String charset : CharSetUtils.defaultCharsetEncodingNames()) {
-			componentAPIEncodingCombo.add(charset);
-		}
-		// TODO (ldeck) change pref name
-		selectCharsetEncodingPreference(componentAPIEncodingCombo);
-	}
 
 
 	private void prepareFolder(IFolder folder, IProgressMonitor progressMonitor) throws CoreException {
@@ -1534,23 +1610,6 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 		}
 	}
 
-	/**
-	 * @param componentAPIEncodingCombo
-	 */
-	private void selectCharsetEncodingPreference(Combo combo) {
-		String previousEncoding = this.getDialogSettings().get(CHARSET_ENCODING_KEY);
-		if (previousEncoding != null && previousEncoding.length() > 0) {
-			int i = 0;
-			for (String encoding : Charset.availableCharsets().keySet()) {
-				if (previousEncoding.equals(encoding)) {
-					combo.select(i);
-					return;
-				}
-				i++;
-			}
-		}
-		combo.setText("UTF-8");
-	}
 
 
 	/**
@@ -1571,18 +1630,19 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 	}
 
 	protected void setComponentViewEnabled(boolean enabled) {
-		if (enabled) {
-			this.componentViewTitle.setBackground(componentViewTitle.getDisplay().getSystemColor(SWT.COLOR_TITLE_BACKGROUND_GRADIENT));
-			this.componentViewTitleLabel.setForeground(componentViewTitle.getDisplay().getSystemColor(SWT.COLOR_TITLE_FOREGROUND));
-		} else {
-			this.componentViewTitle.setBackground(componentViewTitle.getDisplay().getSystemColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND));
-			this.componentViewTitleLabel.setForeground(componentViewTitle.getDisplay().getSystemColor(SWT.COLOR_TITLE_INACTIVE_FOREGROUND));
-		}
-		this.fComponentAPICheckbox.setEnabled(enabled);
+		//		if (enabled) {
+		//			this.componentViewTitle.setBackground(componentViewTitle.getDisplay().getSystemColor(SWT.COLOR_TITLE_BACKGROUND_GRADIENT));
+		//			this.componentViewTitleLabel.setForeground(componentViewTitle.getDisplay().getSystemColor(SWT.COLOR_TITLE_FOREGROUND));
+		//		} else {
+		//			this.componentViewTitle.setBackground(componentViewTitle.getDisplay().getSystemColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND));
+		//			this.componentViewTitleLabel.setForeground(componentViewTitle.getDisplay().getSystemColor(SWT.COLOR_TITLE_INACTIVE_FOREGROUND));
+		//		}
+
+		fComponentAPICheckbox.setEnabled(enabled);
 		this.fComponentContainerDialogField.setEnabled(enabled);
 		this.fComponentHTMLCombo.setEnabled(enabled);
 
-		this.fComponentWODCheckbox.setEnabled(enabled);
+		//		this.fComponentWODCheckbox.setEnabled(enabled);
 		this.fComponentWOOCheckbox.setEnabled(enabled);
 		if (enabled) {
 			refreshButtonSettings(this.fComponentWOOCheckbox);
