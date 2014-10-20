@@ -5,11 +5,11 @@ import er.extensions.jdbc.ERXSQLHelper.ColumnIndex;
 import er.extensions.migration.ERXMigrationDatabase;
 import er.extensions.migration.ERXMigrationIndex;
 import er.extensions.migration.ERXMigrationTable;
-import er.extensions.migration.ERXModelVersion;
+import org.treasureboat.webcore.migration.TBWModelVersion;
 
 public class ${model.name}0 extends ERXMigrationDatabase.Migration {
 	@Override
-	public NSArray<ERXModelVersion> modelDependencies() {
+	public NSArray<TBWModelVersion> modelDependencies() {
 		return null;
 	}
   
