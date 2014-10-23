@@ -2,7 +2,7 @@
 <feature
       id="org.objectstyle.wolips.jrebel.feature"
       label="%feature.featureName"
-      version="4.4.0"
+      version="5.0.0"
       provider-name="%feature.providerName"
       image="%feature.image">
 
@@ -81,6 +81,6 @@ on the ObjectStyle Group, please see http://objectstyle.org/
          id="org.objectstyle.wolips.jrebel"
          download-size="0"
          install-size="0"
-         version="4.4.0"/>
+         version="5.0.0"/>
 
 </feature>

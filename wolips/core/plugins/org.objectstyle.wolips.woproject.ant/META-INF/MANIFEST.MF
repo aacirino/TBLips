@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: WOProject Ant
 Bundle-SymbolicName: org.objectstyle.wolips.woproject.ant;singleton:=true
-Bundle-Version: 4.4.0
+Bundle-Version: 5.0.0
 Bundle-ClassPath: lib/woproject.jar,
  .
 Bundle-Vendor: treasureboat.org

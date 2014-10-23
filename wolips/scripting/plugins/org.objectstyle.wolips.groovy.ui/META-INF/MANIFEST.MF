@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: TBLips Groovy UI Plug-in
 Bundle-SymbolicName: org.objectstyle.wolips.groovy.ui;singleton:=true
-Bundle-Version: 4.4.0
+Bundle-Version: 5.0.0
 Bundle-Activator: org.objectstyle.wolips.groovy.ui.Activator
 Bundle-Vendor: treasureboat.org
 Require-Bundle: org.eclipse.ui,

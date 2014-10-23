@@ -2,7 +2,7 @@
 <feature
       id="org.objectstyle.wolips.jprofiler.feature"
       label="%feature.featureName"
-      version="4.4.0"
+      version="5.0.0"
       provider-name="%feature.providerName"
       image="%feature.image">
 
@@ -72,9 +72,9 @@ on the ObjectStyle Group, please see http://objectstyle.org/
       <import plugin="org.eclipse.jdt.debug.ui"/>
       <import plugin="org.eclipse.debug.core"/>
       <import plugin="org.eclipse.debug.ui"/>
-      <import plugin="org.objectstyle.wolips.launching" version="4.4.0" match="perfect"/>
+      <import plugin="org.objectstyle.wolips.launching" version="5.0.0" match="perfect"/>
       <import plugin="org.eclipse.ui"/>
-      <import plugin="org.objectstyle.wolips.baseforuiplugins" version="4.4.0" match="perfect"/>
+      <import plugin="org.objectstyle.wolips.baseforuiplugins" version="5.0.0" match="perfect"/>
       <import plugin="org.eclipse.jdt.launching"/>
       <import plugin="org.eclipse.jdt.core"/>
       <import plugin="org.eclipse.core.runtime"/>
@@ -86,7 +86,7 @@ on the ObjectStyle Group, please see http://objectstyle.org/
          id="org.objectstyle.wolips.jprofiler.launching"
          download-size="32"
          install-size="32"
-         version="4.4.0"
+         version="5.0.0"
          unpack="false"/>
 
 </feature>

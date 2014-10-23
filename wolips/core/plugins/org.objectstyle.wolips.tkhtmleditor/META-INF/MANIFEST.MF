@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: TBLips Html Editor
 Bundle-SymbolicName: org.objectstyle.wolips.tkhtmleditor;singleton:=true
-Bundle-Version: 4.4.0
+Bundle-Version: 5.0.0
 Bundle-Activator: tk.eclipse.plugin.htmleditor.HTMLPlugin
 Bundle-Vendor: treasureboat.org
 Bundle-Localization: plugin

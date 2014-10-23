@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: TBLips Html Preview Plug-in
 Bundle-SymbolicName: org.objectstyle.wolips.htmlpreview;singleton:=true
-Bundle-Version: 4.4.0
+Bundle-Version: 5.0.0
 Bundle-Activator: org.objectstyle.wolips.htmlpreview.HtmlPreviewPlugin
 Bundle-Vendor: treasureboat.org
 Require-Bundle: org.objectstyle.wolips.components,

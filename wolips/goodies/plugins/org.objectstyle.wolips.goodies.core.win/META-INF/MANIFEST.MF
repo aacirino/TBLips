@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: TBLips Goodies Core Win Plug-in
 Bundle-SymbolicName: org.objectstyle.wolips.goodies.core.win;singleton:=true
-Bundle-Version: 4.4.0
+Bundle-Version: 5.0.0
 Bundle-Activator: org.objectstyle.wolips.goodies.core.win.WinPlugin
 Bundle-Vendor: treasureboat.org
 Require-Bundle: org.eclipse.core.runtime,

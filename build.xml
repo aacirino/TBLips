@@ -22,7 +22,7 @@
 	</loadproperties>
 	<property file="${project.lib.dir}/lib.properties" />
     <property name="wo.dir.library.frameworks" value="${wo.wosystemroot}/Library/Frameworks" />
-	<property name="build.version.to.replace" value="4.4.0" />
+	<property name="build.version.to.replace" value="5.0.0" />
 	<!-- ak: dirty trick so we don't have to create a directory -->
 	<property name="eclipse.deps.home" value="${eclipse.deps.home}/features" />
 	<property name="eclipse.plugin.home" value="${eclipse.home}" />
