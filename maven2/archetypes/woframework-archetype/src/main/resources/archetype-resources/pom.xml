@@ -11,7 +11,7 @@
 
 	<properties>
 		<!-- properties used for filtering and dependency management -->
-		<jvmtarget>1.5</jvmtarget>
+		<jvmtarget>1.6</jvmtarget>
 		<webobjects.version>${WebObjectsVersion}</webobjects.version>
 		<webobjects.groupId>com.webobjects</webobjects.groupId>
 #if( !($WonderSupport == "no") )

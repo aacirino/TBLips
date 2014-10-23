@@ -8,4 +8,4 @@ Bundle-Vendor: treasureboat.org
 Require-Bundle: org.objectstyle.wolips.preferences,
  org.objectstyle.wolips.baseforuiplugins
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6

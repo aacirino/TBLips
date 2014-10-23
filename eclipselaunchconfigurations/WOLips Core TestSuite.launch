@@ -3,7 +3,7 @@
 <stringAttribute key="product" value="org.eclipse.platform.ide"/>
 <stringAttribute key="bootstrap" value=""/>
 <booleanAttribute key="useProduct" value="false"/>
-<stringAttribute key="vminstall" value="JVM 1.5"/>
+<stringAttribute key="vminstall" value="JVM 1.6"/>
 <booleanAttribute key="tracing" value="false"/>
 <stringAttribute key="location2" value="/Users/ulrich/Projekte/woproject/runtime-test-workspace"/>
 <listAttribute key="org.eclipse.debug.ui.favoriteGroups">

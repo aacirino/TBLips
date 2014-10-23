@@ -204,11 +204,11 @@ public abstract class WOTask extends Task {
 	/**
 	 * JVM selector string in Info.plist<br>
 	 * As specified by <a href="http://developer.apple.com/documentation/Java/Conceptual/JavaPropVMInfoRef/Articles/JavaDictionaryInfo.plistKeys.html">Apple Documentation</a>
-	 * <br>default value is 1.5+
+	 * <br>default value is 1.6+
 	 * @return
 	 */
 	public String getJavaVersion() {
-		return (javaVersion == null ||  javaVersion.equals("${javaVersion}")) ? "1.5+" : javaVersion;
+		return (javaVersion == null ||  javaVersion.equals("${javaVersion}")) ? "1.6+" : javaVersion;
 	}
 
 	/**

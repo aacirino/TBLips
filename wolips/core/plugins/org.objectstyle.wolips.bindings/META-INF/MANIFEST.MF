@@ -21,6 +21,6 @@ Export-Package: org.objectstyle.wolips.bindings,
  org.objectstyle.wolips.bindings.preferences,
  org.objectstyle.wolips.bindings.utils,
  org.objectstyle.wolips.bindings.wod
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Vendor: treasureboat.org
 

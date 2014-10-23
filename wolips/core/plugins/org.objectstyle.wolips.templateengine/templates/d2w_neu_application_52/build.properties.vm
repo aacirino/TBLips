@@ -8,4 +8,4 @@ webXML_CustomContent =
 cfBundleVersion =
 cfBundleShortVersion =
 cfBundleID = org.mywoapp
-javaVersion=1.5+
+javaVersion=1.6+

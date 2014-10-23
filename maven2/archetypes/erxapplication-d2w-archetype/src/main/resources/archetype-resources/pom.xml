@@ -12,7 +12,7 @@
 
 	<properties>
 		<!-- properties used for filtering and dependency management -->
-		<jvmtarget>1.5</jvmtarget>
+		<jvmtarget>1.6</jvmtarget>
 		<mainclass>${package}.app.Application</mainclass>
 		<webobjects.groupId>com.webobjects</webobjects.groupId>
 		<webobjects.version>${WebObjectsVersion}</webobjects.version>

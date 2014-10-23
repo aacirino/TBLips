@@ -138,7 +138,7 @@ public class DefaultAntlauncher implements IAntlauncher {
 		workingCopy.setAttribute(IJavaLaunchConfigurationConstants.ATTR_PROJECT_NAME, file.getProject().getName());
 		workingCopy.setAttribute(ATTR_ANT_TARGETS, targets);
 		workingCopy.setAttribute(BuildFailedConsoleLineTracker.ATTR_BUILD_FAILED_CONSOLE_LINE_TRACKER_ENABLED, true);
-		workingCopy.setAttribute("org.eclipse.jdt.launching.JRE_CONTAINER", "org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5");
+		workingCopy.setAttribute("org.eclipse.jdt.launching.JRE_CONTAINER", "org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6");
 		workingCopy.setAttribute("org.eclipse.ant.ui.DEFAULT_VM_INSTALL", false);		
 		return workingCopy;
 	}
