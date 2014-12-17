@@ -1,0 +1,8 @@
+{
+	/* German */
+
+	"DisplayDate" = "%d-%m-%Y";
+	"DisplayDTS" = "%d-%m-%Y %H:%M:%S";
+	
+	"Hello World" = "Hallo Welt";
+}

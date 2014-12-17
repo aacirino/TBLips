@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="Sources"/>
+	<classpathentry kind="src" path="GeneratedEOs"/>
+	<classpathentry kind="con" path="WOFramework/TBFoundation"/>
+	<classpathentry kind="con" path="WOFramework/TBLibrary"/>
+	<classpathentry kind="con" path="WOFramework/TBContentsDelivery"/>
+	<classpathentry kind="con" path="WOFramework/TBEnterprise"/>
+	<classpathentry kind="con" path="WOFramework/TBWebCore"/>
+	<classpathentry kind="con" path="WOFramework/TBExtensions"/>
+	<classpathentry kind="con" path="WOFramework/TBSkinGumby"/>
+#if ($eoprototypes)
+	<classpathentry kind="con" path="WOFramework/TBPrototypes"/>
+#end
+#if ($databaseConnector == "DB")
+	<classpathentry kind="con" path="WOFramework/TBDB_DB2"/>
+#end
+#if ($databaseConnector == "DR")
+	<classpathentry kind="con" path="WOFramework/TBDB_Derby"/>
+#end
+#if ($databaseConnector == "FB")
+	<classpathentry kind="con" path="WOFramework/TBDB_FrontBase"/>
+#end
+#if ($databaseConnector == "H2")
+	<classpathentry kind="con" path="WOFramework/TBDB_H2"/>
+#end
+#if ($databaseConnector == "MY")
+	<classpathentry kind="con" path="WOFramework/TBDB_MySQL"/>
+#end
+#if ($databaseConnector == "OB")
+	<classpathentry kind="con" path="WOFramework/TBDB_OpenBase"/>
+#end
+#if ($databaseConnector == "OR")
+	<classpathentry kind="con" path="WOFramework/TBDB_Oracle"/>
+#end
+#if ($databaseConnector == "PO")
+	<classpathentry kind="con" path="WOFramework/TBDB_Postgresql"/>
+#end
+#if ($databaseConnector == "MX")
+	<classpathentry kind="con" path="WOFramework/TBDB_MaxDB"/>
+#end
+#if ($rebel)
+	<classpathentry kind="con" path="WOFramework/TBJRebel"/>
+#end
+#if ($ajax)
+	<classpathentry kind="con" path="WOFramework/TBAjax"/>
+	<classpathentry kind="con" path="WOFramework/TBCoolComponents"/>
+#end
+#if ($plot)
+	<classpathentry kind="con" path="WOFramework/TBPlot"/>
+	<classpathentry kind="con" path="WOFramework/TBGoogleChart"/>
+#end
+#if ($print)
+	<classpathentry kind="con" path="WOFramework/TBJasperReports"/>
+	<classpathentry kind="con" path="WOFramework/TBPDFGeneration"/>
+#end
+#if ($attachment)
+	<classpathentry kind="con" path="WOFramework/TBAttachment"/>
+#end
+#if ($mail)
+	<classpathentry kind="con" path="WOFramework/TBJavaMail"/>
+#end
+#if ($rest)
+	<classpathentry kind="con" path="WOFramework/TBRest"/>
+#end
+#if ($mobile)
+	<classpathentry kind="con" path="WOFramework/TBJQMobile"/>
+#end
+#if ($pro)
+	<classpathentry kind="con" path="WOFramework/TBTaggable"/>
+	<classpathentry kind="con" path="WOFramework/TBRuleEngine"/>
+	<classpathentry kind="con" path="WOFramework/TBCoreData"/>
+	<classpathentry kind="con" path="WOFramework/TBCSV"/>
+	<classpathentry kind="con" path="WOFramework/TBBarcode"/>
+	<classpathentry kind="con" path="WOFramework/TBEmoji"/>
+	<classpathentry kind="con" path="WOFramework/WOdka"/>
+	<classpathentry kind="con" path="WOFramework/WOdkaD2W"/>
+#end
+	<classpathentry kind="con" path="WOFramework/TBDeprecated"/>
+#if ($databaseConnector != "--")
+	<classpathentry kind="con" path="WOFramework/TBKVDataStorage"/>
+#end
+#if ($pro)
+	<classpathentry kind="con" path="WOFramework/WOdkaBaseModel"/>
+	<classpathentry kind="con" path="WOFramework/ERModernJQuery"/>
+	<classpathentry kind="con" path="WOFramework/D2WCoreLogic"/>
+	<classpathentry kind="con" path="WOFramework/D3WCoreLogic"/>
+	<classpathentry kind="con" path="WOFramework/D3WPageLogic"/>
+	<classpathentry kind="con" path="WOFramework/D3WAttributeLogic"/>
+	<classpathentry kind="con" path="WOFramework/ERNotificationCenter"/>
+#end	
+#if ($quartz)	
+	<classpathentry kind="con" path="WOFramework/TBQuartz"/>
+#end
+#if ($pro)	
+	<classpathentry kind="con" path="WOFramework/SKIN_Sandvox"/>
+	<classpathentry kind="con" path="WOFramework/SKIN_Clean"/>
+	<classpathentry kind="con" path="WOFramework/SKIN_Gumby"/>
+	<classpathentry kind="con" path="WOFramework/SKIN_ModernLook"/>
+	<classpathentry kind="con" path="WOFramework/SnoWOman"/>
+	<classpathentry kind="con" path="WOFramework/WOJapan"/>
+	<classpathentry kind="con" path="WOFramework/OldJQueryMobile"/>
+	<classpathentry kind="con" path="WOFramework/ERJQueryMobileDirectToWeb"/>
+#end	
+	<classpathentry kind="con" path="WOFramework/JavaFoundation"/>
+	<classpathentry kind="con" path="WOFramework/JavaXML"/>
+	<classpathentry kind="con" path="WOFramework/JavaWebObjects"/>
+	<classpathentry kind="con" path="WOFramework/JavaEOAccess"/>
+	<classpathentry kind="con" path="WOFramework/JavaEOControl"/>
+	<classpathentry kind="con" path="WOFramework/JavaJDBCAdaptor"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

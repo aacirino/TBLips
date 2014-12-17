@@ -2,7 +2,7 @@
  * 
  * The ObjectStyle Group Software License, Version 1.0 
  *
- * Copyright (c) 2005 - 2006 The ObjectStyle Group 
+ * Copyright (c) 2002 - 2006 The ObjectStyle Group 
  * and individual authors of the software.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,79 +52,16 @@
  * information on the ObjectStyle Group, please see
  * <http://objectstyle.org/>.
  *
- */package org.objectstyle.wolips.wizards.actions;
-
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.jface.action.Action;
-import org.eclipse.jface.action.IAction;
-import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.wizard.WizardDialog;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.ui.INewWizard;
-import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.IWorkbenchWindowActionDelegate;
-import org.eclipse.ui.PlatformUI;
-import org.objectstyle.wolips.baseforuiplugins.utils.WorkbenchUtilities;
-import org.objectstyle.wolips.wizards.WizardsPlugin;
-
-/**
- * To add the Wizard to the right button menu add plugin id in PerspectiveFactory
- * @author uli
- * 
- *  @see org.objectstyle.wolips.ui.view.PerspectiveFactory
  */
-public abstract class AbstractOpenWizardAction extends Action implements IWorkbenchWindowActionDelegate {
 
-	private IStructuredSelection currentSelection;
+package org.objectstyle.wolips.wizards.actions;
 
-	/**
-	 * Creates the action.
-	 */
-	protected AbstractOpenWizardAction() {
-		super();
-	}
+import org.eclipse.ui.INewWizard;
+import org.objectstyle.wolips.wizards.TBApplicationWizard;
 
-	public void run() {
-		Shell shell = WorkbenchUtilities.getActiveWorkbenchShell();
-		try {
-			INewWizard wizard = createWizard();
-			wizard.init(PlatformUI.getWorkbench(), currentSelection);
-			WizardDialog dialog = new WizardDialog(shell, wizard);
-			dialog.create();
-			dialog.open();
-		} catch (CoreException e) {
-			WizardsPlugin.getDefault().log(e);
-		}
-	}
+public class OpenTBApplicationWizard extends AbstractOpenWizardAction {
 
-	/**
-	 * Creates and configures the wizard. This method should only be called
-	 * once.
-	 * 
-	 * @return returns the created wizard.
-	 * @throws CoreException
-	 *             exception is thrown when the creation was not successful.
-	 */
-	abstract protected INewWizard createWizard() throws CoreException;
-
-	public void dispose() {
-		// nothing to do here
-	}
-
-	public void init(IWorkbenchWindow window) {
-		// nothing to do here
-	}
-
-	public void run(IAction action) {
-		run();
-	}
-
-	public void selectionChanged(IAction action, ISelection selection) {
-		if (selection != null && selection instanceof IStructuredSelection) {
-			this.currentSelection = (IStructuredSelection) selection;
-		} else {
-			this.currentSelection = null;
-		}
+	protected INewWizard createWizard() {
+		return new TBApplicationWizard();
 	}
 }

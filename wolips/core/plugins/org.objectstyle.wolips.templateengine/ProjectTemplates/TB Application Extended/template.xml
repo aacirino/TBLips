@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template name = "TB Application Extended">
+	<inputs>
+		<input name = "basePackage" type = "Package">
+			<question>Base Package?</question>
+			<default>org.treasureboat.app</default>
+		</input>
+		<input name = "userName" type = "Package">
+			<question>User Name of Machine?</question>
+			<default>MyName</default>
+		</input>
+		<input name = "faceName" type = "Package">
+			<question>Face ID?</question>
+			<default>default</default>
+		</input>
+		<input name = "databaseConnector" type = "String">
+			<question>Database Connection ?</question>
+			<options>
+ 				<option name = "DB2" value = "DB"/>
+ 				<option name = "Derby" value = "DR"/>
+ 				<option name = "FrontBase" value = "FB"/>
+				<option name = "H2PlugIn" value = "H2"/>
+				<option name = "MySQL" value = "MY"/>
+				<option name = "OpenBase" value = "OB"/>
+				<option name = "Oracle" value = "OR"/>
+				<option name = "PostgresqlPlugIn" value = "PO"/>
+				<option name = "MaxDB" value = "MX"/>
+				<option name = "No Connection" value = "--"/>
+			</options>
+			<default>--</default>
+      	</input>
+		<input name = "eoprototypes" type = "Boolean">
+        		<question>EO Prototypes ?</question>
+        		<default>false</default>
+		</input>
+		<input name = "rebel" type = "Boolean">
+        		<question>JRebel ?</question>
+        		<default>false</default>
+		</input>
+		<input name = "ajax" type = "Boolean">
+        		<question>Ajax ?</question>
+        		<default>false</default>
+		</input>
+		<input name = "attachment" type = "Boolean">
+        		<question>Attachment ?</question>
+        		<default>false</default>
+		</input>
+		<input name = "mail" type = "Boolean">
+        		<question>Mail ?</question>
+        		<default>false</default>
+		</input>
+		<input name = "mobile" type = "Boolean">
+				<question>JQuery Mobile ?</question>
+        		<default>false</default>
+		</input>
+		<input name = "plot" type = "Boolean">
+        		<question>GoogleChart + Plot ?</question>
+        		<default>false</default>
+		</input>
+		<input name = "print" type = "Boolean">
+        		<question>Jasper + PDF ?</question>
+        		<default>false</default>
+		</input>
+		<input name = "rest" type = "Boolean">
+        		<question>Rest ?</question>
+        		<default>false</default>
+		</input>
+		<input name = "quartz" type = "Boolean">
+        		<question>Quartz ?</question>
+        		<default>false</default>
+		</input>
+		<input name = "pro" type = "Boolean">
+        		<question>TreasureBoat Pro ?</question>
+        		<default>false</default>
+		</input>		
+	</inputs>
+</template>

@@ -1,0 +1,11 @@
+ -destination GeneratedEOs \
+ -extension java \
+ -java \
+ -javaTemplate _Entity.java \
+ -model Resources/${projectName}.eomodeld \
+ -packagedirs \
+ -subclassDestination Sources \
+ -subclassJavaTemplate Entity.java \
+ -templatedir EOTemplates \
+ -verbose \
+ -loadModelGroup

@@ -1,0 +1,5 @@
+{
+	/* German */
+	
+	"ImageExtensionUploadErrorException" = "Wrong file type - must be a .jpg or .gif";
+}

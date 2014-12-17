@@ -1,0 +1,21 @@
+(
+	/* 
+		Navigation Root Level 1
+	*/
+	{
+		name = Root;
+		children = (
+			"Welcome", 
+			"Dashboard"
+		);
+	},
+	{
+		name = "Welcome";
+		action = "session.handlers.welcome.customMainAction";
+	}
+	
+	/* 
+		Navigation Root Level 2
+    */
+
+)

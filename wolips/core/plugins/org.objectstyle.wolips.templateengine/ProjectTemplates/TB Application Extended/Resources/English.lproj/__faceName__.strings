@@ -1,0 +1,6 @@
+{
+	/* English */
+	/* {$faceName} Localization strings File */
+	
+	"My.Project" = "{$faceName}";
+}

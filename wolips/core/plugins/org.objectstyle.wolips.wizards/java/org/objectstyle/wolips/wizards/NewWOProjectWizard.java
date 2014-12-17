@@ -155,6 +155,8 @@ import org.objectstyle.wolips.wizards.template.TemplateInputsWizardPage;
  * returns.
  * </p>
  * 
+ * @see TBApplicationWizard
+ * @see TBApplicationExtendedWizard
  * @see D2WApplicationWizard
  * @see WOApplicationWizard
  * @see WOFrameworkWizard
@@ -185,14 +187,18 @@ public abstract class NewWOProjectWizard extends BasicNewResourceWizard implemen
 	protected static final int NEWPROJECT_TEMPLATE_WIZARD = 0;
 
 	/**
-	 * Valid project wizard types: WO_APPLICATION_WIZARD,
+	 * Valid project wizard types: 
+	 * 
+	 * TB_APPLICATION_WIZARD, TB_APPLICATION_EX_WIZARD,
+	 * 
+	 * WO_APPLICATION_WIZARD,
 	 * D2W_APPLICATION_WIZARD, D2WS_APPLICATION_WIZARD, JARPROJECT_WIZARD,
 	 * WO_FRAMEWORK_WIZARD, WONDER_APPLICATION_WIZARD,
 	 * WONDER_D2W_APPLICATION_WIZARD, WONDER_FRAMEWORK_WIZARD,
 	 * NEWPROJECT_TEMPLATE_WIZARD,WOMAVENAPPLICATION, ERREST_APPLICATION_WIZARD
 	 */
 	public enum WizardType {
-		WO_APPLICATION_WIZARD, D2W_APPLICATION_WIZARD, D2JC_APPLICATION_WIZARD, D2WS_APPLICATION_WIZARD, JARPROJECT_WIZARD, WO_FRAMEWORK_WIZARD, WONDER_APPLICATION_WIZARD, WONDER_D2W_APPLICATION_WIZARD, WONDER_FRAMEWORK_WIZARD, NEWPROJ_TEMPLATE_WIZARD, WOMAVENPROJECT, ERREST_APPLICATION_WIZARD
+		TB_APPLICATION_WIZARD, TB_APPLICATION_EX_WIZARD, WO_APPLICATION_WIZARD, D2W_APPLICATION_WIZARD, D2JC_APPLICATION_WIZARD, D2WS_APPLICATION_WIZARD, JARPROJECT_WIZARD, WO_FRAMEWORK_WIZARD, WONDER_APPLICATION_WIZARD, WONDER_D2W_APPLICATION_WIZARD, WONDER_FRAMEWORK_WIZARD, NEWPROJ_TEMPLATE_WIZARD, WOMAVENPROJECT, ERREST_APPLICATION_WIZARD
 	}
 
 	private WizardNewProjectCreationPage _mainPage;
@@ -255,9 +261,7 @@ public abstract class NewWOProjectWizard extends BasicNewResourceWizard implemen
 
 	/**
 	 * For simple wizard type identification. A sub-classer must implement.
-	 * Valid types are WO_APPLICATION_WIZARD, D2W_APPLICATION_WIZARD,
-	 * JARPROJECT_WIZARD, WO_FRAMEWORK_WIZARD, WONDER_APPLICATION_WIZARD,
-	 * WONDER_D2W_APPLICATION_WIZARD, WONDER_FRAMEWORK_WIZARD = 7;
+	 * @see WizardType
 	 * 
 	 * @return wizard type
 	 */
@@ -301,14 +305,14 @@ public abstract class NewWOProjectWizard extends BasicNewResourceWizard implemen
 			}
 		}
 
-		if (wizardType == WizardType.D2W_APPLICATION_WIZARD || wizardType == WizardType.WO_APPLICATION_WIZARD || wizardType == WizardType.ERREST_APPLICATION_WIZARD || wizardType == WizardType.D2WS_APPLICATION_WIZARD || wizardType == WizardType.WO_FRAMEWORK_WIZARD) {
+		if (wizardType == WizardType.TB_APPLICATION_WIZARD || wizardType == WizardType.TB_APPLICATION_EX_WIZARD || wizardType == WizardType.D2W_APPLICATION_WIZARD || wizardType == WizardType.WO_APPLICATION_WIZARD || wizardType == WizardType.ERREST_APPLICATION_WIZARD || wizardType == WizardType.D2WS_APPLICATION_WIZARD || wizardType == WizardType.WO_FRAMEWORK_WIZARD) {
 			_frameworkSupportPage = createFrameworkSupportPage();
 			if (_frameworkSupportPage != null) {
 				addPage(_frameworkSupportPage);
 			}
 		}
 
-		if (wizardType == WizardType.WO_APPLICATION_WIZARD || wizardType == WizardType.ERREST_APPLICATION_WIZARD || wizardType == WizardType.D2W_APPLICATION_WIZARD || wizardType == WizardType.WO_FRAMEWORK_WIZARD) {
+		if (wizardType == WizardType.TB_APPLICATION_WIZARD || wizardType == WizardType.TB_APPLICATION_EX_WIZARD || wizardType == WizardType.WO_APPLICATION_WIZARD || wizardType == WizardType.ERREST_APPLICATION_WIZARD || wizardType == WizardType.D2W_APPLICATION_WIZARD || wizardType == WizardType.WO_FRAMEWORK_WIZARD) {
 			_webservicesSupportPage = createWebServicesSupportPage();
 			if (_webservicesSupportPage != null) {
 				addPage(_webservicesSupportPage);

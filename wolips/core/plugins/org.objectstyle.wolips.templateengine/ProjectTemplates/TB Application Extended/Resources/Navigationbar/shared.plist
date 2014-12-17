@@ -1,0 +1,12 @@
+(
+	/* 
+		Shared Navigation Menu
+	*/
+	
+    {	
+		name = "Dashboard";
+		directActionClass = "TBEDashboardDirectAction";
+		directActionName = "showDashboard";
+	}
+
+)

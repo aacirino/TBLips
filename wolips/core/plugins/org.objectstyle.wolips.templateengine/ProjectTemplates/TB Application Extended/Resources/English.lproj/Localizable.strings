@@ -1,0 +1,10 @@
+{
+	/* English */
+	"DisplayDate" = "%Y %m %d";
+	"DisplayDTS" = "%Y %m %d %H:%M:%S";
+	
+	"Hello World" = "Hello World";
+	
+	"PropertyKey.oldClob" = "Old Values";
+	"PropertyKey.newClob" = "New Values";
+}

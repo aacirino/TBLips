@@ -66,6 +66,8 @@ import org.eclipse.ui.console.IConsoleConstants;
 import org.eclipse.ui.progress.IProgressConstants;
 
 /**
+ * After adding a new menu the perspective has to be closed and reopened again.
+ * 
  * @author uli
  */
 public class PerspectiveFactory implements IPerspectiveFactory {
@@ -139,6 +141,8 @@ public class PerspectiveFactory implements IPerspectiveFactory {
 		layout.addNewWizardShortcut("org.eclipse.ui.wizards.new.folder");//$NON-NLS-1$
 		layout.addNewWizardShortcut("org.eclipse.ui.wizards.new.file");//$NON-NLS-1$
 		layout.addNewWizardShortcut("org.eclipse.ui.editors.wizards.UntitledTextFileWizard");//$NON-NLS-1$
+		layout.addNewWizardShortcut("org.objectstyle.wolips.wizards.TBApplicationWizard");//$NON-NLS-1$
+		layout.addNewWizardShortcut("org.objectstyle.wolips.wizards.TBApplicationExtendedWizard");//$NON-NLS-1$
 		layout.addNewWizardShortcut("org.objectstyle.wolips.wizards.new.wo.5.1.application"); //$NON-NLS-1$
 		layout.addNewWizardShortcut("org.objectstyle.wolips.wizards.new.wo.5.1.wonderapplication"); //$NON-NLS-1$
 		layout.addNewWizardShortcut("org.objectstyle.wolips.wizards.new.wo.5.1.framework"); //$NON-NLS-1$

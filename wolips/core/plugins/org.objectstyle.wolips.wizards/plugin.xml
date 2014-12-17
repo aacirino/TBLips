@@ -55,6 +55,32 @@
          </description>
       </wizard>
       <wizard
+            category="org.objectstyle.wolips.wizards"
+            icon="icons/woproject/woapplication_wiz.gif"
+            id="org.objectstyle.wolips.wizards.TBApplicationWizard"
+            name="TB Application (basic)"
+            project="true">
+            <class class="org.objectstyle.wolips.wizards.TBApplicationWizard">
+              <parameter name="wotype" value="true"/>
+            </class>
+         <description>
+            Build a basic TreasureBoat Application.
+         </description>
+      </wizard>
+      <wizard
+            category="org.objectstyle.wolips.wizards"
+            icon="icons/woproject/woapplication_wiz.gif"
+            id="org.objectstyle.wolips.wizards.TBApplicationExtendedWizard"
+            name="TB Application (Extended)"
+            project="true">
+            <class class="org.objectstyle.wolips.wizards.TBApplicationExtendedWizard">
+              <parameter name="wotype" value="true"/>
+            </class>
+         <description>
+            Build an extended TreasureBoat Application. Contains Skumpy Design and Dashboard.
+         </description>
+      </wizard>
+      <wizard
             name="WebObjects Framework"
             icon="icons/woproject/woframework_wiz.gif"
             category="org.objectstyle.wolips.wizards"

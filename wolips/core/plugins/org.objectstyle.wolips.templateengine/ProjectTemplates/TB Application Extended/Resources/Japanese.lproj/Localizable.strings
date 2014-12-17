@@ -1,0 +1,8 @@
+{
+	/* Japanese */
+	
+	"DisplayDate" = "%Y年%m月%d日";
+	"DisplayDTS" = "%Y年%m月%d日 %H:%M:%S";
+	
+	"Hello World" = "世界、こんにちは";
+}
