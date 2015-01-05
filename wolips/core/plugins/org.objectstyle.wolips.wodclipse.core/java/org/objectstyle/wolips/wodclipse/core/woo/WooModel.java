@@ -273,7 +273,7 @@ public class WooModel {
             e.printStackTrace();
           }
           /* Fall through just in case the project classpath is broken */
-          if ("WODisplayGroup".equals(className) || "ERXDisplayGroup".equals(className)) {
+          if ("WODisplayGroup".equals(className) || "TBWDisplayGroup".equals(className)) {
             DisplayGroup displayGroup = new DisplayGroup(this);
             displayGroup.setName(entry.getKey());
             displayGroup.setClassName(className);
