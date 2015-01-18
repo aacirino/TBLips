@@ -74,11 +74,11 @@
             class="org.objectstyle.wolips.launching.actions.WOJavaApplicationLaunchShortcut"
             id="org.objectstyle.wolips.launching.WOJavaApplicationLaunchShortcut">
     <description
-     description="Runs a local WOApplication"
+     description="Runs a local TBApplication"
      mode="run">
     </description>
     <description
-     description="Debugs a local WOApplication"
+     description="Debugs a local TBApplication"
      mode="debug">
     </description>
   <contextualLaunch>
