@@ -51,22 +51,6 @@
             Build an extended TreasureBoat Application. Contains Skumpy Design and Dashboard.
          </description>
       </wizard>
-      <!--
-      <wizard
-            category="org.objectstyle.wolips.wizards"
-            helpHref="http://developer.apple.com/documentation/WebObjects/Developing_With_D2W/Introduction/chapter_1_section_1.html"
-            icon="icons/woproject/d2wapplication_wiz.gif"
-            id="org.objectstyle.wolips.wizards.new.wo.5.1.d2wapplication"
-            name="Direct To Web Application"
-            project="true">
-            <class class="org.objectstyle.wolips.wizards.D2WApplicationWizard">
-              <parameter name="wotype" value="true"/>
-            </class>
-         <description>
-            Build a Direct To Web Application
-         </description>
-      </wizard>
-      -->
             <wizard
             category="org.objectstyle.wolips.wizards"
             helpHref="http://developer.apple.com/DOCUMENTATION/WebObjects/Web_Services/index.html?http://developer.apple.com/DOCUMENTATION/WebObjects/Web_Services/About/chapter_1_section_1.html"
@@ -124,30 +108,6 @@
             project="true"
             id="org.objectstyle.wolips.wizards.new.wo.5.1.wonderframework">
             <class class="org.objectstyle.wolips.wizards.WOnderFrameworkWizard">
-              <parameter name="wotype" value="true"/>
-            </class>
-         <description>
-         </description>
-      </wizard>
-      <wizard
-            name="Wonder D2W Application"
-            icon="icons/woproject/d2wapplication_wiz.gif"
-            category="org.objectstyle.wolips.wizards"
-            project="true"
-            id="org.objectstyle.wolips.wizards.new.wo.5.1.wonderd2wapplication">
-            <class class="org.objectstyle.wolips.wizards.WOnderD2WApplicationWizard">
-              <parameter name="wotype" value="true"/>
-            </class>
-         <description>
-         </description>
-      </wizard>
-      <wizard
-            name="Direct To Java Client WebStart Project"
-            icon="icons/woproject/d2wapplication_wiz.gif"
-            category="org.objectstyle.wolips.wizards"
-            project="true"
-            id="org.objectstyle.wolips.wizards.d2jcapplication">
-            <class class="org.objectstyle.wolips.wizards.D2JCApplicationWizard">
               <parameter name="wotype" value="true"/>
             </class>
          <description>
