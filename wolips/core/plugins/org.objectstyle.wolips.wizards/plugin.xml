@@ -126,20 +126,6 @@
          </description>
       </wizard>
       <wizard
-            name="Subproject"
-            icon="icons/woproject/wosubproject_wiz.gif"
-            category="org.objectstyle.wolips.wizards"
-            id="org.objectstyle.wolips.wizards.new.wo.5.1.subproject">
-            <class class="org.objectstyle.wolips.wizards.WOSubprojectCreationWizard">
-              <parameter name="wotype" value="true"/>
-            </class>
-         <description>
-         </description>
-         <selection
-               class="org.eclipse.core.resources.IResource">
-         </selection>
-      </wizard>
-      <wizard
             name="EOModel"
             icon="icons/woproject/EOModelBundle.png"
             category="org.objectstyle.wolips.wizards"
