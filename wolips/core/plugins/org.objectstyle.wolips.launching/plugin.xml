@@ -68,7 +68,7 @@
    <extension
          point="org.eclipse.debug.ui.launchShortcuts">
   <shortcut
-            label="WOApplication"
+            label="TBApplication"
             icon="icons/launching/TBLips16-16.png"
             modes="run, debug"
             class="org.objectstyle.wolips.launching.actions.WOJavaApplicationLaunchShortcut"
