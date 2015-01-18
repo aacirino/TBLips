@@ -6,6 +6,5 @@
  -packagedirs \
  -subclassDestination Sources \
  -subclassJavaTemplate Entity.java \
- -templatedir EOTemplates \
  -verbose \
  -loadModelGroup

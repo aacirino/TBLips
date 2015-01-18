@@ -5,9 +5,9 @@ import ${basePackage}.components.Main;
 import com.webobjects.appserver.WOActionResults;
 import com.webobjects.appserver.WORequest;
 
-import er.extensions.appserver.ERXDirectAction;
+import org.treasureboat.webcore.appserver.TBWDirectAction;
 
-public class DirectAction extends ERXDirectAction {
+public class DirectAction extends TBWDirectAction {
 
 	//********************************************************************
 	//  Constructor : コンストラクタ
