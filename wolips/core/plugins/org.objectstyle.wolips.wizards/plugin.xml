@@ -80,18 +80,6 @@
             Build an extended TreasureBoat Application. Contains Skumpy Design and Dashboard.
          </description>
       </wizard>
-      <wizard
-            name="WebObjects Framework"
-            icon="icons/woproject/woframework_wiz.gif"
-            category="org.objectstyle.wolips.wizards"
-            project="true"
-            id="org.objectstyle.wolips.wizards.new.wo.5.1.framework">
-            <class class="org.objectstyle.wolips.wizards.WOFrameworkWizard">
-              <parameter name="wotype" value="true"/>
-            </class>
-         <description>
-         </description>
-      </wizard>
       <!--
       <wizard
             category="org.objectstyle.wolips.wizards"
