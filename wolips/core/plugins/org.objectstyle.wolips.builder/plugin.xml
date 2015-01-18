@@ -47,15 +47,6 @@
 <!-- =================================================================================== -->  
    <extension point="org.objectstyle.wolips.builders">
 	  <builder
-		id="org.objectstyle.wolips.builder.dotxcodebuilder"
-         name="DotXcode Builder"
-         class="org.objectstyle.wolips.builder.internal.DotXcodeBuilder"
-         />
-     <builder
-		id="org.objectstyle.wolips.builder.pbdotprojectbuilder"
-         name="PB.project Builder"
-         class="org.objectstyle.wolips.builder.internal.PBDotProjectBuilder"/>
-	  <builder
 		id="org.objectstyle.wolips.projectbuild.builder.antbuilder"
          name="Ant Builder"
          class="org.objectstyle.wolips.builder.internal.WOAntBuilder"

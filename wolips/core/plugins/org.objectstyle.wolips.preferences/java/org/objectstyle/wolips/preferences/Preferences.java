@@ -68,22 +68,10 @@ import org.eclipse.jface.preference.IPreferenceStore;
  */
 public class Preferences {
 
-	/**
-	 * Comment for <code>PREF_WRITE_PB_DOT_PROJECT_ON_BUILD</code>
-	 */
-	public static final String PREF_WRITE_PB_DOT_PROJECT_ON_BUILD = "org.objectstyle.wolips.preference.WritePB_DotProjectOnBuild";
 
 	public static final String PREF_MOCK_BUNDLE_ENABLED = "org.objectstyle.wolips.preference.MockBundleEnabled";
 
-	/**
-	 * Comment for <code>PREF_WRITE_XCODE_ON_BUILD</code>
-	 */
-	public static final String PREF_WRITE_XCODE_ON_BUILD = "org.objectstyle.wolips.preference.WriteXcodeOnBuild";
 
-	/**
-	 * Comment for <code>PREF_WRITE_XCODE21_ON_BUILD</code>
-	 */
-	public static final String PREF_WRITE_XCODE21_ON_BUILD = "org.objectstyle.wolips.preference.WriteXcode21OnBuild";
 
 	/**
 	 * Comment for <code>PREF_AUTOEOGENERATE_ON_BUILD</code>
@@ -131,7 +119,7 @@ public class Preferences {
 	public static final String PREF_EOGENERATOR_SUBCLASS_JAVA_TEMPLATE = "org.objectstyle.wolips.Preference.EOGeneratorSubclassTemplate";
 
 	public static final String PREF_SHOW_CONSOLE_EXCEPTION_DIALOGS = "org.objectstyle.wolips.Preference.ConsoleExceptionDialogs";
-	
+
 	public static final String PREF_WOLIPS_PROPERTIES_FILE = "org.objectstyle.wolips.wolipsPropertiesFile";
 	/**
 	 * Comment for <code>FLAG_INCLUDE_EXCLUDE_RULES_CHANGED</code>
@@ -184,9 +172,6 @@ public class Preferences {
 		if (Preferences.SET_DEFAULTS_STRING == null || Preferences.SET_DEFAULTS_STRING.equals(Preferences.PREF_MOCK_BUNDLE_ENABLED)) {
 			store.setDefault(Preferences.PREF_MOCK_BUNDLE_ENABLED, Preferences.trueString);
 		}
-		if (Preferences.SET_DEFAULTS_STRING == null || Preferences.SET_DEFAULTS_STRING.equals(Preferences.PREF_WRITE_PB_DOT_PROJECT_ON_BUILD)) {
-			store.setDefault(Preferences.PREF_WRITE_PB_DOT_PROJECT_ON_BUILD, Preferences.falseString);
-		}
 		if (Preferences.SET_DEFAULTS_STRING == null || Preferences.SET_DEFAULTS_STRING.equals(Preferences.PREF_EOGENERATOR_PATH)) {
 			store.setDefault(Preferences.PREF_EOGENERATOR_PATH, "");
 		}
@@ -201,12 +186,6 @@ public class Preferences {
 		}
 		if (Preferences.SET_DEFAULTS_STRING == null || Preferences.SET_DEFAULTS_STRING.equals(Preferences.PREF_EOGENERATOR_JAVA_14)) {
 			store.setDefault(Preferences.PREF_EOGENERATOR_JAVA_14, Preferences.falseString);
-		}
-		if (Preferences.SET_DEFAULTS_STRING == null || Preferences.SET_DEFAULTS_STRING.equals(Preferences.PREF_WRITE_XCODE_ON_BUILD)) {
-			store.setDefault(Preferences.PREF_WRITE_XCODE_ON_BUILD, Preferences.falseString);
-		}
-		if (Preferences.SET_DEFAULTS_STRING == null || Preferences.SET_DEFAULTS_STRING.equals(Preferences.PREF_WRITE_XCODE21_ON_BUILD)) {
-			store.setDefault(Preferences.PREF_WRITE_XCODE21_ON_BUILD, Preferences.falseString);
 		}
 		if (Preferences.SET_DEFAULTS_STRING == null || Preferences.SET_DEFAULTS_STRING.equals(Preferences.PREF_AUTOEOGENERATE_ON_BUILD)) {
 			store.setDefault(Preferences.PREF_AUTOEOGENERATE_ON_BUILD, Preferences.falseString);
@@ -227,6 +206,7 @@ public class Preferences {
 			store.setDefault(Preferences.PREF_SHOW_CONSOLE_EXCEPTION_DIALOGS, PreferencesMessages.getString(Preferences.trueString));
 		}
 		store.setDefault(Preferences.PREF_LAUNCH_GLOBAL, PreferencesMessages.getString(Preferences.PREF_LAUNCH_GLOBAL));
+
 		Preferences.SET_DEFAULTS_STRING = null;
 	}
 
@@ -422,18 +402,6 @@ public class Preferences {
 	public static boolean mockBundleEnabled() {
 		return Preferences.getBoolean(Preferences.PREF_MOCK_BUNDLE_ENABLED);
 	}
-	
-	public static boolean shouldWritePBProjOnBuild() {
-		return Preferences.getBoolean(Preferences.PREF_WRITE_PB_DOT_PROJECT_ON_BUILD);
-	}
-
-	public static boolean shouldWriteXcodeOnBuild() {
-		return Preferences.getBoolean(Preferences.PREF_WRITE_XCODE_ON_BUILD);
-	}
-
-	public static boolean shouldWriteXcodeProjOnBuild() {
-		return Preferences.getBoolean(Preferences.PREF_WRITE_XCODE21_ON_BUILD);
-	}
 
 	public static boolean shouldAutoEOGeneratorOnBuild() {
 		return Preferences.getBoolean(Preferences.PREF_AUTOEOGENERATE_ON_BUILD);
@@ -442,11 +410,11 @@ public class Preferences {
 	public static boolean isEOGeneratorJava14() {
 		return Preferences.getBoolean(Preferences.PREF_EOGENERATOR_JAVA_14);
 	}
-	
+
 	public static void setEOGeneratorJava14(boolean eogeneratorJava14) {
 		Preferences.setBoolean(Preferences.PREF_EOGENERATOR_JAVA_14, eogeneratorJava14);
 	}
-	
+
 	public static String getEOGeneratorPath() {
 		return Preferences.getString(Preferences.PREF_EOGENERATOR_PATH);
 	}
@@ -503,18 +471,6 @@ public class Preferences {
 		Preferences.setBoolean(Preferences.PREF_CAPTURE_ANT_OUTPUT, value);
 	}
 
-	public static void setWritePBProjOnBuild(boolean value) {
-		Preferences.setBoolean(PREF_WRITE_PB_DOT_PROJECT_ON_BUILD, value);
-	}
-
-	public static void setWriteXcodeOnBuild(boolean value) {
-		Preferences.setBoolean(Preferences.PREF_WRITE_XCODE_ON_BUILD, value);
-	}
-
-	public static void setWriteXcodeProjOnBuild(boolean value) {
-		Preferences.setBoolean(Preferences.PREF_WRITE_XCODE21_ON_BUILD, value);
-	}
-
 	public static void setAutoEOGenerateOnBuild(boolean value) {
 		Preferences.setBoolean(Preferences.PREF_AUTOEOGENERATE_ON_BUILD, value);
 	}
@@ -522,11 +478,11 @@ public class Preferences {
 	public static void setWOLipsVersionEarlyStartup(String string) {
 		Preferences.setString(Preferences.PREF_WOLIPS_VERSION_EARLY_STARTUP, string);
 	}
-	
+
 	public static void setShowConsoleExceptionDialogs(boolean value) {
 		Preferences.setBoolean(Preferences.PREF_SHOW_CONSOLE_EXCEPTION_DIALOGS, value);
 	}
-	
+
 	public static boolean isShowConsoleExceptionDialogs() {
 		return Preferences.getBoolean(Preferences.PREF_SHOW_CONSOLE_EXCEPTION_DIALOGS);
 	}
