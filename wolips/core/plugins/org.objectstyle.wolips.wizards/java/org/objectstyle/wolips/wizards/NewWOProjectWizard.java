@@ -158,7 +158,6 @@ import org.objectstyle.wolips.wizards.template.TemplateInputsWizardPage;
  * @see TBApplicationWizard
  * @see TBApplicationExtendedWizard
  * @see D2WApplicationWizard
- * @see WOApplicationWizard
  * @see D2WebServiceApplicationWizard
  * @see WOnderApplicationWizard
  * @see WOnderFrameworkWizard

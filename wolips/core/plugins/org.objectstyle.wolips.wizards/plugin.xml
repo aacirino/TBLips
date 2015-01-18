@@ -42,20 +42,6 @@
       </wizard>
       <wizard
             category="org.objectstyle.wolips.wizards"
-            helpHref="http://developer.apple.com/documentation/WebObjects/Web_Applications/index.html"
-            icon="icons/woproject/woapplication_wiz.gif"
-            id="org.objectstyle.wolips.wizards.new.wo.5.1.application"
-            name="WebObjects Application"
-            project="true">
-            <class class="org.objectstyle.wolips.wizards.WOApplicationWizard">
-              <parameter name="wotype" value="true"/>
-            </class>
-         <description>
-            Build a basic WebObjects Application.
-         </description>
-      </wizard>
-      <wizard
-            category="org.objectstyle.wolips.wizards"
             icon="icons/woproject/woapplication_wiz.gif"
             id="org.objectstyle.wolips.wizards.TBApplicationWizard"
             name="TB Application (basic)"

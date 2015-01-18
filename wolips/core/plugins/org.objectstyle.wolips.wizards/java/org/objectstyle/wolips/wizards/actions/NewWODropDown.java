@@ -129,7 +129,7 @@ public class NewWODropDown extends Action implements IMenuCreator, IWorkbenchWin
 	}
 	
 	public void run() {
-		new OpenWOApplicationWizard().run();
+		new OpenTBApplicationWizard().run();
 	}
 	
 	public static OpenTypeWizardAction[] getActionFromDescriptors() {
