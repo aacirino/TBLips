@@ -3,11 +3,12 @@ package $basePackage;
 
 import com.webobjects.appserver.WOActionResults;
 import com.webobjects.appserver.WORequest;
-import er.extensions.appserver.ERXDirectAction;
+import org.treasureboat.webcore.appserver.TBWDirectAction;
 
 import ${componentsPackage}.Main;
 
-public class DirectAction extends ERXDirectAction {
+public class DirectAction extends TBWDirectAction {
+	
 	public DirectAction(WORequest request) {
 		super(request);
 	}

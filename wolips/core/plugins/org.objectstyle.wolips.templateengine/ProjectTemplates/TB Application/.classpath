@@ -8,7 +8,6 @@
 	<classpathentry kind="con" path="WOFramework/TBLibrary"/>
 	<classpathentry kind="con" path="WOFramework/TBEnterprise"/>
 	<classpathentry kind="con" path="WOFramework/TBContentsDelivery"/>
-	<classpathentry kind="con" path="WOFramework/JavaWOExtensions"/>
 	<classpathentry kind="con" path="WOFramework/JavaEOAccess"/>
 	<classpathentry kind="con" path="WOFramework/JavaEOControl"/>
 	<classpathentry kind="con" path="WOFramework/JavaFoundation"/>
