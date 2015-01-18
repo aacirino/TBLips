@@ -2,7 +2,6 @@
 <?eclipse version="3.0"?>
 <plugin>
 
-
 <!-- =================================================================================== -->
 <!-- Extension: Project Wizards                                                          -->
 <!-- =================================================================================== -->
@@ -13,24 +12,10 @@
             id="org.objectstyle.wolips.wizards">
       </category>
       <wizard
-            name="WOComponent"
-            icon="icons/wobuilder/WOComponentBundle.png"
-            category="org.objectstyle.wolips.wizards"
-            id="org.objectstyle.wolips.wizards.new.wo.5.1.component">
-            <class class="org.objectstyle.wolips.wizards.WOComponentCreationWizard">
-              <parameter name="javatype" value="true"/>
-            </class>
-         <description>
-         </description>
-         <selection
-               class="org.eclipse.core.resources.IResource">
-         </selection>
-      </wizard>
-      <wizard
             name="TBComponent Controller/View"
             icon="icons/tbwizard/new-component-controller.png"
             category="org.objectstyle.wolips.wizards"
-            id="org.objectstyle.wolips.wizards.new.wo.5.2.wocomponentview">
+            id="org.objectstyle.wolips.wizards.tbcomponentview">
             <class class="org.objectstyle.wolips.wizards.component.NewComponentCreationWizard">
               <parameter name="javatype" value="true"/>
             </class>

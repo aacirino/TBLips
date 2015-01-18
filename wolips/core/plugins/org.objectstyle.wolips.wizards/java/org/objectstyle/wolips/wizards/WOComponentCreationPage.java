@@ -454,7 +454,6 @@ public class WOComponentCreationPage extends WizardNewWOResourcePage {
 	 * the appropriate error message is shown
 	 * 
 	 * @return whether creation was successful
-	 * @see WOComponentCreationWizard#performFinish()
 	 */
 	public boolean createComponent() {
 		WOComponentCreator componentCreator;
