@@ -118,6 +118,14 @@
       </filter>
       <filter
             targetId="org.objectstyle.wolips.jdt.ui.WOPackageExplorer"
+            id="org.objectstyle.wolips.ui.javaelementfilters.dotdsstore"
+            name=".DS_Store"
+            enabled="true"
+            description="Hide all .DS_Store files"
+            pattern=".DS_Store">
+      </filter>
+      <filter
+            targetId="org.objectstyle.wolips.jdt.ui.WOPackageExplorer"
             id="org.objectstyle.wolips.ui.javaelementfilters.builddotproperties"
             name="build.properties (TBLips)"
             enabled="true"
