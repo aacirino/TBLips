@@ -13,9 +13,12 @@ import org.objectstyle.wolips.templateengine.TemplateEngine;
  */
 public abstract class AbstractWonderProjectWizard extends AbstractProjectWizard {
 
+	@Override
 	protected void addComponentDefinition(String templateFolder, TemplateEngine engine, String path, String name) {
 		File wo = new File(path + File.separator + "Components" + File.separator + name + ".wo");
+
 		wo.mkdirs();
+
 		engine.addTemplate(new TemplateDefinition(templateFolder + "/" + name + ".html.vm", path + File.separator + "Components" + File.separator  + name + ".wo", name + ".html", name + ".html"));
 		engine.addTemplate(new TemplateDefinition(templateFolder + "/" + name + ".wod.vm", path + File.separator + "Components" + File.separator  + name + ".wo", name + ".wod", name + ".wod"));
 		engine.addTemplate(new TemplateDefinition(templateFolder + "/" + name + ".woo.vm", path + File.separator + "Components" + File.separator  + name + ".wo", name + ".woo", name + ".woo"));

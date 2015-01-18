@@ -58,6 +58,7 @@ ObjectStyle Group Software License, version 1.0.  This license from Apple
 applies solely to the actual code contributed by Apple and to no other code.
 No other license or rights are granted by Apple, explicitly, by implication,
 by estoppel, or otherwise.  All rights reserved.*/
+
 package org.objectstyle.wolips.wizards;
 
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -67,13 +68,15 @@ import org.eclipse.ui.IWorkbench;
  * @author ulrich
  */
 public abstract class AbstractProjectWizard extends NewWOProjectWizard {
-	/**  */
+
 	public AbstractProjectWizard() {
 		super();
 	}
 
+	@Override
 	public abstract String getWindowTitle();
 
+	@Override
 	public void init(IWorkbench workbench, IStructuredSelection structuredSelection) {
 		super.init(workbench, structuredSelection);
 		setDefaultPageImageDescriptor(WizardsPlugin.WOPROJECT_WIZARD_BANNER());
