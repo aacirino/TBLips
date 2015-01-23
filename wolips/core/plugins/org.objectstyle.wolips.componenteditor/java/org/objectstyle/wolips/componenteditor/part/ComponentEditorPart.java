@@ -102,6 +102,9 @@ public class ComponentEditorPart extends MultiPageEditorPart implements IEditorT
 
 	private ComponentEditorTab[] componentEditorTabs;
 	
+	// Frank
+	public boolean	_tabsInitialized = false;
+	
 	private boolean _saving;
 
 	public ComponentEditorPart() {
@@ -271,6 +274,8 @@ public class ComponentEditorPart extends MultiPageEditorPart implements IEditorT
 		} else if (componentEditorInput.isDisplayHtmlPartOnReveal()) {
 			this.switchToHtml();
 		}
+		// Frank
+		_tabsInitialized = true;
 		return;
 	}
 
@@ -383,6 +388,10 @@ public class ComponentEditorPart extends MultiPageEditorPart implements IEditorT
 	}
 
 	protected void pageChange(int newPageIndex) {
+		// Frank
+		if (componentEditorTabs == null)
+			return;
+		
 		super.pageChange(newPageIndex);
 		componentEditorTabs[newPageIndex].editorSelected();
 	}
@@ -400,6 +409,13 @@ public class ComponentEditorPart extends MultiPageEditorPart implements IEditorT
 	}
 
 	public IEditorPart getEditor(int pageIndex) {
+		if (componentEditorTabs == null)
+			return null;
+		
+		int tabIndex = this.getActivePage();
+		if (tabIndex < 0)
+			tabIndex = 0;
+		
 		return componentEditorTabs[this.getActivePage()].getActiveEmbeddedEditor();
 	}
 

@@ -134,16 +134,22 @@ public class HtmlWodTab extends ComponentEditorTab {
 			WodclipsePlugin.getDefault().updateWebObjectsTagNames(wodEditor);
 			_templateContainer.addListener(SWT.Activate, new Listener() {
 				public void handleEvent(Event event) {
-					setHtmlActive(true);
-					HtmlWodTab.this.getComponentEditorPart().pageChange(HtmlWodTab.this.getTabIndex());
-					HtmlWodTab.this.getComponentEditorPart().updateOutline();
+					// Frank
+					if (HtmlWodTab.this.getComponentEditorPart()._tabsInitialized) {
+						setHtmlActive(true);
+						HtmlWodTab.this.getComponentEditorPart().pageChange(HtmlWodTab.this.getTabIndex());
+						HtmlWodTab.this.getComponentEditorPart().updateOutline();
+					}
 				}
 			});
 			_wodContainer.addListener(SWT.Activate, new Listener() {
 				public void handleEvent(Event event) {
-					setHtmlActive(false);
-					HtmlWodTab.this.getComponentEditorPart().pageChange(HtmlWodTab.this.getTabIndex());
-					HtmlWodTab.this.getComponentEditorPart().updateOutline();
+					// Frank
+					if (HtmlWodTab.this.getComponentEditorPart()._tabsInitialized) {
+						setHtmlActive(false);
+						HtmlWodTab.this.getComponentEditorPart().pageChange(HtmlWodTab.this.getTabIndex());
+						HtmlWodTab.this.getComponentEditorPart().updateOutline();
+					}
 				}
 			});
 		}
