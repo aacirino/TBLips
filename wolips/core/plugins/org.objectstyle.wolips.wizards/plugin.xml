@@ -90,18 +90,6 @@
          </description>
       </wizard>      
       <wizard
-            name="Wonder Application"
-            icon="icons/woproject/woapplication_wiz.gif"
-            category="org.objectstyle.wolips.wizards"
-            project="true"
-            id="org.objectstyle.wolips.wizards.new.wo.5.1.wonderapplication">
-            <class class="org.objectstyle.wolips.wizards.WOnderApplicationWizard">
-              <parameter name="wotype" value="true"/>
-            </class>
-         <description>
-         </description>
-      </wizard>
-      <wizard
             name="Wonder Framework"
             icon="icons/woproject/woframework_wiz.gif"
             category="org.objectstyle.wolips.wizards"
