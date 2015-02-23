@@ -28,7 +28,7 @@
       <wizard
             category="org.objectstyle.wolips.wizards"
             icon="icons/woproject/woapplication_wiz.gif"
-            id="org.objectstyle.wolips.wizards.TBApplicationWizard"
+            id="org.objectstyle.tblips.wizards.TBApplicationWizard"
             name="TB Application (basic)"
             project="true">
             <class class="org.objectstyle.wolips.wizards.TBApplicationWizard">
@@ -41,17 +41,30 @@
       <wizard
             category="org.objectstyle.wolips.wizards"
             icon="icons/woproject/woapplication_wiz.gif"
-            id="org.objectstyle.wolips.wizards.TBApplicationExtendedWizard"
+            id="org.objectstyle.tblips.wizards.TBApplicationExtendedWizard"
             name="TB Application (Extended)"
             project="true">
             <class class="org.objectstyle.wolips.wizards.TBApplicationExtendedWizard">
               <parameter name="wotype" value="true"/>
             </class>
          <description>
-            Build an extended TreasureBoat Application. Contains Skumpy Design and Dashboard.
+            Build an extended TreasureBoat Application. Contains Gumpy Design and Dashboard.
          </description>
       </wizard>
-            <wizard
+      <wizard
+            name="TreasureBoat Framework"
+            icon="icons/woproject/woframework_wiz.gif"
+            category="org.objectstyle.wolips.wizards"
+            project="true"
+            id="org.objectstyle.tblips.wizards.TBFrameworkWizard">
+            <class class="org.objectstyle.wolips.wizards.TBFrameworkWizard">
+              <parameter name="wotype" value="true"/>
+            </class>
+         <description>
+             Create a empty TreasureBoat Framework.
+         </description>
+      </wizard>
+	  <wizard
             category="org.objectstyle.wolips.wizards"
             helpHref="http://developer.apple.com/DOCUMENTATION/WebObjects/Web_Services/index.html?http://developer.apple.com/DOCUMENTATION/WebObjects/Web_Services/About/chapter_1_section_1.html"
             icon="icons/woproject/d2wapplication_wiz.gif"
@@ -89,18 +102,6 @@
          <description>
          </description>
       </wizard>      
-      <wizard
-            name="Wonder Framework"
-            icon="icons/woproject/woframework_wiz.gif"
-            category="org.objectstyle.wolips.wizards"
-            project="true"
-            id="org.objectstyle.wolips.wizards.new.wo.5.1.wonderframework">
-            <class class="org.objectstyle.wolips.wizards.WOnderFrameworkWizard">
-              <parameter name="wotype" value="true"/>
-            </class>
-         <description>
-         </description>
-      </wizard>
       <wizard
             name="Jar Project"
             icon="icons/woproject/jar_project_wiz.gif"

@@ -141,9 +141,9 @@ public class PerspectiveFactory implements IPerspectiveFactory {
 		layout.addNewWizardShortcut("org.eclipse.ui.wizards.new.folder");//$NON-NLS-1$
 		layout.addNewWizardShortcut("org.eclipse.ui.wizards.new.file");//$NON-NLS-1$
 		layout.addNewWizardShortcut("org.eclipse.ui.editors.wizards.UntitledTextFileWizard");//$NON-NLS-1$
-		layout.addNewWizardShortcut("org.objectstyle.wolips.wizards.TBApplicationWizard");//$NON-NLS-1$
-		layout.addNewWizardShortcut("org.objectstyle.wolips.wizards.TBApplicationExtendedWizard");//$NON-NLS-1$
-		layout.addNewWizardShortcut("org.objectstyle.wolips.wizards.new.wo.5.1.wonderframework"); //$NON-NLS-1$
+		layout.addNewWizardShortcut("org.objectstyle.tblips.wizards.TBApplicationWizard");//$NON-NLS-1$
+		layout.addNewWizardShortcut("org.objectstyle.tblips.wizards.TBApplicationExtendedWizard");//$NON-NLS-1$
+		layout.addNewWizardShortcut("org.objectstyle.tblips.wizards.TBFrameworkWizard"); //$NON-NLS-1$
 		layout.addNewWizardShortcut("org.objectstyle.wolips.wizards.new.wo.5.1.errestapplication"); //$NON-NLS-1$
 		layout.addNewWizardShortcut("org.objectstyle.wolips.wizards.new.wo.5.1.jarproject"); //$NON-NLS-1$
 		layout.addNewWizardShortcut("org.objectstyle.wolips.wizards.new.wo.5.1.eomodel"); //$NON-NLS-1$
