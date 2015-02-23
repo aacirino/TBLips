@@ -1,0 +1,3 @@
+<project name="${WOLipsContext.getProjectName()}" default="build" basedir=".">
+	<import file="/TreasureBoat/Templates/common-framework.xml" />
+</project>
