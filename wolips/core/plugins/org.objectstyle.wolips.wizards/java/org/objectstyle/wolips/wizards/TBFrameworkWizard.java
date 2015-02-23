@@ -9,7 +9,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 public class TBFrameworkWizard extends NewWOProjectWizard {
 
 	public TBFrameworkWizard() {
-		super("TreasureBoat Framework");
+		super("TB Framework");
 	}
 
 	@Override
