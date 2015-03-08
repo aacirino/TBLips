@@ -1,4 +1,10 @@
+#if ($pro)
+PageWrapper : TBSwitchComponent {
+	WOComponentName = d2wContext.pageWrapperName;
+	d2wContext = d2wContext;
+#else
 PageWrapper : TBEDefaultPageWrapper {
+#end
 }
 
 Welcome : TBEHype {
