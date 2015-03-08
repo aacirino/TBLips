@@ -95,8 +95,6 @@
 	<classpathentry kind="con" path="WOFramework/SKIN_Gumby"/>
 	<classpathentry kind="con" path="WOFramework/SKIN_ModernLook"/>
 	<classpathentry kind="con" path="WOFramework/SnoWOman"/>
-	<classpathentry kind="con" path="WOFramework/OldJQueryMobile"/>
-	<classpathentry kind="con" path="WOFramework/ERJQueryMobileDirectToWeb"/>
 #end	
 	<classpathentry kind="con" path="WOFramework/JavaFoundation"/>
 	<classpathentry kind="con" path="WOFramework/JavaXML"/>
