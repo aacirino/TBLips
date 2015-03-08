@@ -42,6 +42,7 @@
 #if ($rebel)
 	<classpathentry kind="con" path="WOFramework/TBJRebel"/>
 #end
+	<classpathentry kind="con" path="WOFramework/TBExcelGenerator"/>
 #if ($ajax)
 	<classpathentry kind="con" path="WOFramework/TBAjax"/>
 	<classpathentry kind="con" path="WOFramework/TBCoolComponents"/>
