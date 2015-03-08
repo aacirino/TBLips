@@ -25,6 +25,7 @@
 				<option name = "Oracle" value = "OR"/>
 				<option name = "PostgresqlPlugIn" value = "PO"/>
 				<option name = "MaxDB" value = "MX"/>
+				<option name = "Microsoft" value = "MS"/>
 				<option name = "No Connection" value = "--"/>
 			</options>
 			<default>--</default>

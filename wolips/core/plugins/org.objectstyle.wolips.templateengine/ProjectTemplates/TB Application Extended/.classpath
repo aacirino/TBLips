@@ -39,6 +39,9 @@
 #if ($databaseConnector == "MX")
 	<classpathentry kind="con" path="WOFramework/TBDB_MaxDB"/>
 #end
+#if ($databaseConnector == "MS")
+	<classpathentry kind="con" path="WOFramework/TBDB_Microsoft"/>
+#end
 #if ($rebel)
 	<classpathentry kind="con" path="WOFramework/TBJRebel"/>
 #end
