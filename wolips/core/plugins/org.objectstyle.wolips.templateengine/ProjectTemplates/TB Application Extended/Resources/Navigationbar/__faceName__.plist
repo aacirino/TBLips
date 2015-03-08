@@ -6,12 +6,21 @@
 		name = Root;
 		children = (
 			"Welcome", 
+#if ($pro)	
+			"ContentPage",
+#end
 			"Dashboard"
 		);
 	},
 	{
 		name = "Welcome";
 		action = "session.handlers.welcome.customMainAction";
+#if ($pro)	
+	},
+	{
+		name = "ContentPage";
+		action = "session.handlers.contentPage.cmsIntraCMSAction";
+#end	
 	}
 	
 	/* 
