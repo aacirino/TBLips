@@ -37,10 +37,9 @@ public class Session extends TBSession {
 		// Menu Handler メニュー・ハンドラー
 #if ($pro)
 		TBNavigationHandler.setDelegate(new WOdkaD2WHandlerDelegate());
+#end	
 
-#else
 	// set the default Look
 	setCurrentD2WLook(TBFKnownLookNames.GUMBY);
-#end	
 	}
 }
