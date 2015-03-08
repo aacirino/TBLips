@@ -39,7 +39,6 @@ public class Session extends TBSession {
 		}
 
 		// Menu Handler メニュー・ハンドラー
-		TBNavigationHandler.setRoot(this);
 #if ($pro)
 		TBNavigationHandler.setDelegate(new WOdkaD2WHandlerDelegate());
 #end
