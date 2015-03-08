@@ -23,6 +23,7 @@ public class Application extends TBApplication {
 	/** 
 	 * <a href="http://wiki.wocommunity.org/display/documentation/Wonder+Logging">new org.slf4j.Logger</a> 
 	 */
+	@SuppressWarnings("hiding")
 	static final Logger log = LoggerFactory.getLogger(Application.class);
 
 	//********************************************************************
