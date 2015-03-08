@@ -68,7 +68,6 @@
 #end
 #if ($pro)
 	<classpathentry kind="con" path="WOFramework/TBTaggable"/>
-	<classpathentry kind="con" path="WOFramework/TBCSV"/>
 	<classpathentry kind="con" path="WOFramework/TBEmoji"/>
 	<classpathentry kind="con" path="WOFramework/WOdka"/>
 	<classpathentry kind="con" path="WOFramework/WOdkaD2W"/>
