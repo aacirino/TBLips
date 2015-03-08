@@ -52,11 +52,11 @@
          </description>
       </wizard>
       <wizard
-            name="TreasureBoat Framework"
-            icon="icons/woproject/woframework_wiz.gif"
             category="org.objectstyle.wolips.wizards"
-            project="true"
-            id="org.objectstyle.tblips.wizards.TBFrameworkWizard">
+            icon="icons/woproject/woframework_wiz.gif"
+            id="org.objectstyle.tblips.wizards.TBFrameworkWizard"
+            name="TB Framework"
+            project="true">
             <class class="org.objectstyle.wolips.wizards.TBFrameworkWizard">
               <parameter name="wotype" value="true"/>
             </class>
