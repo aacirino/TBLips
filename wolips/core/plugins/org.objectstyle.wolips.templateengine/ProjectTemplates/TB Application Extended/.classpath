@@ -69,8 +69,10 @@
 #if ($mobile)
 	<classpathentry kind="con" path="WOFramework/TBJQMobile"/>
 #end
-#if ($pro)
+#if ($base || $pro)
 	<classpathentry kind="con" path="WOFramework/TBTaggable"/>
+#end
+#if ($pro)
 	<classpathentry kind="con" path="WOFramework/TBEmoji"/>
 	<classpathentry kind="con" path="WOFramework/WOdka"/>
 	<classpathentry kind="con" path="WOFramework/WOdkaD2W"/>
