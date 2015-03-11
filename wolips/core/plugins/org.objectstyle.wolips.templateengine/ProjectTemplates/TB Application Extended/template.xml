@@ -20,12 +20,12 @@
  				<option name = "Derby" value = "DR"/>
  				<option name = "FrontBase" value = "FB"/>
 				<option name = "H2PlugIn" value = "H2"/>
-				<option name = "MySQL" value = "MY"/>
+				<option name = "MaxDB" value = "MX"/>
+				<option name = "Microsoft" value = "MS"/>
+				<option name = "MySQL" value = "MY"/> 				
 				<option name = "OpenBase" value = "OB"/>
 				<option name = "Oracle" value = "OR"/>
 				<option name = "PostgresqlPlugIn" value = "PO"/>
-				<option name = "MaxDB" value = "MX"/>
-				<option name = "Microsoft" value = "MS"/>
 				<option name = "No Connection" value = "--"/>
 			</options>
 			<default>--</default>
