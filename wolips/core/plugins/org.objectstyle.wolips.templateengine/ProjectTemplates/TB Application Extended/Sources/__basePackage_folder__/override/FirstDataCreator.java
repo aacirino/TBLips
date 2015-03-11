@@ -1,17 +1,16 @@
 package ${basePackage}.override;
 
-#if ($pro)
-import me.webobjects.override.WOdkaBaseModelFirstDataCreator;
-#else
-import org.treasureboat.webcore.override.TBWInitializerOfFirstDataCreator;
-#end
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+#if ($pro)
+	import org.treasureboat.basemodel.override.TBBM_FirstDataCreator;
+#else
+	import org.treasureboat.webcore.override.TBWInitializerOfFirstDataCreator;
+#end
 import org.treasureboat.webcore.security.grant.TBWGrantAccess;
 
 #if ($pro)
-public class FirstDataCreator extends WOdkaBaseModelFirstDataCreator {
+public class FirstDataCreator extends TBBM_FirstDataCreator {
 #else
 public class FirstDataCreator extends TBWInitializerOfFirstDataCreator { 
 #end
