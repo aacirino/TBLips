@@ -27,6 +27,6 @@ public class FirstResponder extends TBWFirstResponder {
 			// ...
 			// return result;
 		}
-		return TBWApplication.application().pageWithName("Main", TBSession.session().context());
+		return TBWApplication.tbwApplication().pageWithName("Main", TBSession.session().context());
 	}
 }
