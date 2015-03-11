@@ -9,37 +9,44 @@
 	<classpathentry kind="con" path="WOFramework/TBWebCore"/>
 	<classpathentry kind="con" path="WOFramework/TBExtensions"/>
 	<classpathentry kind="con" path="WOFramework/TBSkinGumby"/>
-#if ($eoprototypes)
-	<classpathentry kind="con" path="WOFramework/TBPrototypes"/>
-#end
 #if ($databaseConnector == "DB")
+	<classpathentry kind="con" path="WOFramework/TBPrototypes"/>
 	<classpathentry kind="con" path="WOFramework/TBDB_DB2"/>
 #end
 #if ($databaseConnector == "DR")
+	<classpathentry kind="con" path="WOFramework/TBPrototypes"/>
 	<classpathentry kind="con" path="WOFramework/TBDB_Derby"/>
 #end
 #if ($databaseConnector == "FB")
+	<classpathentry kind="con" path="WOFramework/TBPrototypes"/>
 	<classpathentry kind="con" path="WOFramework/TBDB_FrontBase"/>
 #end
 #if ($databaseConnector == "H2")
+	<classpathentry kind="con" path="WOFramework/TBPrototypes"/>
 	<classpathentry kind="con" path="WOFramework/TBDB_H2"/>
 #end
 #if ($databaseConnector == "MY")
+	<classpathentry kind="con" path="WOFramework/TBPrototypes"/>
 	<classpathentry kind="con" path="WOFramework/TBDB_MySQL"/>
 #end
 #if ($databaseConnector == "OB")
+	<classpathentry kind="con" path="WOFramework/TBPrototypes"/>
 	<classpathentry kind="con" path="WOFramework/TBDB_OpenBase"/>
 #end
 #if ($databaseConnector == "OR")
+	<classpathentry kind="con" path="WOFramework/TBPrototypes"/>
 	<classpathentry kind="con" path="WOFramework/TBDB_Oracle"/>
 #end
 #if ($databaseConnector == "PO")
+	<classpathentry kind="con" path="WOFramework/TBPrototypes"/>
 	<classpathentry kind="con" path="WOFramework/TBDB_Postgresql"/>
 #end
 #if ($databaseConnector == "MX")
+	<classpathentry kind="con" path="WOFramework/TBPrototypes"/>
 	<classpathentry kind="con" path="WOFramework/TBDB_MaxDB"/>
 #end
 #if ($databaseConnector == "MS")
+	<classpathentry kind="con" path="WOFramework/TBPrototypes"/>
 	<classpathentry kind="con" path="WOFramework/TBDB_Microsoft"/>
 #end
 #if ($rebel)
