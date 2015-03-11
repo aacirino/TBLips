@@ -1,13 +1,13 @@
 package ${basePackage}.override;
 
 #if ($pro)
-import me.webobjects.override.WOdkaBaseModelLoginCheck;
+import org.treasureboat.basemodel.override.TBBM_LoginCheck;
 #else
 import org.treasureboat.webcore.security.password.TBWLoginBaseCheck;
 #end
 
 #if ($pro)
-	public class LoginCheck extends WOdkaBaseModelLoginCheck {
+	public class LoginCheck extends TBBM_LoginCheck {
 #else
 	public class LoginCheck extends TBWLoginBaseCheck {
 #end
