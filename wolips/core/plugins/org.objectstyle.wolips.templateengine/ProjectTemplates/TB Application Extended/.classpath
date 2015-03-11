@@ -83,8 +83,11 @@
 #if ($databaseConnector != "--")
 	<classpathentry kind="con" path="WOFramework/TBKVDataStorage"/>
 #end
-#if ($pro)
+#if ($base || $pro)
 	<classpathentry kind="con" path="WOFramework/TBBaseModel"/>
+#end
+#if ($pro)
+	<classpathentry kind="con" path="WOFramework/TBBaseModelBridge"/>
 	<classpathentry kind="con" path="WOFramework/ERModernJQuery"/>
 	<classpathentry kind="con" path="WOFramework/D2WCoreLogic"/>
 	<classpathentry kind="con" path="WOFramework/D3WCoreLogic"/>

@@ -62,6 +62,10 @@
         		<question>Quartz ?</question>
         		<default>false</default>
 		</input>
+		<input name = "base" type = "Boolean">
+        		<question>BaseModel ?</question>
+        		<default>true</default>
+		</input>		
 		<input name = "pro" type = "Boolean">
         		<question>TreasureBoat Pro ?</question>
         		<default>false</default>
