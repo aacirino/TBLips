@@ -61,7 +61,7 @@ public class WodParserCache implements ITypeOwner {
     WodParserCache._typeCache = new TypeCache();
     WodParserCache._modelGroupCache = new EOModelGroupCache();
   }
-  
+
   /**
    * Returns a WodParserCache entry for the given component name.
    * 
@@ -72,18 +72,18 @@ public class WodParserCache implements ITypeOwner {
    * @throws LocateException if a locate error occurs
    */
   public static WodParserCache parser(IProject project, String componentName) throws CoreException, LocateException {
-  	LocalizedComponentsLocateResult locateResult = LocatePlugin.getDefault().getLocalizedComponentsLocateResult(project, componentName);
-  	IFile resource = locateResult.getFirstWodFile();
-  	if (resource == null) {
-  		resource = locateResult.getFirstHtmlFile();
-  	}
+    LocalizedComponentsLocateResult locateResult = LocatePlugin.getDefault().getLocalizedComponentsLocateResult(project, componentName);
+    IFile resource = locateResult.getFirstWodFile();
+    if (resource == null) {
+      resource = locateResult.getFirstHtmlFile();
+    }
     WodParserCache parserCache = WodParserCache.parser(resource, true);
     if (parserCache._componentsLocateResults == null) {
-    	parserCache._componentsLocateResults = locateResult;
+      parserCache._componentsLocateResults = locateResult;
     }
     return parserCache;
   }
-  
+
   public static WodParserCache parser(IResource resource) throws CoreException, LocateException {
     return WodParserCache.parser(resource, true);
   }
@@ -93,8 +93,13 @@ public class WodParserCache implements ITypeOwner {
       WodParserCache._parsers = new LimitedLRUCache<String, WodParserCache>(10);
       ResourcesPlugin.getWorkspace().addResourceChangeListener(new WodParserCacheInvalidator());
     }
+
     String key = WodParserCache.getCacheKey(resource);
-    WodParserCache cache = WodParserCache._parsers.get(key);
+    WodParserCache cache = null;
+    if (key != null) {
+      cache = WodParserCache._parsers.get(key);
+    }
+    
     if (cache == null && createIfMissing) {
       cache = new WodParserCache(getWoFolder(resource));
       WodParserCache._parsers.put(key, cache);
@@ -107,7 +112,9 @@ public class WodParserCache implements ITypeOwner {
       Object cacheEntry = parser(resource, false);
       if (cacheEntry != null) {
         String key = getCacheKey(resource);
-        _parsers.remove(key);
+        if (key != null) {
+          _parsers.remove(key);
+        }
       }
     }
     catch (CoreException e) {
@@ -119,13 +126,14 @@ public class WodParserCache implements ITypeOwner {
   }
 
   private static String getCacheKey(IResource resource) {
-    String cacheKey;
+    String cacheKey = null;
     IContainer woFolder = getWoFolder(resource);
     if (woFolder == null) {
       cacheKey = resource.getLocation().toPortableString();
-    }
-    else {
-      cacheKey = woFolder.getLocation().toPortableString();
+    } else {
+      if (woFolder.getLocation() != null) {
+        cacheKey = woFolder.getLocation().toPortableString();
+      }
     }
     return cacheKey;
   }
@@ -165,7 +173,7 @@ public class WodParserCache implements ITypeOwner {
   public IType getComponentType() throws CoreException, LocateException {
     checkLocateResults();
     if (_componentType == null) {
-    	_componentType = _componentsLocateResults.getDotJavaType();
+      _componentType = _componentsLocateResults.getDotJavaType();
     }
     return _componentType;
   }
@@ -277,39 +285,39 @@ public class WodParserCache implements ITypeOwner {
   }
 
   public synchronized void parse() throws Exception {
-	  if (_htmlEntry.shouldParse()) {
-		  // System.out.println("WodParserCache.parse: html");
-		  _htmlEntry.parse();
-	  }
+    if (_htmlEntry.shouldParse()) {
+      // System.out.println("WodParserCache.parse: html");
+      _htmlEntry.parse();
+    }
 
-	  if (_wodEntry.shouldParse()) {
-		  // System.out.println("WodParserCache.parse: wod");
-		  _wodEntry.parse();
-	  }
+    if (_wodEntry.shouldParse()) {
+      // System.out.println("WodParserCache.parse: wod");
+      _wodEntry.parse();
+    }
 
-	  if (_wooEntry.shouldParse()) {
-		  // System.out.println("WodParserCache.parse: woo");
-		  _wooEntry.parse();
-	  }
+    if (_wooEntry.shouldParse()) {
+      // System.out.println("WodParserCache.parse: woo");
+      _wooEntry.parse();
+    }
   }
 
   public void scheduleValidate(final boolean force, final boolean threaded) {
-  	try {
-			ResourcesPlugin.getWorkspace().run(new IWorkspaceRunnable() {
-				public void run(IProgressMonitor monitor) {
-					try {
-						parse();
-						validate(force, threaded);
-					}
-					catch (Exception ex) {
-						Activator.getDefault().log(ex);
-					}
-				}
-			}, null);
-		}
-  	catch (CoreException e) {
-			Activator.getDefault().log(e);
-		}
+    try {
+      ResourcesPlugin.getWorkspace().run(new IWorkspaceRunnable() {
+        public void run(IProgressMonitor monitor) {
+          try {
+            parse();
+            validate(force, threaded);
+          }
+          catch (Exception ex) {
+            Activator.getDefault().log(ex);
+          }
+        }
+      }, null);
+    }
+    catch (CoreException e) {
+      Activator.getDefault().log(e);
+    }
   }
 
   public void validate(boolean force, boolean threaded) throws CoreException {
