@@ -19,6 +19,7 @@ public class FirstDataCreator extends TBWInitializerOfFirstDataCreator {
 	/** 
 	 * <a href="http://wiki.wocommunity.org/display/documentation/Wonder+Logging">new org.slf4j.Logger</a> 
 	 */
+	@SuppressWarnings("hiding")
 	static final Logger log = LoggerFactory.getLogger(FirstDataCreator.class);
 
 	//********************************************************************
@@ -30,7 +31,8 @@ public class FirstDataCreator extends TBWInitializerOfFirstDataCreator {
 		super.createFirstDataset();
 
 		// ... 
-
+		log.info("createFirstDataset");
+		
 		TBWGrantAccess.setGrantAsRestrict();
 	}
 }
