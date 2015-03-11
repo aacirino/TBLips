@@ -11,7 +11,9 @@ import org.slf4j.LoggerFactory;
 
 import org.treasureboat.webcore.appserver.TBSession;
 import org.treasureboat.foundation.constants.TBFKnownLookNames;
+#if ($pro)
 import org.treasureboat.webcore.appserver.navbar.handler.TBNavigationHandler;
+#end
 
 public class Session extends TBSession {
 
@@ -34,12 +36,12 @@ public class Session extends TBSession {
 			setNavController(new NavigationController(this));
 		}
 
-		// Menu Handler メニュー・ハンドラー
 #if ($pro)
+		// Menu Handler メニュー・ハンドラー
 		TBNavigationHandler.setDelegate(new WOdkaD2WHandlerDelegate());
 #end	
 
-	// set the default Look
-	setCurrentD2WLook(TBFKnownLookNames.GUMBY);
+		// set the default Look
+		setCurrentD2WLook(TBFKnownLookNames.GUMBY);
 	}
 }
