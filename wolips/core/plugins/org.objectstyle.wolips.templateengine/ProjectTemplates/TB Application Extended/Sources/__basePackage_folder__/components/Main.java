@@ -9,7 +9,7 @@ import org.treasureboat.webcore.components.TBComponent;
 
 import com.webobjects.appserver.WOContext;
 
-@TBPageAccess(navigationState = "Welcome", requireLogin = "true")
+@TBPageAccess(navigationState = "Welcome", requireLogin = "#if($base || $pro)true#{else}false#end")
 public class Main extends #if ($pro) WOdkaWrapperD2WComponent #else TBComponent #end {
 
 	private static final long serialVersionUID = 1L;
