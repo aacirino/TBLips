@@ -90,7 +90,7 @@
 	<classpathentry kind="con" path="WOFramework/D3WExcelSupport"/>
 	<classpathentry kind="con" path="WOFramework/ERNotificationCenter"/>
 #end	
-#if ($quartz)	
+#if ($quartz || $pro)	
 	<classpathentry kind="con" path="WOFramework/TBQuartz"/>
 #end
 #if ($pro)	
