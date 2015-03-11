@@ -57,10 +57,6 @@
 	<classpathentry kind="con" path="WOFramework/TBAjax"/>
 	<classpathentry kind="con" path="WOFramework/TBCoolComponents"/>
 #end
-#if ($plot)
-	<classpathentry kind="con" path="WOFramework/TBPlot"/>
-	<classpathentry kind="con" path="WOFramework/TBGoogleChart"/>
-#end
 #if ($print)
 	<classpathentry kind="con" path="WOFramework/TBJasperReports"/>
 	<classpathentry kind="con" path="WOFramework/TBPDFGeneration"/>

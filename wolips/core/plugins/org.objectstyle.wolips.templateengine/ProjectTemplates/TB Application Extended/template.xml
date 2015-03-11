@@ -50,10 +50,6 @@
 				<question>JQuery Mobile ?</question>
         		<default>false</default>
 		</input>
-		<input name = "plot" type = "Boolean">
-        		<question>GoogleChart + Plot ?</question>
-        		<default>false</default>
-		</input>
 		<input name = "print" type = "Boolean">
         		<question>Jasper + PDF ?</question>
         		<default>false</default>
