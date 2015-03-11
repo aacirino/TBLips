@@ -36,15 +36,15 @@
 		</input>
 		<input name = "ajax" type = "Boolean">
         		<question>Ajax ?</question>
-        		<default>false</default>
+        		<default>true</default>
 		</input>
 		<input name = "attachment" type = "Boolean">
         		<question>Attachment ?</question>
-        		<default>false</default>
+        		<default>true</default>
 		</input>
 		<input name = "mail" type = "Boolean">
         		<question>Mail ?</question>
-        		<default>false</default>
+        		<default>true</default>
 		</input>
 		<input name = "mobile" type = "Boolean">
 				<question>JQuery Mobile ?</question>
