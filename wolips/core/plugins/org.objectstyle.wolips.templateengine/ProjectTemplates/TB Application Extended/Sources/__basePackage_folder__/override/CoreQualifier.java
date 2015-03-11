@@ -1,9 +1,9 @@
 package ${basePackage}.override;
 
 #if ($pro)
-import me.webobjects.coreQualifier.WOdkaBaseModelCoreQualifier;
+import org.treasureboat.basemodel.corequalifier.TBBM_CoreQualifier;
 
-public class CoreQualifier extends WOdkaBaseModelCoreQualifier {
+public class CoreQualifier extends TBBM_CoreQualifier {
   
 }
 #else
