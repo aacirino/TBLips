@@ -93,6 +93,7 @@ import org.eclipse.ui.model.WorkbenchContentProvider;
 import org.eclipse.ui.model.WorkbenchLabelProvider;
 import org.eclipse.ui.views.navigator.ResourceComparator;
 import org.objectstyle.wolips.baseforplugins.util.CharSetUtils;
+import org.objectstyle.wolips.bindings.api.ApiModel;
 import org.objectstyle.wolips.wizards.WizardsPlugin;
 import org.objectstyle.wolips.wizards.enums.HTML;
 
@@ -885,7 +886,7 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 		this.fComponentAPIStatus = new StatusInfo();
 
 
-		this.vComponentAPIEnabled = true;
+		this.vComponentAPIEnabled = false;
 		this.vComponentContainerRoot = null;
 		this._componentHTMLKey = HTML.BLANK_CONTENT.getDisplayString();
 		//		this.vComponentWODEnabled = true;
@@ -1213,6 +1214,18 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 		// create wod, woo, html files
 		for (Entry<String, String> entry : filesContents.entrySet()) {
 			FileCreationWorker fileCreator = new FileCreationWorker(componentBundleFolder, componentName, entry.getKey(), entry.getValue());
+			try {
+				fileCreator.run(progressMonitor);
+			} catch (InvocationTargetException e) {
+				CoreException exception = new CoreException(Status.CANCEL_STATUS);
+				exception.setStackTrace(e.getStackTrace());
+				throw exception;
+			}
+		}
+		if (vComponentAPIEnabled) {
+			IFolder componentContainerFolder = project.getFolder(componentContainerPath);
+			String apiContent = ApiModel.blankContent(componentName);
+			FileCreationWorker fileCreator = new FileCreationWorker(componentContainerFolder, componentName, "api", apiContent);
 			try {
 				fileCreator.run(progressMonitor);
 			} catch (InvocationTargetException e) {
@@ -1606,6 +1619,9 @@ public class NewComponentCreationPage extends NewTypeWizardPage {
 		if (button != null) {
 			if (button.equals(this.fComponentWOOCheckbox)) {
 				this.fComponentWOOEncodingCombo.setEnabled(this.fComponentWOOCheckbox.getSelection());
+			}
+			else if (button.equals(this.fComponentAPICheckbox)) {
+				this.vComponentAPIEnabled = fComponentAPICheckbox.getSelection();
 			}
 		}
 	}
