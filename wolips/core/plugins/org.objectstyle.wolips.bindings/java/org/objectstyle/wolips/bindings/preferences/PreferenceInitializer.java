@@ -98,8 +98,8 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
     tagShortcuts.add(new TagShortcut("genericContainer", "TBGenericContainer"));
     tagShortcuts.add(new TagShortcut("container", "TBGenericContainer"));
     tagShortcuts.add(new TagShortcut("activeImage", "WOActiveImage"));
-    tagShortcuts.add(new TagShortcut("checkBox", "WOCheckBox"));
-    tagShortcuts.add(new TagShortcut("checkbox", "WOCheckBox")); // not in 5.4 (5.4 is case insensitive)
+    tagShortcuts.add(new TagShortcut("checkBox", "TBCheckBox"));
+    tagShortcuts.add(new TagShortcut("checkbox", "TBCheckBox")); // not in 5.4 (5.4 is case insensitive)
     tagShortcuts.add(new TagShortcut("fileUpload", "WOFileUpload"));
     tagShortcuts.add(new TagShortcut("upload", "WOFileUpload"));
     tagShortcuts.add(new TagShortcut("hiddenField", "WOHiddenField"));

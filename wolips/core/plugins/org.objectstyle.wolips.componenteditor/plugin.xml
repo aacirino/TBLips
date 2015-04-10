@@ -386,14 +386,14 @@
 				tooltip="Insert TBText Component">
 			</action>
 			<action
-				class="org.objectstyle.wolips.componenteditor.actions.InsertComponentWOCheckBoxAction"
+				class="org.objectstyle.wolips.componenteditor.actions.InsertComponentTBCheckBoxAction"
 				icon="icons/checkbox.png"
-				id="org.objectstyle.wolips.componenteditor.actions.InsertComponentWOCheckBox"
-				label="Insert WOCheckBox Component"
+				id="org.objectstyle.wolips.componenteditor.actions.InsertComponentTBCheckBox"
+				label="Insert TBCheckBox Component"
 				menubarPath="edit/org.objectstyle.wolips.componenteditor.insertMenuContribution/group1"
 				style="push"
 				toolbarPath="/Normal/additions"
-				tooltip="Insert WOCheckBox Component">
+				tooltip="Insert TBCheckBox Component">
 			</action>
 			<action
 				class="org.objectstyle.wolips.componenteditor.actions.InsertComponentWORadioButtonAction"

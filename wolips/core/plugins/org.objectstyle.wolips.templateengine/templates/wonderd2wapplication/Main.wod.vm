@@ -11,7 +11,7 @@ DirectToWebPlaque: TBImage {
 	width = "196";
 }
 
-LACheckbox: WOCheckBox {
+LACheckbox: TBCheckBox {
 	checked = wantsWebAssistant;
 }
 

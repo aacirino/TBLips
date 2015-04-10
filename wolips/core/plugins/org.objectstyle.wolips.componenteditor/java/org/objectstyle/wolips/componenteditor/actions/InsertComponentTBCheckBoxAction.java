@@ -1,9 +1,16 @@
 package org.objectstyle.wolips.componenteditor.actions;
 
 
-public class InsertComponentWOCheckBoxAction extends InsertComponentAction {
+public class InsertComponentTBCheckBoxAction extends InsertComponentAction {
 
-	public String getComponentInstanceNameSuffix() { return "CheckBox"; }
-	public String getComponentName() { return "WOCheckBox"; }
+	@Override
+	public String getComponentInstanceNameSuffix() { 
+		return "CheckBox"; 
+	}
+
+	@Override
+	public String getComponentName() { 
+		return "TBCheckBox"; 
+	}
 
 }
