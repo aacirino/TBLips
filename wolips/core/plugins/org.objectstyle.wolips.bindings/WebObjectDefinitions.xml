@@ -740,36 +740,6 @@
     </validation>
   </wo>
 
-  <wo class="WOCheckBoxList">
-    <binding name="selections" passthrough="NO" settable="YES"/>
-    <binding name="index" passthrough="NO"/>
-    <binding name="suffix" passthrough="NO"/>
-    <binding name="displayString" passthrough="NO"/>
-    <binding name="disabled" passthrough="NO" defaults="YES/NO"/>
-    <binding name="name" passthrough="NO"/>
-    <binding name="prefix" passthrough="NO"/>
-    <binding name="item" passthrough="NO"/>
-    <binding name="value" passthrough="NO"/>
-    <binding name="list" passthrough="NO" required="YES"/>
-
-    <validation message="'list' must not be a constant">
-      <and>
-        <bound name="list"/>
-        <ungettable name="list"/>
-      </and>
-    </validation>
-
-    <validation message="'item' must not be a constant if 'displayString' is present">
-      <and>
-        <bound name="displayString"/>
-        <or>
-          <unbound name="item"/>
-          <unsettable name="item"/>
-        </or>
-      </and>
-    </validation>
-  </wo>
-
   <wo class="WORepetition" wocomponentcontent = "true">
     <binding name="item" passthrough="NO" settable="YES"/>
     <binding name="list" passthrough="NO"/>
@@ -964,38 +934,6 @@
 
     <!-- no validation rules -->
   </wo>
-
-  <wo class="WORadioButtonList">
-    <binding name="selection" passthrough="NO" settable="YES"/>
-    <binding name="index" passthrough="NO"/>
-    <binding name="suffix" passthrough="NO"/>
-    <binding name="displayString" passthrough="NO"/>
-    <binding name="disabled" passthrough="NO" defaults="YES/NO"/>
-    <binding name="escapeHTML" passthrough="NO" defaults="YES/NO"/>
-    <binding name="name" passthrough="NO"/>
-    <binding name="prefix" passthrough="NO"/>
-    <binding name="item" passthrough="NO"/>
-    <binding name="value" passthrough="NO"/>
-    <binding name="list" passthrough="NO" required="YES"/>
-
-    <validation message="'list' must not be a constant">
-      <and>
-        <bound name="list"/>
-        <ungettable name="list"/>
-      </and>
-    </validation>
-
-    <validation message="'item' must not be a constant if 'displayString' is present">
-      <and>
-        <bound name="value"/>
-        <or>
-          <unbound name="item"/>
-          <unsettable name="item"/>
-        </or>
-      </and>
-    </validation>
-  </wo>
-
 
   <wo class="WOVBScript">
     <binding name="hideInComment" passthrough="NO" defaults="YES/NO"/>
