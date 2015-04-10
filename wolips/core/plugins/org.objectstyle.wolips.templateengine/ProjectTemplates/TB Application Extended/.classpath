@@ -12,42 +12,52 @@
 #if ($databaseConnector == "DB")
 	<classpathentry kind="con" path="WOFramework/TBPrototypes"/>
 	<classpathentry kind="con" path="WOFramework/TBDB_DB2"/>
+	<classpathentry kind="con" path="WOFramework/TBKVDataStorage"/>
 #end
 #if ($databaseConnector == "DR")
 	<classpathentry kind="con" path="WOFramework/TBPrototypes"/>
 	<classpathentry kind="con" path="WOFramework/TBDB_Derby"/>
+	<classpathentry kind="con" path="WOFramework/TBKVDataStorage"/>
 #end
 #if ($databaseConnector == "FB")
 	<classpathentry kind="con" path="WOFramework/TBPrototypes"/>
 	<classpathentry kind="con" path="WOFramework/TBDB_FrontBase"/>
+	<classpathentry kind="con" path="WOFramework/TBKVDataStorage"/>
 #end
 #if ($databaseConnector == "H2")
 	<classpathentry kind="con" path="WOFramework/TBPrototypes"/>
 	<classpathentry kind="con" path="WOFramework/TBDB_H2"/>
+	<classpathentry kind="con" path="WOFramework/TBKVDataStorage"/>
 #end
 #if ($databaseConnector == "MY")
 	<classpathentry kind="con" path="WOFramework/TBPrototypes"/>
 	<classpathentry kind="con" path="WOFramework/TBDB_MySQL"/>
+	<classpathentry kind="con" path="WOFramework/TBKVDataStorage"/>
 #end
 #if ($databaseConnector == "OB")
 	<classpathentry kind="con" path="WOFramework/TBPrototypes"/>
 	<classpathentry kind="con" path="WOFramework/TBDB_OpenBase"/>
+	<classpathentry kind="con" path="WOFramework/TBKVDataStorage"/>
 #end
 #if ($databaseConnector == "OR")
 	<classpathentry kind="con" path="WOFramework/TBPrototypes"/>
 	<classpathentry kind="con" path="WOFramework/TBDB_Oracle"/>
+	<classpathentry kind="con" path="WOFramework/TBKVDataStorage"/>
 #end
 #if ($databaseConnector == "PO")
 	<classpathentry kind="con" path="WOFramework/TBPrototypes"/>
 	<classpathentry kind="con" path="WOFramework/TBDB_Postgresql"/>
+	<classpathentry kind="con" path="WOFramework/TBKVDataStorage"/>
 #end
 #if ($databaseConnector == "MX")
 	<classpathentry kind="con" path="WOFramework/TBPrototypes"/>
 	<classpathentry kind="con" path="WOFramework/TBDB_MaxDB"/>
+	<classpathentry kind="con" path="WOFramework/TBKVDataStorage"/>
 #end
 #if ($databaseConnector == "MS")
 	<classpathentry kind="con" path="WOFramework/TBPrototypes"/>
 	<classpathentry kind="con" path="WOFramework/TBDB_Microsoft"/>
+	<classpathentry kind="con" path="WOFramework/TBKVDataStorage"/>
 #end
 #if ($rebel)
 	<classpathentry kind="con" path="WOFramework/TBJRebel"/>
@@ -78,9 +88,6 @@
 	<classpathentry kind="con" path="WOFramework/WOdkaD2W"/>
 #end
 	<classpathentry kind="con" path="WOFramework/TBDeprecated"/>
-#if ($databaseConnector != "--")
-	<classpathentry kind="con" path="WOFramework/TBKVDataStorage"/>
-#end
 #if ($base || $pro)
 	<classpathentry kind="con" path="WOFramework/TBBaseModel"/>
 #end
