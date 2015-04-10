@@ -113,8 +113,8 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
     tagShortcuts.add(new TagShortcut("radioButtonList", "WORadioButtonList"));
     tagShortcuts.add(new TagShortcut("passwordField", "WOPasswordField"));
     tagShortcuts.add(new TagShortcut("password", "WOPasswordField"));
-    tagShortcuts.add(new TagShortcut("radioButton", "WORadioButton"));
-    tagShortcuts.add(new TagShortcut("radio", "WORadioButton"));
+    tagShortcuts.add(new TagShortcut("radioButton", "TBRadioButton"));
+    tagShortcuts.add(new TagShortcut("radio", "TBRadioButton"));
     tagShortcuts.add(new TagShortcut("resetButton", "WOResetButton"));
     tagShortcuts.add(new TagShortcut("reset", "WOResetButton"));
     tagShortcuts.add(new TagShortcut("submitButton", "WOSubmitButton"));

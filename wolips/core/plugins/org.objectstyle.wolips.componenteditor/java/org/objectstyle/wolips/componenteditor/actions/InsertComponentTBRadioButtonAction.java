@@ -1,7 +1,14 @@
 package org.objectstyle.wolips.componenteditor.actions;
 
+public class InsertComponentTBRadioButtonAction extends InsertComponentAction {
+	
+	@Override
+	public String getComponentInstanceNameSuffix() { 
+		return "RadioButton"; 
+	}
 
-public class InsertComponentWORadioButtonAction extends InsertComponentAction {
-	public String getComponentInstanceNameSuffix() { return "RadioButton"; }
-	public String getComponentName() { return "WORadioButton"; }
+	@Override
+	public String getComponentName() { 
+		return "TBRadioButton"; 
+	}
 }
