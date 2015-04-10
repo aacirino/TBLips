@@ -935,22 +935,6 @@
     <!-- no validation rules -->
   </wo>
 
-  <wo class="WOVBScript">
-    <binding name="hideInComment" passthrough="NO" defaults="YES/NO"/>
-    <binding name="scriptSource" passthrough="NO"/>
-    <binding name="scriptString" passthrough="NO"/>
-    <binding name="scriptFile" passthrough="NO"/>
-    <binding name="otherTagString" passthrough="NO"/>
-
-    <validation message="one of 'scriptFile', 'scriptSource', or 'scriptString' must be bound">
-      <count test="!=1">
-        <bound name="scriptFile"/>
-        <bound name="scriptSource"/>
-        <bound name="scriptString"/>
-      </count>
-    </validation>
-  </wo>
-
   <wo class="WOIFrame">
     <binding name="align"/>
     <binding name="frameborder" defaults="Boolean"/>
