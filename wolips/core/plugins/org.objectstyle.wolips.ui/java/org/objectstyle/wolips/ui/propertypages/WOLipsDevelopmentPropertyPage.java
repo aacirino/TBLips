@@ -103,10 +103,6 @@ public class WOLipsDevelopmentPropertyPage extends WOLipsPropertyPage {
 
 	private Button _wellFormedRequiredButton;
 
-	private Text _inlineBindingsPrefixText;
-
-	private Text _inlineBindingsSuffixText;
-
 	private Text _principalClassText;
 
 	private Text _eoAdaptorClassText;
@@ -222,25 +218,6 @@ public class WOLipsDevelopmentPropertyPage extends WOLipsPropertyPage {
 				widgetSelected(e);
 			}
 		});
-
-		Composite textSettingsGroup = new Composite(componentsGroup, SWT.NONE);
-		GridLayout textSettingsLayout = new GridLayout(2, false);
-		textSettingsLayout.marginLeft = -3;
-		textSettingsGroup.setLayout(textSettingsLayout);
-		FormData textSettingsLayoutData = new FormData();
-		textSettingsLayoutData.top = new FormAttachment(_wellFormedRequiredButton, 10);
-		textSettingsLayoutData.left = new FormAttachment(0, 0);
-		textSettingsLayoutData.right = new FormAttachment(100, 0);
-		textSettingsGroup.setLayoutData(textSettingsLayoutData);
-		_inlineBindingsPrefixText = _addTextField(textSettingsGroup, "Inline Bindings Prefix");
-		if (project != null) {
-			_inlineBindingsPrefixText.setText(project.getBuildProperties().getInlineBindingPrefix());
-		}
-
-		_inlineBindingsSuffixText = _addTextField(textSettingsGroup, "Inline Bindings Suffix");
-		if (project != null) {
-			_inlineBindingsSuffixText.setText(project.getBuildProperties().getInlineBindingSuffix());
-		}
 	}
 
 	private void _addBundleSettingsSection(Composite parent, ProjectAdapter project) {
@@ -360,8 +337,11 @@ public class WOLipsDevelopmentPropertyPage extends WOLipsPropertyPage {
 					}
 					buildProperties.setFramework(_bundleTypeFrameworkButton.getSelection());
 					buildProperties.setWellFormedTemplateRequired(_wellFormedRequiredButton.getSelection());
-					buildProperties.setInlineBindingPrefix(_inlineBindingsPrefixText.getText());
-					buildProperties.setInlineBindingSuffix(_inlineBindingsSuffixText.getText());
+
+					// this should be '$' because we use that everywhere, and to make it easier for newComer, don't change that anymore.
+					buildProperties.setInlineBindingPrefix("$");
+					buildProperties.setInlineBindingSuffix("");
+
 					buildProperties.save();
 				}
 			} else {
