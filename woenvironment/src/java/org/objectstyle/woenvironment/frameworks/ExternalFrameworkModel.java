@@ -130,10 +130,6 @@ public class ExternalFrameworkModel extends FrameworkModel<IFramework> {
     File systemRoot = fixMissingSeparatorAfterDevice(variables.systemRoot());
     File systemFrameworksPath = fixMissingSeparatorAfterDevice(variables.systemFrameworkPath());
     roots.add(new ExternalFolderRoot(Root.SYSTEM_ROOT, "System Frameworks", systemRoot, systemFrameworksPath));
-
-    File networkRoot = fixMissingSeparatorAfterDevice(variables.networkRoot());
-    File networkFrameworksPath = fixMissingSeparatorAfterDevice(variables.networkFrameworkPath());
-    roots.add(new ExternalFolderRoot(Root.NETWORK_ROOT, "Network Frameworks", networkRoot, networkFrameworksPath));
     return roots;
   }
 }

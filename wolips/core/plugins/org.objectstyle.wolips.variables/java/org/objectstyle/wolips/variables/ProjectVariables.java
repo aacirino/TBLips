@@ -67,20 +67,6 @@ public class ProjectVariables implements IPersistentPreferenceStore {
 	}
 
 	/**
-	 * @return the path to the network root
-	 */
-	public IPath getNetworkRoot() {
-		return this.fixMissingSeparatorAfterDevice(_variables.networkRoot());
-	}
-
-	/**
-	 * @return the path to the network root
-	 */
-	public IPath getNetworkFrameworkPath() {
-		return this.fixMissingSeparatorAfterDevice(_variables.networkFrameworkPath());
-	}
-
-	/**
 	 * @return the path to the user home
 	 */
 	public IPath getUserRoot() {
@@ -146,36 +132,36 @@ public class ProjectVariables implements IPersistentPreferenceStore {
 		return null;
 	}
 
-//	public String getProperty(String key) {
-//		return _variables.getProperty(key);
-//	}
-//
-//	public String getProperty(String key, String defaultValue) {
-//		String value =  _variables.getProperty(key);
-//		if (value == null) {
-//			value = defaultValue;
-//		}
-//		return value;
-//	}
-//	
-//	public void setProperty(String key, String value) {
-//		_variables.setProperty(key, value);
-//	}
-//	
-//	public void setDefaultProperty(String key, String value) {
-//		_variables.setProperty(key, value);
-//	}
-//
-//	public boolean getBooleanProperty(String key) {
-//		return getBooleanProperty(key, false);
-//	}
-//
-//	public boolean getBooleanProperty(String key, boolean defaultValue) {
-//		return "true".equals(getProperty(key, String.valueOf(defaultValue)));
-//	}
+	//	public String getProperty(String key) {
+	//		return _variables.getProperty(key);
+	//	}
+	//
+	//	public String getProperty(String key, String defaultValue) {
+	//		String value =  _variables.getProperty(key);
+	//		if (value == null) {
+	//			value = defaultValue;
+	//		}
+	//		return value;
+	//	}
+	//	
+	//	public void setProperty(String key, String value) {
+	//		_variables.setProperty(key, value);
+	//	}
+	//	
+	//	public void setDefaultProperty(String key, String value) {
+	//		_variables.setProperty(key, value);
+	//	}
+	//
+	//	public boolean getBooleanProperty(String key) {
+	//		return getBooleanProperty(key, false);
+	//	}
+	//
+	//	public boolean getBooleanProperty(String key, boolean defaultValue) {
+	//		return "true".equals(getProperty(key, String.valueOf(defaultValue)));
+	//	}
 
 	private List<IPropertyChangeListener> _listeners = new LinkedList<IPropertyChangeListener>();
-	
+
 	public void addPropertyChangeListener(IPropertyChangeListener listener) {
 		_listeners.add(listener);
 	}
@@ -246,7 +232,7 @@ public class ProjectVariables implements IPersistentPreferenceStore {
 		}
 		return value;
 	}
-	
+
 	public String getString(String name) {
 		return _variables.getProperty(name);
 	}

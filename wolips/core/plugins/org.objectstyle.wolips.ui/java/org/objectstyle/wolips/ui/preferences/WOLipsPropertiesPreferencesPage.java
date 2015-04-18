@@ -60,7 +60,16 @@ import org.objectstyle.woenvironment.env.WOVariables;
 import org.objectstyle.wolips.preferences.Preferences;
 import org.objectstyle.wolips.variables.VariablesPlugin;
 
+/**
+ * this is the TBLips Editor Window to set up the property file
+ */
 public class WOLipsPropertiesPreferencesPage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
+	
+	
+	
+	
+	
+	
 	private StringFieldEditor _wolipsPropertiesFieldEditor;
 	
 	public WOLipsPropertiesPreferencesPage() {
@@ -107,12 +116,10 @@ public class WOLipsPropertiesPreferencesPage extends FieldEditorPreferencePage i
 		};
 		addField(_wolipsPropertiesFieldEditor);
 
-		addField(new WOLipsDirectoryFieldEditor(WOVariables.NETWORK_FRAMEWORKS, "Network Frameworks", widthInChars, getFieldEditorParent()));
 		addField(new WOLipsDirectoryFieldEditor(WOVariables.SYSTEM_FRAMEWORKS, "System Frameworks", widthInChars, getFieldEditorParent()));
 		addField(new WOLipsDirectoryFieldEditor(WOVariables.LOCAL_FRAMEWORKS, "Local Frameworks", widthInChars, getFieldEditorParent()));
 		addField(new WOLipsDirectoryFieldEditor(WOVariables.USER_FRAMEWORKS, "User Frameworks", widthInChars, getFieldEditorParent()));
 
-		addField(new WOLipsDirectoryFieldEditor(WOVariables.NETWORK_ROOT, "Network Root", widthInChars, getFieldEditorParent()));
 		addField(new WOLipsDirectoryFieldEditor(WOVariables.SYSTEM_ROOT, "System Root", widthInChars, getFieldEditorParent()));
 		addField(new WOLipsDirectoryFieldEditor(WOVariables.LOCAL_ROOT, "Local Root", widthInChars, getFieldEditorParent()));
 		addField(new WOLipsDirectoryFieldEditor(WOVariables.USER_ROOT, "User Root", widthInChars, getFieldEditorParent()));

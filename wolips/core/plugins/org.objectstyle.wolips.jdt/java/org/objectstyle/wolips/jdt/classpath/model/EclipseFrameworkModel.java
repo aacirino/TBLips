@@ -75,17 +75,17 @@ import org.objectstyle.wolips.variables.VariablesPlugin;
 public class EclipseFrameworkModel extends FrameworkModel<IEclipseFramework> {
 	private static Map<File, Root<IEclipseFramework>> _folderRootCache = new HashMap<File, Root<IEclipseFramework>>();
 	private static EclipseProjectRoot _projectRootCache;
-	
+
 	private IProject project;
-	
+
 	public EclipseFrameworkModel(IProject project) {
 		this.project = project;
 	}
-	
+
 	public static void invalidateProjectRootCache() {
 		_projectRootCache = null;
 	}
-	
+
 	public boolean shouldReload() {
 		boolean shouldReload = false;
 		for (Root root : getRoots()) {
@@ -96,7 +96,7 @@ public class EclipseFrameworkModel extends FrameworkModel<IEclipseFramework> {
 		}
 		return shouldReload;
 	}
-	
+
 	protected synchronized Root<IEclipseFramework> getCachedFolderRoot(String shortName, String name, File rootFolder, File frameworkFolder) {
 		Root<IEclipseFramework> root = _folderRootCache.get(frameworkFolder);
 		if (root == null || root.shouldReload()) {
@@ -108,7 +108,7 @@ public class EclipseFrameworkModel extends FrameworkModel<IEclipseFramework> {
 		}
 		return root;
 	}
-	
+
 	protected synchronized List<Root<IEclipseFramework>> createRoots() {
 		List<Root<IEclipseFramework>> roots = new LinkedList<Root<IEclipseFramework>>();
 		if (_projectRootCache == null || _projectRootCache.shouldReload()) {
@@ -132,39 +132,33 @@ public class EclipseFrameworkModel extends FrameworkModel<IEclipseFramework> {
 		}
 
 		ProjectVariables variables = VariablesPlugin.getDefault().getProjectVariables(this.project);
-		
+
 		IPath externalBuildRootPath = variables.getExternalBuildRoot();
 		IPath externalBuildFrameworkPath = variables.getExternalBuildFrameworkPath();
 		if (externalBuildRootPath != null && externalBuildFrameworkPath != null) {
 			roots.add(getCachedFolderRoot(Root.EXTERNAL_ROOT, "External Build Root", externalBuildFrameworkPath.toFile(), externalBuildRootPath.toFile()));
 		}
-		
+
 		IPath userRoot = variables.getUserRoot();
 		IPath userFrameworkPath = variables.getUserFrameworkPath();
 		if (userRoot != null && userFrameworkPath != null) {
 			roots.add(getCachedFolderRoot(Root.USER_ROOT, "User Frameworks", userRoot.toFile(), userFrameworkPath.toFile()));
 		}
-		
+
 		IPath localRoot = variables.getLocalRoot();
 		IPath localFrameworkPath = variables.getLocalFrameworkPath();
 		if (localRoot != null && localFrameworkPath != null) {
 			roots.add(getCachedFolderRoot(Root.LOCAL_ROOT, "Local Frameworks", localRoot.toFile(), localFrameworkPath.toFile()));
 		}
-		
+
 		IPath systemRoot = variables.getSystemRoot();
 		IPath systemFrameworkPath = variables.getSystemFrameworkPath();
 		if (systemRoot != null && systemFrameworkPath != null) {
 			roots.add(getCachedFolderRoot(Root.SYSTEM_ROOT, "System Frameworks", systemRoot.toFile(), systemFrameworkPath.toFile()));
 		}
-		
-		IPath networkRoot = variables.getNetworkRoot();
-		IPath networkSystemPath = variables.getNetworkFrameworkPath();
-		if (networkRoot != null && networkSystemPath != null) {
-			roots.add(getCachedFolderRoot(Root.NETWORK_ROOT, "Network Frameworks", networkRoot.toFile(), networkSystemPath.toFile()));
-		}
 		return roots;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (obj instanceof EclipseFrameworkModel) {
@@ -173,7 +167,7 @@ public class EclipseFrameworkModel extends FrameworkModel<IEclipseFramework> {
 		}
 		return super.equals(obj);
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return EclipseFrameworkModel.class.hashCode() + project.hashCode();
