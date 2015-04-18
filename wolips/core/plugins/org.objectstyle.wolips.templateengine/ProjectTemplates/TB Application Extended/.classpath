@@ -96,9 +96,9 @@
 	<classpathentry kind="con" path="WOFramework/ERModernJQuery"/>
 	<classpathentry kind="con" path="WOFramework/D2WCoreLogic"/>
 	<classpathentry kind="con" path="WOFramework/D3WCoreLogic"/>
-	<classpathentry kind="con" path="WOFramework/D3WPageLogic"/>
-	<classpathentry kind="con" path="WOFramework/D3WAttributeLogic"/>
-	<classpathentry kind="con" path="WOFramework/D3WExcelSupport"/>
+	<classpathentry kind="con" path="WOFramework/TBD3WPageLogic"/>
+	<classpathentry kind="con" path="WOFramework/TBD3WAttributeLogic"/>
+	<classpathentry kind="con" path="WOFramework/TBD3WExcelSupport"/>
 	<classpathentry kind="con" path="WOFramework/ERNotificationCenter"/>
 #end	
 #if ($quartz || $pro)	
