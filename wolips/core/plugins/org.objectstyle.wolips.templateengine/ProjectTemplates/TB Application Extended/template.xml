@@ -38,32 +38,32 @@
         		<question>Ajax ?</question>
         		<default>true</default>
 		</input>
-		<input name = "attachment" type = "Boolean">
-        		<question>Attachment ?</question>
-        		<default>true</default>
-		</input>
 		<input name = "mail" type = "Boolean">
-        		<question>Mail ?</question>
+        		<question>JavaMail ?</question>
         		<default>true</default>
 		</input>
 		<input name = "mobile" type = "Boolean">
-				<question>JQuery Mobile ?</question>
+				<question>JQueryMobile ?</question>
         		<default>false</default>
 		</input>
 		<input name = "rest" type = "Boolean">
         		<question>Rest ?</question>
         		<default>false</default>
 		</input>
+		<input name = "attachment" type = "Boolean">
+        		<question>Attachment ? (DataBase)</question>
+        		<default>false</default>
+		</input>
 		<input name = "quartz" type = "Boolean">
-        		<question>Quartz ?</question>
+        		<question>Quartz ? (DataBase)</question>
         		<default>false</default>
 		</input>
 		<input name = "base" type = "Boolean">
-        		<question>BaseModel ?</question>
-        		<default>true</default>
+        		<question>BaseModel ? (DataBase)</question>
+        		<default>false</default>
 		</input>		
 		<input name = "pro" type = "Boolean">
-        		<question>TreasureBoat Pro ?</question>
+        		<question>TreasureBoat Pro ? (DataBase)</question>
         		<default>false</default>
 		</input>		
 	</inputs>
