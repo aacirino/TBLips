@@ -100,7 +100,6 @@
 			<frameworks root="Local" embed="${embed.Local}" eclipse="true" />
 			<frameworks root="User" embed="${embed.User}" eclipse="true" />
 			<frameworks root="System" embed="${embed.System}" eclipse="true" />
-			<frameworks root="Network" embed="${embed.Network}" eclipse="true" />
 
 			<lib dir="Libraries">
 				<include name="*.jar" />
@@ -209,7 +208,6 @@
 			<frameworks root="Local" embed="false" eclipse="true" />
 			<frameworks root="User" embed="false" eclipse="true" />
 			<frameworks root="System" embed="false" eclipse="true" />
-			<frameworks root="Network" embed="false" eclipse="true" />
 			<classpath>
 				<fileset dir="Libraries">
 					<include name="*.jar" />

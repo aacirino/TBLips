@@ -93,7 +93,6 @@
 			<frameworks root="Local" embed="false" eclipse="true" />
 			<frameworks root="User" embed="false" eclipse="true" />
 			<frameworks root="System" embed="false" eclipse="true" />
-			<frameworks root="Network" embed="false" eclipse="true" />
 			<classpath>
 				<fileset dir="Libraries">
 					<include name="*.jar" />
