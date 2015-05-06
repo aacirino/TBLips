@@ -132,7 +132,7 @@ public abstract class InsertComponentAction extends InsertHtmlAndWodAction {
 			ics.setRequiredBindings(getRequiredBindings(ics.getComponentName()));
 
 			if (!ics.isInline()) {
-				ics.setTagName("webobject");
+				ics.setTagName("treasureboat"); // "webobject"
 				Map<String, String> attributes = new HashMap<String, String>();
 				attributes.put("name", ics.getComponentInstanceName());
 				ics.setAttributes(attributes);

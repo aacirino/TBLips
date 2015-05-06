@@ -158,23 +158,23 @@ public class FuzzyXMLParserTest extends TestCase {
 
   public void testTagInAttributesWithQoutesWithoutNestedQuote() {
     FuzzyXMLParser parser = new FuzzyXMLParser(false, true);
-    FuzzyXMLDocument doc = parser.parse("<div id=\"<webobject name=SomeWO/>\" class=\"someclass\">this is a div</div>");
+    FuzzyXMLDocument doc = parser.parse("<div id=\"<treasureboat name=SomeTB/>\" class=\"someclass\">this is a div</div>");
     FuzzyXMLElement docElement = doc.getDocumentElement();
     assertChildrenElements(docElement, 1, "div");
     {
       FuzzyXMLElement divElement = docElement.getChildElement(0);
       assertAttributes(divElement, 2);
-      assertAttribute(divElement, "id", "<webobject name=SomeWO/>");
+      assertAttribute(divElement, "id", "<treasureboat name=SomeWO/>");
       assertAttribute(divElement, "class", "someclass");
       assertChildCount(divElement, 2);
       {
         FuzzyXMLElement emptyElement = divElement.getChildElement(0);
         assertEquals("", emptyElement.getName());
-        assertChildrenElements(emptyElement, 1, "webobject");
+        assertChildrenElements(emptyElement, 1, "treasureboat");
         {
           FuzzyXMLElement woElement = emptyElement.getChildElement(0);
           assertChildCount(woElement, 0);
-          assertOnlyAttribute(woElement, "name", "SomeWO");
+          assertOnlyAttribute(woElement, "name", "SomeTB");
         }
         assertText(divElement, 1, "this is a div");
       }
@@ -183,34 +183,34 @@ public class FuzzyXMLParserTest extends TestCase {
 
   public void testTwoTagsInAttributesWithQoutesWithoutNestedQuote() {
     FuzzyXMLParser parser = new FuzzyXMLParser(false, true);
-    FuzzyXMLDocument doc = parser.parse("<div id=\"<webobject name=SomeWO/>\" class=\"<webobject name=AnotherWO/>\">this is a div</div>");
+    FuzzyXMLDocument doc = parser.parse("<div id=\"<treasureboat name=SomeTB/>\" class=\"<treasureboat name=AnotherTB/>\">this is a div</div>");
     FuzzyXMLElement docElement = doc.getDocumentElement();
     assertChildrenElements(docElement, 1, "div");
     {
       FuzzyXMLElement divElement = docElement.getChildElement(0);
       assertAttributes(divElement, 2);
-      assertAttribute(divElement, "id", "<webobject name=SomeWO/>");
-      assertAttribute(divElement, "class", "<webobject name=AnotherWO/>");
+      assertAttribute(divElement, "id", "<treasureboat name=SomeTB/>");
+      assertAttribute(divElement, "class", "<treasureboat name=AnotherTB/>");
       assertChildCount(divElement, 2);
       {
         FuzzyXMLElement emptyElement = divElement.getChildElement(0);
         assertEquals("", emptyElement.getName());
-        assertChildrenElements(emptyElement, 2, "webobject", "webobject");
+        assertChildrenElements(emptyElement, 2, "treasureboat", "treasureboat");
         {
           FuzzyXMLElement woElement = emptyElement.getChildElement(0);
           assertChildCount(woElement, 0);
-          assertOnlyAttribute(woElement, "name", "SomeWO");
+          assertOnlyAttribute(woElement, "name", "SomeTB");
           
           FuzzyXMLElement woElement2 = emptyElement.getChildElement(1);
           assertChildCount(woElement2, 0);
-          assertOnlyAttribute(woElement2, "name", "AnotherWO");
+          assertOnlyAttribute(woElement2, "name", "AnotherTB");
         }
         assertText(divElement, 1, "this is a div");
       }
     }
     RenderContext renderContext = new RenderContext(true);
     String xml = docElement.toXMLString(renderContext);
-    assertEquals("<document><div id=\"<webobject name=SomeWO/>\" class=\"<webobject name=AnotherWO/>\">this is a div</div></document>", xml);
+    assertEquals("<document><div id=\"<treasureboat name=SomeTB/>\" class=\"<treasureboat name=AnotherTB/>\">this is a div</div></document>", xml);
   }
   
   public void testNonHTMLTextOnly() {
@@ -262,24 +262,24 @@ public class FuzzyXMLParserTest extends TestCase {
   /*
   public void testTagInAttributesWithoutQoutesWithoutNestedQuote() {
     FuzzyXMLParser parser = new FuzzyXMLParser(false, true);
-    FuzzyXMLDocument doc = parser.parse("<div id=<webobject name=SomeWO/> class=\"someclass\">this is a div</div>");
+    FuzzyXMLDocument doc = parser.parse("<div id=<treasureboat name=SomeTB/> class=\"someclass\">this is a div</div>");
     FuzzyXMLElement docElement = doc.getDocumentElement();
     System.out.println("FuzzyXMLParserTest.testTagInAttributesWithoutQoutesWithoutNestedQuote: " + docElement.toDebugString());
     assertChildrenElements(docElement, 1, "div");
     {
       FuzzyXMLElement divElement = docElement.getChildElement(0);
       assertAttributes(divElement, 2);
-      assertAttribute(divElement, "id", "<webobject name=SomeWO/>");
+      assertAttribute(divElement, "id", "<treasureboat name=SomeTB/>");
       assertAttribute(divElement, "class", "someclass");
       assertChildCount(divElement, 2);
       {
         FuzzyXMLElement emptyElement = divElement.getChildElement(0);
         assertEquals("", emptyElement.getName());
-        assertChildrenElements(emptyElement, 1, "webobject");
+        assertChildrenElements(emptyElement, 1, "treasureboat");
         {
           FuzzyXMLElement woElement = emptyElement.getChildElement(0);
           assertChildCount(woElement, 0);
-          assertOnlyAttribute(woElement, "name", "SomeWO");
+          assertOnlyAttribute(woElement, "name", "SomeTB");
         }
         assertText(divElement, 1, "this is a div");
       }

@@ -660,7 +660,7 @@ public class TemplateOutlinePage extends Page implements IContentOutlinePage, IH
                     negated = true;
                   }
                 }
-                else if (nodeName.equals("wo:not")) {
+                else if (nodeName.equals("tb:not") || nodeName.equals("wo:not")) {
                   negated = true;
                 }
 

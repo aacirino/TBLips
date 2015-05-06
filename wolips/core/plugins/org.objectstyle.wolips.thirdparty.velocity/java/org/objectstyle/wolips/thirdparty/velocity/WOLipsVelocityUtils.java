@@ -113,6 +113,8 @@ public class WOLipsVelocityUtils {
 				throw new IOException("You are attempting to use an old EOGenerator template with Velocity EOGenerator.");
 			} else if (newFileContentsStr.contains("<wo:")) {
 				throw new IOException("You are attempting to use a JavaEOGenerator template with Velocity EOGenerator.");
+			} else if (newFileContentsStr.contains("<tb:")) {
+				throw new IOException("You are attempting to use a JavaEOGenerator template with Velocity EOGenerator.");
 			}
 		}
 		return newFileContentsStr;

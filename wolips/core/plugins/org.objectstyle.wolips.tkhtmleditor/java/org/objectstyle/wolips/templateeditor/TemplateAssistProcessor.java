@@ -57,6 +57,14 @@ public class TemplateAssistProcessor extends HTMLAssistProcessor {
     _cache = wodParserCache;
     _tagList = new ArrayList<TagInfo>(TagDefinition.getTagInfoAsList());
 
+    TagInfo treasureboat = new TagInfo("treasureboat", true);
+    treasureboat.addAttributeInfo(new AttributeInfo("name", true, AttributeInfo.NONE, true));
+    _tagList.add(treasureboat);
+
+    TagInfo tb = new TagInfo("tb", true);
+    tb.addAttributeInfo(new AttributeInfo("name", true, AttributeInfo.NONE, true));
+    _tagList.add(tb);
+
     TagInfo webobject = new TagInfo("webobject", true);
     webobject.addAttributeInfo(new AttributeInfo("name", true, AttributeInfo.NONE, true));
     _tagList.add(webobject);
@@ -102,8 +110,9 @@ public class TemplateAssistProcessor extends HTMLAssistProcessor {
   @Override
   protected List<TagInfo> getDynamicTagInfo(String tagName) {
     List<TagInfo> tagInfos = null;
-    if (tagName.startsWith("wo:")) {
-      String partialElementType = tagName.substring("wo:".length());
+    if (tagName.startsWith("tb:") || tagName.startsWith("wo:")) {
+      String elementPrefix = (tagName.startsWith("tb:")) ? "tb:" : "wo:";
+      String partialElementType = tagName.substring(elementPrefix.length());
       IJavaProject javaProject = getJavaProject();
       try {
         Set<WodCompletionProposal> proposals = new HashSet<WodCompletionProposal>();
@@ -117,7 +126,7 @@ public class TemplateAssistProcessor extends HTMLAssistProcessor {
         if (!proposals.isEmpty()) {
           tagInfos = new LinkedList<TagInfo>();
           for (WodCompletionProposal proposal : proposals) {
-            InlineWodTagInfo tagInfo = new InlineWodTagInfo(proposal.getProposal(), WodParserCache.getTypeCache());
+            InlineWodTagInfo tagInfo = new InlineWodTagInfo(elementPrefix, proposal.getProposal(), WodParserCache.getTypeCache());
             tagInfo.setJavaProject(javaProject);
             tagInfos.add(tagInfo);
           }
@@ -277,9 +286,10 @@ public class TemplateAssistProcessor extends HTMLAssistProcessor {
 
   @Override
   protected TagInfo getTagInfo(String name) {
-    if (name.startsWith("wo:")) {
-      String elementTypeName = name.substring("wo:".length());
-      InlineWodTagInfo tagInfo = new InlineWodTagInfo(elementTypeName, WodParserCache.getTypeCache());
+    if (name.startsWith("tb:") || name.startsWith("wo:")) {
+      String elementPrefix = (name.startsWith("tb:")) ? "tb:" : "wo:";
+      String elementTypeName = name.substring(elementPrefix.length());
+      InlineWodTagInfo tagInfo = new InlineWodTagInfo(elementPrefix,elementTypeName, WodParserCache.getTypeCache());
       tagInfo.setJavaProject(getJavaProject());
       return tagInfo;
     }

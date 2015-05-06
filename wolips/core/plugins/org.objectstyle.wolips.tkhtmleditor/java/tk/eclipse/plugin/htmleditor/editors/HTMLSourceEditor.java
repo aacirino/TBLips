@@ -683,7 +683,7 @@ public class HTMLSourceEditor extends TextEditor {
           text = text.substring(1, text.length());
           while (stack.size() != 0) {
             FoldingInfo info = stack.pop();
-            if (info.getType().equalsIgnoreCase(text) || (info.getType().toLowerCase().startsWith("wo:") && text.toLowerCase().startsWith("wo"))) {
+            if (info.getType().equalsIgnoreCase(text) || (info.getType().toLowerCase().startsWith("tb:") && text.toLowerCase().startsWith("tb")) || (info.getType().toLowerCase().startsWith("wo:") && text.toLowerCase().startsWith("wo"))) {
               info.setEnd(matcher.end());
               // Don't fold if start offset and end offset are same line
               if (doc.getLineOfOffset(info.getStart()) != doc.getLineOfOffset(info.getEnd())) {

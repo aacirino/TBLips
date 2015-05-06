@@ -18,8 +18,10 @@ public class FuzzyXMLWodElement extends SimpleWodElement {
 
   public FuzzyXMLWodElement(FuzzyXMLElement element, BuildProperties buildProperties) {
     String elementName = element.getName();
-    String namespaceElementName = elementName.substring("wo:".length()).trim();
-    int elementTypePosition = element.getOffset() + element.getNameOffset() + "wo:".length() + 1;
+    String searchFor = elementName.contains("wo:")?"wo:":"tb:";
+    
+    String namespaceElementName = elementName.substring(searchFor.length()).trim();
+    int elementTypePosition = element.getOffset() + element.getNameOffset() + searchFor.length() + 1;
     int elementTypeLength = namespaceElementName.length();
 
     TagShortcut matchingTagShortcut = null;

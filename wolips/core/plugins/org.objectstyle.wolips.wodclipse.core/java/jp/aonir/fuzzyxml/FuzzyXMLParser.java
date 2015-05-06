@@ -67,6 +67,8 @@ public class FuzzyXMLParser {
 		_roots = new LinkedList<FuzzyXMLNode>();
 		_isHTML = isHTML;
 		// MS: Hardcoded that "wo" is a loose namespace
+		addLooseNamespace("tb");
+		addLooseNamespace("treasureboat");
 		addLooseNamespace("wo");
 		addLooseNamespace("webobject");
 		addLooseNamespace("webobjects");
@@ -116,10 +118,10 @@ public class FuzzyXMLParser {
 	}
 
 	/**
-	 * A "loose" namespace is like the wo: namespace. We don't actually require
+	 * A "loose" namespace is like the tb: namespace. We don't actually require
 	 * that
-	 * wo:if have a corresponding wo:if close tag -- it actually just needs a
-	 * wo close tag.
+	 * tb:if have a corresponding tb:if close tag -- it actually just needs a
+	 * tb close tag. (was wo:)
 	 * 
 	 * @param namespace
 	 *          the name of the namespace to make loose
@@ -452,7 +454,7 @@ public class FuzzyXMLParser {
 		if (!closeTagMatches) {
 			closeAutocloseTags();
 
-			// Allow </wo> to close </wo:if>
+			// Allow </tb> to close </tb:if>
 			boolean looseNamespace = false;
 			int colonIndex = lowercaseLastOpenElementName.indexOf(':');
 			if (colonIndex != -1) {

@@ -63,12 +63,12 @@ public class ConvertInlineToWodRefactoring implements IRunnableWithProgress {
           List<TextEdit> edits = new LinkedList<TextEdit>();
           int openTagLength = element.getOpenTagLength();
           if (element.hasCloseTag()) {
-            edits.add(new ReplaceEdit(element.getCloseTagOffset() + element.getCloseNameOffset() + 1, element.getCloseNameLength(), "webobject"));
+            edits.add(new ReplaceEdit(element.getCloseTagOffset() + element.getCloseNameOffset() + 1, element.getCloseNameLength(), "treasureboat")); // "webobject"
           }
           else {
             openTagLength--;
           }
-          edits.add(new ReplaceEdit(element.getOffset() + 1, openTagLength, "webobject name = \"" + elementRename.getNewName() + "\""));
+          edits.add(new ReplaceEdit(element.getOffset() + 1, openTagLength, "treasureboat name = \"" + elementRename.getNewName() + "\"")); // "webobject"
           WodDocumentUtils.applyEdits(htmlDocument, edits);
         }
       }

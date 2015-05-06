@@ -40,7 +40,12 @@ public class ChangeElementTypeRefactoring implements IRunnableWithProgress {
           if (xmlDocument != null) {
             FuzzyXMLElement xmlElement = xmlDocument.getElementByOffset(typePosition.getOffset());
             if (xmlElement != null && xmlElement.hasCloseTag()) {
-              htmlEdits.add(new ReplaceEdit(xmlElement.getCloseTagOffset() + xmlElement.getCloseNameOffset() + 1, xmlElement.getCloseNameLength(), "wo:" + _newType));
+            	if (xmlElement.getName().contains("wo")) {
+            		htmlEdits.add(new ReplaceEdit(xmlElement.getCloseTagOffset() + xmlElement.getCloseNameOffset() + 1, xmlElement.getCloseNameLength(), "wo:" + _newType));
+            	}
+            	else {
+                    htmlEdits.add(new ReplaceEdit(xmlElement.getCloseTagOffset() + xmlElement.getCloseNameOffset() + 1, xmlElement.getCloseNameLength(), "tb:" + _newType));
+            	}
             }
           }
           htmlEdits.add(new ReplaceEdit(typePosition.getOffset(), typePosition.getLength(), _newType));

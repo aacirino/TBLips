@@ -211,7 +211,7 @@ public abstract class AbstractWodElement implements IWodElement, Comparable<IWod
   public String getTagName() {
     String tagName;
     if (_tagName == null) {
-      tagName = "wo:" + getElementType();
+      tagName = "tb:" + getElementType(); // "wo:"
     }
     else {
       tagName = _tagName;

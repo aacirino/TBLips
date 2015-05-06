@@ -16,7 +16,11 @@ public class WodHtmlUtils {
 
   static {
     StringBuffer patterns = new StringBuffer();
+    patterns.append("<treasureboat{0,1}\\s+name\\s*=\\s*\"{0,1}([^>\"/\\s]+)\"{0,1}\\s*/{0,1}>");
+    patterns.append("|");
     patterns.append("<webobjects{0,1}\\s+name\\s*=\\s*\"{0,1}([^>\"/\\s]+)\"{0,1}\\s*/{0,1}>");
+    patterns.append("|");
+    patterns.append("<tb\\s+name\\s*=\\s*\"{0,1}([^>\"/\\s]+)\"{0,1}\\s*/{0,1}>");
     patterns.append("|");
     patterns.append("<wo\\s+name\\s*=\\s*\"{0,1}([^>\"/\\s]+)\"{0,1}\\s*/{0,1}>");
     WodHtmlUtils.WEBOBJECTS_PATTERN = Pattern.compile(patterns.toString(), Pattern.CASE_INSENSITIVE | Pattern.MULTILINE);
@@ -30,7 +34,7 @@ public class WodHtmlUtils {
     boolean isWOTag = false;
     if (tagName != null) {
       String lowercaseTagName = tagName.toLowerCase();
-      if (lowercaseTagName.startsWith("wo:")) {
+      if (lowercaseTagName.startsWith("wo:") || lowercaseTagName.startsWith("tb:")) {
         isWOTag = true;
       }
     }
@@ -48,6 +52,9 @@ public class WodHtmlUtils {
       if (lowercaseTagName.startsWith("webobject") || lowercaseTagName.equals("wo") || lowercaseTagName.startsWith("wo ") || lowercaseTagName.startsWith("wo:")) {
         isWOTag = true;
       }
+      else if (lowercaseTagName.startsWith("treasureboat") || lowercaseTagName.equals("tb") || lowercaseTagName.startsWith("tb ") || lowercaseTagName.startsWith("tb:")) {
+          isWOTag = true;
+        }
     }
     return isWOTag;
   }
