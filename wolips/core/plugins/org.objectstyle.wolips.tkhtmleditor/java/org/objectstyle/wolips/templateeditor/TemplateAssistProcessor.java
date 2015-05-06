@@ -159,10 +159,20 @@ public class TemplateAssistProcessor extends HTMLAssistProcessor {
   @Override
   protected AssistInfo[] getAttributeValues(String tagName, String value, TagInfo tagInfo, AttributeInfo attrInfo) {
     AssistInfo[] attributeValues;
-    if (tagInfo instanceof InlineWodTagInfo) {
+    TagInfo useTagInfo = tagInfo;
+    
+    // support for TBOgnl_ParseStandardTags = true 
+    if ( (! (useTagInfo instanceof InlineWodTagInfo)) && value != null && value.startsWith(_buildProperties.getInlineBindingPrefix()) ) {
+		InlineWodTagInfo tmpTagInfo = new InlineWodTagInfo("tb:", tagInfo.getTagName(), WodParserCache.getTypeCache());
+		tmpTagInfo.setRequiresAttributes(tagInfo.requiresAttributes());
+		tmpTagInfo.setJavaProject(getJavaProject());
+		useTagInfo = tmpTagInfo;
+	}
+    
+    if (useTagInfo instanceof InlineWodTagInfo) {
       List<AssistInfo> attributeValuesList = new LinkedList<AssistInfo>();
       try {
-        InlineWodTagInfo wodTagInfo = (InlineWodTagInfo) tagInfo;
+        InlineWodTagInfo wodTagInfo = (InlineWodTagInfo) useTagInfo;
         String bindingValue = value;
         String prefix = "$";
         String suffix = "";
@@ -279,7 +289,7 @@ public class TemplateAssistProcessor extends HTMLAssistProcessor {
       //    if (info.getAttributeType() == CLASS && this._file != null) {
       //      return classNameProcessor.getClassAttributeValues(this._file, value);
       //    }
-      attributeValues = super.getAttributeValues(tagName, value, tagInfo, attrInfo);
+      attributeValues = super.getAttributeValues(tagName, value, useTagInfo, attrInfo);
     }
     return attributeValues;
   }
